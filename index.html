@@ -203,6 +203,12 @@ input[type=range]{width:100%;accent-color:var(--leaf)}
 .auth .gate-box{width:min(440px,100%)} .auth-brand{display:flex;align-items:center;gap:10px;margin-bottom:22px;font-size:15px;color:var(--muted)} .auth-brand img{width:34px;height:34px} .auth-brand b{color:var(--forest)} .auth-tabs{margin-bottom:22px} .auth-note{background:var(--leaf-tint);border:1px solid var(--leaf-soft);color:var(--forest)!important;padding:10px 12px;border-radius:var(--r);font-size:13px} .auth-alt{text-align:center;margin:14px 0 0!important}
 .team-sec{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:22px;margin-bottom:18px} .team-sec h2{font-size:17px;margin-bottom:8px} .team-sec>p{margin:0 0 14px} .team-list{display:flex;flex-direction:column;gap:2px;margin-bottom:12px} .team-row{display:flex;align-items:center;gap:10px;padding:8px 6px;border-bottom:1px solid var(--line)} .team-row:last-child{border-bottom:0} .team-e{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis} .avatar.sm{width:30px;height:30px;font-size:11px;display:grid;place-items:center} .muted-av{background:var(--hover);color:var(--muted)} .team-inv{display:flex;gap:8px;max-width:560px} .team-inv .inp:first-child{flex:1} .team-inv select{width:120px}
 
+.badge.b-role{background:#EEF2F8;color:#3A5070}
+.sh-inv{max-width:none;margin-bottom:14px} .sh-roles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px} .sh-roles>div{background:var(--ivory);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px;display:flex;flex-direction:column;gap:2px;font-size:12.5px} .sh-roles strong{color:var(--ink);font-size:13px} .sh-roles span{color:var(--muted)}
+.sh-h{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:4px 0 6px} .sm-sel{width:110px;height:32px;font-size:13px}
+.sh-note{display:flex;gap:10px;align-items:flex-start;margin-top:14px;padding:12px;border-radius:var(--r);background:var(--leaf-tint);color:var(--forest);font-size:12.5px;line-height:1.5} .sh-note .ic{margin-top:2px}
+@media (max-width:860px){ .sh-roles{grid-template-columns:1fr} }
+
 /* ============ chlorophyll brandbook studio — published brandbook ============ */
 .bs{container-type:inline-size;container-name:bb;background:var(--bb-bg);color:var(--bb-ink);font-family:var(--bb-fb);font-size:16px;line-height:1.6;min-height:100%;-webkit-font-smoothing:antialiased}
 .bs *{box-sizing:border-box} .bs a{color:inherit} .bs h1,.bs h2,.bs h3{font-family:var(--bb-fh);color:inherit;font-weight:500;letter-spacing:-.015em;line-height:1.1;margin:0}
@@ -494,7 +500,13 @@ const SB = {
     this.c.auth.onAuthStateChange((ev, session) => { const was = !!this.session; this.session = session; if (ev === 'PASSWORD_RECOVERY') { this.recovery = true; setTimeout(route, 0); } else if (ev === 'SIGNED_OUT' || (!was && session)) { this.role = null; setTimeout(() => { if (!location.hash.startsWith('#b-')) location.hash = '#dashboard'; route(); }, 0); } });
     if (this.session) await this.claim();
   },
-  async claim() { const { data, error } = await this.c.rpc('claim_membership'); if (error) console.warn(error); this.role = data || null; Store.profile = { name: this.session?.user?.email || '' }; return this.role; },
+  async claim() { const { data, error } = await this.c.rpc('claim_membership'); if (error) console.warn(error); this.role = data || null; Store.profile = { name: this.session?.user?.email || '' }; await this.loadProjRoles(); return this.role; },
+  async loadProjRoles() { this.projRoles = {}; const { data } = await this.c.rpc('my_project_roles'); (data || []).forEach((r) => (this.projRoles[r.brand_id] = r.role)); return this.projRoles; },
+  async projectMembers(bid) { return this.ok(await this.c.from('project_members').select('*').eq('brand_id', bid).order('created_at')); },
+  async addProjectMember(bid, email, role) { this.ok(await this.c.from('project_members').upsert({ brand_id: bid, email: email.toLowerCase(), role })); },
+  async setProjectRole(bid, email, role) { this.ok(await this.c.from('project_members').update({ role }).eq('brand_id', bid).eq('email', email)); },
+  async removeProjectMember(bid, email) { this.ok(await this.c.from('project_members').delete().eq('brand_id', bid).eq('email', email)); },
+  async allProjectMembers() { const { data } = await this.c.from('project_members').select('*').order('created_at'); return data || []; },
   ok(r) { if (r.error) { const e = new Error(r.error.message); e.code = r.error.code; throw e; } return r.data; },
   async listBrands() { return this.ok(await this.c.from('brands').select('data').order('updated_at', { ascending: false })).map((r) => r.data); },
   async getBrand(id) { const d = this.ok(await this.c.from('brands').select('data').eq('id', id).maybeSingle()); return d ? d.data : null; },
@@ -1399,12 +1411,13 @@ function renderEditorRoute() {
   $('#app').innerHTML = `<div class="ed">${studioTop(S.brand, 'editor', `<span class="save-status" id="save-status"></span>
     <div class="seg" role="group" aria-label="Undo and redo"><button class="icon-btn" id="ed-undo" title="Undo (Ctrl+Z)" aria-label="Undo">${ic('undo')}</button><button class="icon-btn" id="ed-redo" title="Redo (Ctrl+Shift+Z)" aria-label="Redo">${ic('redo')}</button></div>
     <div class="seg" role="group" aria-label="Canvas device"><button class="icon-btn ${Ed.device === 'desktop' ? 'on' : ''}" data-device="desktop" aria-label="Desktop view" aria-pressed="${Ed.device === 'desktop'}">${ic('desktop')}</button><button class="icon-btn ${Ed.device === 'mobile' ? 'on' : ''}" data-device="mobile" aria-label="Mobile view" aria-pressed="${Ed.device === 'mobile'}">${ic('mobile')}</button></div>
-    <a class="btn ghost" href="#brand-${S.brand.id}-preview">${ic('eye', 16)} Preview</a><button class="btn primary" id="ed-publish">${ic('globe', 16)} ${S.brand.pub?.slug ? 'Update' : 'Publish'}</button>`)}
+    ${Store.mode === 'supabase' ? `<button class="btn ghost" id="ed-share">${ic('share', 16)} Share</button>` : ''}<a class="btn ghost" href="#brand-${S.brand.id}-preview">${ic('eye', 16)} Preview</a>${canManage(S.brand) ? `<button class="btn primary" id="ed-publish">${ic('globe', 16)} ${S.brand.pub?.slug ? 'Update' : 'Publish'}</button>` : `<span class="badge b-role" title="Project editors can’t publish">${ic('edit', 12)} Editor access</span>`}`)}
     <div class="ed-body"><aside class="ed-left" aria-label="Brandbook pages"></aside><main class="ed-center"><div class="ed-scroll" id="ed-scroll"><div class="ed-canvas dev-${Ed.device}" id="ed-canvas"></div></div></main><aside class="ed-right" aria-label="Properties"></aside></div></div>`;
   setSaveState(Save.brand || Save.pages.size ? 'pending' : 'saved'); updateUndoBtns();
   $('#ed-undo').onclick = undo; $('#ed-redo').onclick = redo;
   $$('[data-device]').forEach((b) => (b.onclick = () => { Ed.device = b.dataset.device; $$('[data-device]').forEach((x) => { x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', x === b); }); $('#ed-canvas').className = 'ed-canvas dev-' + Ed.device; }));
-  $('#ed-publish').onclick = () => publishFlow();
+  if ($('#ed-publish')) $('#ed-publish').onclick = () => publishFlow();
+  if ($('#ed-share')) $('#ed-share').onclick = () => shareProject(S.brand);
   renderEditor(); bindCanvas(); bindNav();
 }
 function renderEditor() { renderNav(); renderCanvas(); renderProps(); const bd = $('#pub-badge'); if (bd) { const st = pubStatus(S.brand); bd.className = 'badge b-' + st.k; bd.textContent = st.l; } }
@@ -1749,6 +1762,7 @@ function bindAccess(w) {
 }
 function readAccess(w) { const mode = $('input[name="acc"]:checked', w)?.value || 'public'; const password = $('#pub-pw', w)?.value || ''; if (mode === 'password' && password.length < 4) { $('#pub-pw', w).classList.add('err'); toast('Password needs at least 4 characters', 'err'); return null; } return { mode, password }; }
 async function publishFlow() {
+  if (typeof canManage === 'function' && !canManage(S.brand)) { toast('Only project admins can publish', 'err'); return false; }
   if (typeof flushSave === 'function') await flushSave(); flushTextSession();
   const b = S.brand; const first = !b.pub?.slug;
   const slug0 = b.pub?.slug || slugify(b.name);
@@ -2003,6 +2017,12 @@ async function exportStaticSite(b) {
 }
 
 /* ============ Studio: router, dashboard, wizard, assets, settings, preview ============ */
+/* ---------- permissions (team edition) ---------- */
+const isGuest = () => Store.mode === 'supabase' && SB.role === 'guest';
+function perm(b) { if (Store.mode !== 'supabase' || !isGuest()) return 'workspace'; return (SB.projRoles || {})[b?.id] || null; }
+const canManage = (b) => ['workspace', 'admin'].includes(perm(b));
+const isWorkspace = () => !isGuest();
+const ROLE_LABEL = { workspace: 'Team', admin: 'Project admin', editor: 'Project editor' };
 const S = { brands: [], brand: null, pages: {}, route: null, dash: { q: '', filter: 'all', sort: 'updated' } };
 
 async function loadBrand(id) {
@@ -2026,7 +2046,8 @@ async function route() {
     if (SB.recovery) return renderRecovery();
     if (!SB.session) return renderLogin();
     if (!SB.role) { await SB.claim(); if (!SB.role) return renderNoAccess(); }
-    if (h === 'team') return renderTeam();
+    if (h === 'team') return isWorkspace() ? renderTeam() : (location.hash = '#dashboard');
+  if (h === 'create' && !isWorkspace()) { location.hash = '#dashboard'; return; }
   }
   if (!h || h === 'dashboard') return renderDashboard();
   if (h === 'create') return renderWizard(null);
@@ -2048,14 +2069,14 @@ function appHeader() {
   const name = Store.profile?.name || ''; const ini = (name || 'You').split(' ').map((x) => x[0]).join('').slice(0, 2).toUpperCase();
   return `<header class="app-top"><a class="app-logo" href="#dashboard" aria-label="chlorophyll brandbook studio home"><img class="app-leaf" src="${window.LEAF || ''}" alt=""><span class="app-name"><b>chlorophyll</b> brandbook studio</span></a>
   <label class="app-search">${ic('search', 16)}<input type="search" id="dash-q" placeholder="Search projects" value="${esc(S.dash.q)}" aria-label="Search projects"></label>
-  <div class="app-right"><a class="btn primary" href="#create">${ic('plus', 16)} Create New Brand</a><button class="avatar" id="profile-btn" aria-label="Account">${esc(ini)}</button></div></header>`;
+  <div class="app-right">${isWorkspace() ? `<a class="btn primary" href="#create">${ic('plus', 16)} Create New Brand</a>` : ''}<button class="avatar" id="profile-btn" aria-label="Account">${esc(ini)}</button></div></header>`;
 }
 function profileMenu(anchor) {
   menu(anchor, [
     ['user', Store.profile?.name || 'Signed in', () => { }, true],
     [Store.mode === 'cloud' || Store.mode === 'supabase' ? 'cloud' : 'lock', Store.mode === 'supabase' ? 'Team workspace · ' + (SB.role === 'admin' ? 'Admin' : 'Editor') : Store.mode === 'cloud' ? 'Synced to your Claude account' : 'Saved in this browser only', () => { }, true],
-    ...(Store.mode === 'supabase' ? [['user', 'Team & invites', () => (location.hash = '#team')]] : []),
-    ['sparkle', 'Add AUREL STUDIO demo', () => seedDemo()],
+    ...(Store.mode === 'supabase' && isWorkspace() ? [['user', 'Team & invites', () => (location.hash = '#team')]] : []),
+    ...(isWorkspace() ? [['sparkle', 'Add AUREL STUDIO demo', () => seedDemo()]] : [['user', 'Projects shared with you', () => { }, true]]),
     ...(Store.mode === 'supabase' ? [['left', 'Sign out', () => SB.signOut()]] : []),
   ]);
 }
@@ -2063,10 +2084,10 @@ function profileMenu(anchor) {
 /* ---------- dashboard ---------- */
 async function renderDashboard() {
   S.brand = null;
-  $('#app').innerHTML = `<div class="dash">${appHeader()}<main class="dash-main" id="main"><div class="dash-hero"><div><h1>Your Brand Workspace</h1><p>Create, manage and publish your brand guidelines in one place.</p></div>${Store.mode === 'supabase' ? `<div class="mode-note">${ic('cloud', 15)} Team workspace — everyone on the team sees these projects.</div>` : Store.mode !== 'cloud' ? `<div class="mode-note">${ic('lock', 15)} ${Store.sbError ? 'Could not reach Supabase (' + esc(Store.sbError) + ') — ' : 'Running outside claude.ai — '}projects are saved in this browser.</div>` : ''}</div><div id="dash-body"><div class="grid-skel">${'<div class="skel"></div>'.repeat(3)}</div></div></main></div>`;
+  $('#app').innerHTML = `<div class="dash">${appHeader()}<main class="dash-main" id="main"><div class="dash-hero"><div><h1>Your Brand Workspace</h1><p>Create, manage and publish your brand guidelines in one place.</p></div>${Store.mode === 'supabase' ? `<div class="mode-note">${ic('cloud', 15)} ${isGuest() ? 'Projects shared with you' : 'Team workspace — everyone on the team sees these projects.'}</div>` : Store.mode !== 'cloud' ? `<div class="mode-note">${ic('lock', 15)} ${Store.sbError ? 'Could not reach Supabase (' + esc(Store.sbError) + ') — ' : 'Running outside claude.ai — '}projects are saved in this browser.</div>` : ''}</div><div id="dash-body"><div class="grid-skel">${'<div class="skel"></div>'.repeat(3)}</div></div></main></div>`;
   $('#profile-btn').onclick = (e) => profileMenu(e.currentTarget);
   $('#dash-q').oninput = (e) => { S.dash.q = e.target.value; drawDash(); };
-  try { S.brands = await Store.listBrands(); } catch (e) { $('#dash-body').innerHTML = `<div class="empty"><h2>Couldn’t load your projects</h2><p class="muted">${esc(e.message || e.code || e)}</p><button class="btn primary" onclick="route()">Try again</button></div>`; return; }
+  try { if (isGuest()) await SB.loadProjRoles(); S.brands = await Store.listBrands(); } catch (e) { $('#dash-body').innerHTML = `<div class="empty"><h2>Couldn’t load your projects</h2><p class="muted">${esc(e.message || e.code || e)}</p><button class="btn primary" onclick="route()">Try again</button></div>`; return; }
   if (!S.brands.length && Store.mode !== 'supabase' && !(await Store.kget('meta:seeded')) && Store.mode !== 'memory') {
     const flag = Store.mode === 'cloud' ? await Store.brandsCol().doc('meta').get().catch(() => null) : null;
     if (!flag?.exists) { await seedDemo(true); return; }
@@ -2077,23 +2098,24 @@ function drawDash() {
   const el = $('#dash-body'); if (!el) return; const { q, filter, sort } = S.dash;
   let list = S.brands.filter((b) => (!q || (b.name + ' ' + (b.info?.industry || '') + ' ' + (b.info?.tagline || '')).toLowerCase().includes(q.toLowerCase())) && (filter === 'all' || pubStatus(b).k === filter || (filter === 'live' && pubStatus(b).k === 'changes') || (filter === 'draft' && !b.generated)));
   list.sort((a, b) => sort === 'name' ? a.name.localeCompare(b.name) : sort === 'created' ? (b.createdAt || 0) - (a.createdAt || 0) : (b.updatedAt || 0) - (a.updatedAt || 0));
+  if (!S.brands.length && isGuest()) { el.innerHTML = `<div class="empty big"><span class="empty-ic">${ic('user', 26)}</span><h2>Nothing shared with you yet</h2><p class="muted">When someone shares a project with ${esc(SB.session?.user?.email || 'you')}, it will appear here.</p><button class="btn" onclick="SB.loadProjRoles().then(route)">${ic('reset', 15)} Refresh</button></div>`; return; }
   if (!S.brands.length) { el.innerHTML = `<div class="empty big"><div class="empty-art" aria-hidden="true"><span></span><span></span><span></span></div><h2>Start your first brandbook</h2><p class="muted">Add a logo, colours, typography and imagery — we’ll generate a complete, editable four-chapter brand guideline website.</p><div class="row-c"><a class="btn primary lg" href="#create">${ic('plus', 16)} Create New Brand</a><button class="btn lg" id="seed-btn">${ic('sparkle', 16)} Explore the AUREL STUDIO demo</button></div></div>`; $('#seed-btn').onclick = () => seedDemo(); return; }
   el.innerHTML = `<div class="dash-bar"><div class="seg" role="group" aria-label="Filter">${[['all', 'All'], ['live', 'Published'], ['draft', 'Drafts']].map(([k, l]) => `<button class="${filter === k ? 'on' : ''}" data-filter="${k}">${l}</button>`).join('')}</div><span class="muted sm">${list.length} of ${S.brands.length} projects</span><label class="sel-sm">Sort <select id="dash-sort"><option value="updated" ${sort === 'updated' ? 'selected' : ''}>Recently updated</option><option value="created" ${sort === 'created' ? 'selected' : ''}>Recently created</option><option value="name" ${sort === 'name' ? 'selected' : ''}>Name A–Z</option></select></label></div>
-  ${list.length ? `<div class="cards">${list.map(cardHTML).join('')}<a class="card card-new" href="#create">${ic('plus', 24)}<span>Create New Brand</span></a></div>` : `<div class="empty"><h2>No projects match</h2><p class="muted">Try a different search or filter.</p></div>`}`;
+  ${list.length ? `<div class="cards">${list.map(cardHTML).join('')}${isWorkspace() ? `<a class="card card-new" href="#create">${ic('plus', 24)}<span>Create New Brand</span></a>` : ''}</div>` : `<div class="empty"><h2>No projects match</h2><p class="muted">Try a different search or filter.</p></div>`}`;
   $$('[data-filter]', el).forEach((b) => (b.onclick = () => { S.dash.filter = b.dataset.filter; drawDash(); }));
   $('#dash-sort').onchange = (e) => { S.dash.sort = e.target.value; drawDash(); };
   $$('[data-pubq]', el).forEach((b) => (b.onclick = () => quickPublish(b.dataset.pubq)));
   $$('[data-unpubq]', el).forEach((b) => (b.onclick = () => quickUnpublish(b.dataset.unpubq)));
-  $$('[data-more]', el).forEach((b) => (b.onclick = () => { const br = S.brands.find((x) => x.id === b.dataset.more); menu(b, [...(br.generated ? [['globe', br.pub?.slug ? 'Update published version' : 'Publish', () => quickPublish(br.id)]] : []), ...(br.pub?.slug ? [['eyeoff', 'Unpublish', () => quickUnpublish(br.id)]] : []), ['edit', 'Open editor', () => (location.hash = br.generated ? '#brand-' + br.id + '-editor' : '#brand-' + br.id + '-setup')], ['folder', 'Asset library', () => (location.hash = '#brand-' + br.id + '-assets')], ['settings', 'Settings', () => (location.hash = '#brand-' + br.id + '-settings')], ['dup', 'Duplicate', () => duplicateBrand(br)], ...(br.pub?.slug ? [['link', 'Copy public link', () => copyText(publicURL(br.pub.slug), 'Link copied')]] : []), ['trash', 'Delete', () => deleteBrandFlow(br), false, 'danger']]); }));
+  $$('[data-more]', el).forEach((b) => (b.onclick = () => { const br = S.brands.find((x) => x.id === b.dataset.more); const mg = canManage(br); menu(b, [...(Store.mode === 'supabase' ? [['share', 'Share project', () => shareProject(br)]] : []), ...(br.generated && mg ? [['globe', br.pub?.slug ? 'Update published version' : 'Publish', () => quickPublish(br.id)]] : []), ...(br.pub?.slug && mg ? [['eyeoff', 'Unpublish', () => quickUnpublish(br.id)]] : []), ['edit', 'Open editor', () => (location.hash = br.generated ? '#brand-' + br.id + '-editor' : '#brand-' + br.id + '-setup')], ['folder', 'Asset library', () => (location.hash = '#brand-' + br.id + '-assets')], ['settings', 'Settings', () => (location.hash = '#brand-' + br.id + '-settings')], ...(isWorkspace() ? [['dup', 'Duplicate', () => duplicateBrand(br)]] : []), ...(br.pub?.slug ? [['link', 'Copy public link', () => copyText(publicURL(br.pub.slug), 'Link copied')]] : []), ...(isWorkspace() ? [['trash', 'Delete', () => deleteBrandFlow(br), false, 'danger']] : [])]); }));
 }
 function cardHTML(b) {
   const t = theme(b); const st = b.generated ? pubStatus(b) : { k: 'setup', l: 'Setup incomplete' };
   const logo = b.logos?.primary; const open = b.generated ? '#brand-' + b.id + '-editor' : '#brand-' + b.id + '-setup';
-  const pubBtns = !b.generated ? '' : st.k === 'draft' ? `<button class="btn sm pub" data-pubq="${b.id}">${ic('globe', 14)} Publish</button>` : `${st.k === 'changes' ? `<button class="btn sm pub" data-pubq="${b.id}" title="Publish latest changes">${ic('globe', 14)} Update</button>` : ''}<button class="btn sm ghost" data-unpubq="${b.id}" title="Take the brandbook offline">${ic('eyeoff', 14)} Unpublish</button>`;
+  const pubBtns = !b.generated || !canManage(b) ? '' : st.k === 'draft' ? `<button class="btn sm pub" data-pubq="${b.id}">${ic('globe', 14)} Publish</button>` : `${st.k === 'changes' ? `<button class="btn sm pub" data-pubq="${b.id}" title="Publish latest changes">${ic('globe', 14)} Update</button>` : ''}<button class="btn sm ghost" data-unpubq="${b.id}" title="Take the brandbook offline">${ic('eyeoff', 14)} Unpublish</button>`;
   return `<article class="card"><a class="card-cover" href="${open}" style="background:${t.light}" aria-label="Open ${esc(b.name)}">${logo ? `<img src="${esc(logo.url)}" alt="${esc(b.name)} logo">` : `<span class="card-wm" style="color:${t.primary};font-family:${t.fh}">${esc(b.name)}</span>`}${b.pub?.slug && b.pub?.access === 'password' ? `<span class="card-lock" title="Password protected">${ic('lock', 13)}</span>` : ''}</a>
   <div class="card-strip">${(b.colours || []).slice(0, 8).map((c) => `<i style="background:${c.hex}" title="${esc(c.name)} ${c.hex}"></i>`).join('') || '<i style="background:var(--line)"></i>'}</div>
   <div class="card-b"><div class="card-t"><h2>${esc(b.name)}</h2><button class="icon-btn sm" data-more="${b.id}" aria-label="More options for ${esc(b.name)}">${ic('more', 16)}</button></div><p class="muted sm">${esc(b.info?.industry || 'Brand')} · Edited ${fmtDate(b.updatedAt)}</p>
-  <div class="card-st"><span class="badge b-${st.k}">${st.l}</span>${b.pub?.slug ? `<span class="muted sm">${b.pub.access === 'password' ? 'Password' : 'Public'}</span>` : ''}</div>
+  <div class="card-st"><span class="badge b-${st.k}">${st.l}</span>${isGuest() ? `<span class="badge b-role">${ROLE_LABEL[perm(b)] || 'Shared'}</span>` : ''}${b.pub?.slug ? `<span class="muted sm">${b.pub.access === 'password' ? 'Password' : 'Public'}</span>` : ''}</div>
   <div class="card-f"><a class="btn sm" href="${open}">${ic('edit', 14)} Edit</a>${b.generated ? `<a class="btn sm ghost" href="#brand-${b.id}-preview">${ic('eye', 14)} Preview</a>` : ''}<span class="card-sp"></span>${pubBtns}</div></div></article>`;
 }
 async function quickPublish(id) { const b = await loadBrand(id); if (!b) return; S.brand = b; await publishFlow(); }
@@ -2310,6 +2332,12 @@ function passwordGate(slug, d) {
 }
 
 /* ---------- settings ---------- */
+function applySettingsPerms(b) {
+  if (!canManage(b)) $$('#set .set-sec').forEach((sec, i) => { const h = sec.querySelector('h2')?.textContent || ''; if (/Publishing|Access|Domain|Site options|Template|Delete/.test(h)) sec.remove(); });
+  if (!isWorkspace()) $$('#set .set-sec').forEach((sec) => { const h = sec.querySelector('h2')?.textContent || ''; if (/Delete/.test(h)) sec.remove(); });
+  if (!isWorkspace()) $$('#set [data-set="dup"]').forEach((x) => x.remove());
+  if (Store.mode === 'supabase') { const sh = document.createElement('section'); sh.className = 'set-sec'; sh.innerHTML = `<div class="set-h"><h2>Sharing</h2><p class="muted">Give people access to this project only — without adding them to the whole team workspace.</p></div><div><button class="btn" id="set-share">${ic('share', 15)} Share project</button></div>`; $('#set').insertBefore(sh, $('#set').children[1]); $('#set-share').onclick = () => shareProject(b); }
+}
 function renderSettings() {
   const b = S.brand; const st = pubStatus(b); const i = b.info;
   $('#app').innerHTML = `<div class="st">${studioTop(b, 'settings', `<span class="save-status" id="save-status"></span>`)}<main class="set" id="set">
@@ -2353,6 +2381,7 @@ function renderSettings() {
     if (a === 'reset') { if (!(await confirmDlg('Reset to default template?', 'All chapters, pages and page content will be replaced by the default template. Brand settings and assets are kept.', 'Reset template'))) return; const old = allPageIds(b); const tpl = buildTemplate(b, b.copy || {}); b.chapters = tpl.chapters; b.landing = tpl.landing; for (const pid of old) await Store.deletePage(b.id, pid).catch(() => { }); for (const p of Object.values(tpl.pages)) await Store.savePage(b.id, p); S.pages = tpl.pages; Ed.view = 'landing'; await saveB('Template reset'); }
     if (a === 'delete') deleteBrandFlow(b);
   };
+  applySettingsPerms(b);
 }
 
 /* ---------- global keys + boot ---------- */
@@ -2404,7 +2433,7 @@ function renderRecovery() {
 }
 function renderNoAccess() {
   const em = SB.session?.user?.email || '';
-  $('#app').innerHTML = authShell(`<span class="gate-ic">${ic('lock', 24)}</span><h1>You’re not on the team yet</h1><p>You’re signed in as <strong>${esc(em)}</strong>, but this email isn’t invited to the workspace. Ask a workspace admin to invite it, then try again.</p><div class="row-l"><button class="btn primary" id="na-retry">Try again</button><button class="btn" id="na-out">Sign out</button></div>`);
+  $('#app').innerHTML = authShell(`<span class="gate-ic">${ic('lock', 24)}</span><h1>No access yet</h1><p>You’re signed in as <strong>${esc(em)}</strong>, but this email hasn’t been added to the team or to any project. Ask a team member to invite you or share a project with this email, then try again.</p><div class="row-l"><button class="btn primary" id="na-retry">Try again</button><button class="btn" id="na-out">Sign out</button></div>`);
   $('#na-retry').onclick = async () => { await SB.claim(); if (SB.role) route(); else toast('Still no invite for this email', 'err'); };
   $('#na-out').onclick = () => SB.signOut();
 }
@@ -2412,10 +2441,12 @@ async function renderTeam() {
   S.brand = null; document.title = 'Team — chlorophyll brandbook studio';
   $('#app').innerHTML = `<div class="dash">${appHeader()}<main class="dash-main" id="main"><a class="link" href="#dashboard">← Back to projects</a><div class="dash-hero" style="margin-top:16px"><div><h1>Team</h1><p>Everyone here can create, edit and publish brandbooks.</p></div></div><div id="team-b"><div class="skel" style="height:200px"></div></div></main></div>`;
   $('#profile-btn').onclick = (e) => profileMenu(e.currentTarget);
+  if (!S.brands.length) { try { S.brands = await Store.listBrands(); } catch (e) { } }
   const draw = async () => {
     const t = await SB.team(); const admin = SB.role === 'admin'; const me = SB.session.user.id;
     $('#team-b').innerHTML = `<section class="team-sec"><h2>Members <span class="muted">${t.members.length}</span></h2><div class="team-list">${t.members.map((m) => `<div class="team-row"><span class="avatar sm">${esc(m.email.slice(0, 2).toUpperCase())}</span><span class="team-e">${esc(m.email)}${m.user_id === me ? ' <span class="muted">(you)</span>' : ''}</span><span class="badge ${m.role === 'admin' ? 'b-live' : ''}">${m.role}</span>${admin && m.user_id !== me ? `<button class="btn sm ghost" data-role="${m.user_id}" data-r="${m.role === 'admin' ? 'editor' : 'admin'}">Make ${m.role === 'admin' ? 'editor' : 'admin'}</button><button class="icon-btn sm" data-rm="${m.user_id}" aria-label="Remove ${esc(m.email)}">${ic('trash', 15)}</button>` : ''}</div>`).join('')}</div></section>
     ${admin ? `<section class="team-sec"><h2>Invite people</h2><p class="muted">Invited emails can create an account at <strong>${esc(location.origin)}</strong> and join automatically. No email is sent — share the link with them.</p><form id="inv-f" class="team-inv"><input class="inp" id="inv-e" type="email" placeholder="name@company.com" required><select class="inp" id="inv-r"><option value="editor">Editor</option><option value="admin">Admin</option></select><button class="btn primary">${ic('plus', 15)} Invite</button></form>${t.invites.length ? `<div class="team-list">${t.invites.map((i) => `<div class="team-row"><span class="avatar sm muted-av">${ic('mail', 14)}</span><span class="team-e">${esc(i.email)} <span class="muted">· invited</span></span><span class="badge">${i.role}</span><button class="icon-btn sm" data-rminv="${esc(i.email)}" aria-label="Cancel invite">${ic('x', 15)}</button></div>`).join('')}</div>` : ''}</section>
+    ${(await SB.allProjectMembers().then((pm) => pm.length ? `<section class="team-sec"><h2>Project collaborators <span class="muted">${pm.length}</span></h2><p class="muted">People with access to individual projects only. Manage them from each project’s Share menu.</p><div class="team-list">${pm.map((m) => `<div class="team-row"><span class="avatar sm muted-av">${ic('share', 13)}</span><span class="team-e">${esc(m.email)} <span class="muted">· ${esc((S.brands.find((x) => x.id === m.brand_id) || {}).name || 'project')}</span>${m.user_id ? '' : ' <span class="muted">· no account yet</span>'}</span><span class="badge ${m.role === 'admin' ? 'b-live' : ''}">${m.role === 'admin' ? 'Project admin' : 'Project editor'}</span></div>`).join('')}</div></section>` : ''))}
     <section class="team-sec"><h2>Auto-join domains</h2><p class="muted">Anyone signing up with these email domains joins as an editor.</p><div class="team-list">${t.domains.map((d) => `<div class="team-row"><span class="avatar sm muted-av">@</span><span class="team-e">${esc(d)}</span><button class="icon-btn sm" data-rmdom="${esc(d)}" aria-label="Remove domain">${ic('x', 15)}</button></div>`).join('') || '<p class="muted sm">None — invite-only.</p>'}</div><form id="dom-f" class="team-inv"><input class="inp" id="dom-e" placeholder="company.com" required><button class="btn">${ic('plus', 15)} Add domain</button></form></section>` : `<p class="muted">Only admins can invite people.</p>`}`;
     const el = $('#team-b');
     el.onclick = async (e) => { const b = e.target.closest('button'); if (!b) return;
@@ -2428,5 +2459,29 @@ async function renderTeam() {
     const dom = $('#dom-f'); if (dom) dom.onsubmit = async (e) => { e.preventDefault(); const d = $('#dom-e').value.trim().toLowerCase().replace(/^@/, ''); if (!/^([a-z0-9-]+\.)+[a-z]{2,}$/.test(d)) return toast('Enter a domain like company.com', 'err'); try { SB.ok(await SB.c.from('allowed_domains').upsert({ domain: d })); draw(); } catch (x) { toast(x.message, 'err'); } };
   };
   try { await draw(); } catch (e) { $('#team-b').innerHTML = `<p class="err-t">${esc(e.message)}</p>`; }
+}
+
+/* ---------- per-project sharing ---------- */
+async function shareProject(b) {
+  const mg = canManage(b); const url = location.origin + location.pathname;
+  let teamCount = null; try { teamCount = (await SB.c.from('members').select('user_id', { count: 'exact', head: true })).count; } catch (e) { }
+  modal({ title: `Share “${b.name}”`, wide: true, body: `<div id="sh-b"><div class="skel" style="height:120px"></div></div>`, onMount: (w) => {
+    const draw = async () => {
+      let list = []; try { list = await SB.projectMembers(b.id); } catch (e) { $('#sh-b', w).innerHTML = `<p class="err-t">${esc(e.message)}</p>`; return; }
+      $('#sh-b', w).innerHTML = `
+        ${mg ? `<form id="sh-f" class="team-inv sh-inv"><input class="inp" id="sh-e" type="email" placeholder="name@company.com" required aria-label="Email"><select class="inp" id="sh-r" aria-label="Role"><option value="editor">Editor</option><option value="admin">Admin</option></select><button class="btn primary">${ic('plus', 15)} Add</button></form>` : '<p class="muted sm">Only project admins and team members can change who has access.</p>'}
+        <div class="sh-roles"><div><strong>Editor</strong><span>Edit pages, imagery and assets. Preview. Can’t publish or share.</span></div><div><strong>Admin</strong><span>Everything an editor can do, plus publish, unpublish, access, domain and sharing.</span></div></div>
+        <h3 class="sh-h">People with access</h3>
+        <div class="team-list">
+          ${isGuest() ? '' : `<div class="team-row"><span class="avatar sm">${ic('user', 13)}</span><span class="team-e">Everyone in the team workspace${teamCount != null ? ` <span class="muted">· ${teamCount} ${teamCount === 1 ? 'person' : 'people'}</span>` : ''}</span><span class="badge b-live">Full access</span></div>`}
+          ${list.map((m) => `<div class="team-row"><span class="avatar sm">${esc(m.email.slice(0, 2).toUpperCase())}</span><span class="team-e">${esc(m.email)}${m.user_id ? '' : ' <span class="muted">· no account yet</span>'}${m.email === (SB.session?.user?.email || '').toLowerCase() ? ' <span class="muted">(you)</span>' : ''}</span>${mg ? `<select class="inp sm-sel" data-role="${esc(m.email)}" aria-label="Role for ${esc(m.email)}"><option value="editor" ${m.role === 'editor' ? 'selected' : ''}>Editor</option><option value="admin" ${m.role === 'admin' ? 'selected' : ''}>Admin</option></select><button class="icon-btn sm" data-rm="${esc(m.email)}" aria-label="Remove ${esc(m.email)}">${ic('trash', 15)}</button>` : `<span class="badge">${m.role === 'admin' ? 'Admin' : 'Editor'}</span>`}</div>`).join('') || '<p class="muted sm" style="padding:8px 6px">No one outside the team has access yet.</p>'}
+        </div>
+        <div class="sh-note">${ic('mail', 14)}<span>No email is sent. Send them <strong>${esc(url)}</strong> — they sign in with this email and see only this project. Until email sending is set up, create their account in Supabase (Authentication → Users → Add user → tick Auto Confirm).</span></div>`;
+      const f = $('#sh-f', w); if (f) f.onsubmit = async (e) => { e.preventDefault(); const em = $('#sh-e', w).value.trim().toLowerCase(); if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) return toast('Enter a valid email', 'err'); try { await SB.addProjectMember(b.id, em, $('#sh-r', w).value); toast(`${em} can now access ${b.name}`); draw(); } catch (x) { toast(x.message, 'err'); } };
+      $$('[data-role]', w).forEach((sel) => (sel.onchange = async () => { try { await SB.setProjectRole(b.id, sel.dataset.role, sel.value); toast('Role updated'); } catch (x) { toast(x.message, 'err'); draw(); } }));
+      $$('[data-rm]', w).forEach((bt) => (bt.onclick = async () => { try { await SB.removeProjectMember(b.id, bt.dataset.rm); toast('Access removed'); draw(); } catch (x) { toast(x.message, 'err'); } }));
+    };
+    draw();
+  }, actions: [{ label: 'Done', kind: 'primary', value: true }] });
 }
 </script></body></html>
