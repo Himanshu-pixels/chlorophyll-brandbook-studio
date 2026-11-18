@@ -1184,7 +1184,7 @@ function templatePages(cp) {
 function buildTemplate(brand, copy = {}) {
   const defs = templatePages(copy); const pages = {};
   const chapters = CHAPTER_DEFS.map((d) => ({ id: uid('ch'), key: d.key, num: d.num, title: d.title, desc: d.desc, icon: d.icon, image: d.img, st: {}, im: {}, pages: defs[d.key].map(([title, intro, blocks]) => { const id = uid('pg'); pages[id] = { id, intro, blocks }; return { id, title, slug: slugify(title), hidden: false }; }) }));
-  const landing = { heroTitle: '{{brand}}', heroSub: 'Brand Guidelines', heroIntro: copy['landing.intro'] || '{{tagline}}', cta: 'Explore Brand Guidelines', heroImg: img('campaign', 0), whyTitle: 'Why Brand Guidelines Matter', whyText: 'A brand is more than a logo. It is the collective experience created through every visual, verbal and digital interaction. These guidelines provide a consistent framework for expressing the brand across every touchpoint.', whyQuote: copy['landing.quote'] || 'Together, let us keep {{brand}} consistent, distinctive and true.', chaptersEyebrow: 'Explore the guidebook', chaptersTitle: 'One brand, every touchpoint.', st: {}, im: {} };
+  const landing = { heroTitle: '{{brand}}', heroSub: 'Brand Guidelines', heroIntro: copy['landing.intro'] || '{{tagline}}', cta: 'Explore Brand Guidelines', kitLabel: 'Download brand kit', heroImg: img('campaign', 0), whyTitle: 'Why Brand Guidelines Matter', whyText: 'A brand is more than a logo. It is the collective experience created through every visual, verbal and digital interaction. These guidelines provide a consistent framework for expressing the brand across every touchpoint.', whyQuote: copy['landing.quote'] || 'Together, let us keep {{brand}} consistent, distinctive and true.', chaptersEyebrow: 'Explore the guidebook', chaptersTitle: 'One brand, every touchpoint.', st: {}, im: {} };
   return { chapters, pages, landing };
 }
 function complementaryNeutrals(colours) {
@@ -1222,6 +1222,7 @@ function siteHome(ctx) {
   const firstCh = b.chapters.find((c) => visiblePages(c, ctx.mode).length) || b.chapters[0];
   const tints = ['var(--bb-soft)', 'var(--bb-soft2)', 'var(--bb-soft)', 'var(--bb-soft2)'];
   const hd = ds.hero || {};
+  if (ctx.mode === 'edit') { if (L.kitLabel == null || L.kitLabel === '') L.kitLabel = 'Download brand kit'; if (L.cta == null || L.cta === '') L.cta = 'Explore Brand Guidelines'; }
   const heroText = `<div class="bs-hero-t">${hd.showLogo === false ? '' : `<div class="bs-hero-logo"><span class="lg-on-dark">${logoHTML(b, 'white', 'bs-hero-logo-i', true)}</span><span class="lg-on-light">${logoHTML(b, 'primary', 'bs-hero-logo-i')}</span></div>`}
       ${tx(lc, L, 'heroTitle', 'h1', 'bs-hero-h', 'Brand name')}${tx(lc, L, 'heroSub', 'p', 'bs-hero-sub', 'Brand Guidelines')}${tx(lc, L, 'heroIntro', 'p', 'bs-hero-p', 'Short introduction')}
       <div class="bs-hero-cta"><a class="bs-btn primary" href="${firstCh ? siteLink(base, chapterTarget(firstCh)) : '#'}">${ctx.mode === 'edit' ? tx(lc, L, 'cta', 'span', '', 'Button label') : esc(interp(b, L.cta || 'Explore Brand Guidelines'))} ${ic('arrow', 16)}</a>${hd.showKit === false ? '' : `<button class="bs-btn ghost" data-dlgen="kit">${ic('download', 16)} ${ctx.mode === 'edit' ? tx(lc, L, 'kitLabel', 'span', '', 'Button label') : esc(interp(b, L.kitLabel || 'Download brand kit'))}</button>`}</div></div>`;
