@@ -236,6 +236,16 @@ input[type=range]{width:100%;accent-color:var(--leaf)}
 .cat-add{display:flex;align-items:center;gap:14px;width:100%;padding:18px;border:1.5px dashed var(--line-2);border-radius:var(--r-lg);background:#fff;color:var(--green);cursor:pointer;text-align:left} .cat-add:hover{border-color:var(--leaf);background:var(--leaf-tint)} .cat-add strong{display:block;color:var(--forest)} .cat-add small{color:var(--muted)}
 .th-acts{position:absolute;top:6px;right:6px;display:flex;gap:4px;opacity:0;transition:opacity .15s} .img-th:hover .th-acts,.th-acts:focus-within{opacity:1} .th-acts .icon-btn{background:rgba(255,255,255,.94);position:static;opacity:1}
 
+/* collateral groups: rename inline, add your own */
+.co-h{gap:6px} .co-name{flex:1;min-width:0;font:600 16px/1.2 var(--ui,inherit);color:var(--forest);border-color:transparent;background:transparent;padding:6px 8px;margin-left:-8px;height:auto}
+.co-name:hover{border-color:var(--line-2);background:#fff} .co-name:focus{border-color:var(--leaf);background:#fff}
+.co-new{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:220px;border:1.5px dashed var(--line-2);background:#fff;color:var(--green);cursor:pointer;text-align:center;font:inherit}
+.co-new:hover{border-color:var(--leaf);background:var(--leaf-tint)} .co-new strong{color:var(--forest);font-size:15px} .co-new small{color:var(--muted);font-size:12.5px}
+.file-tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;width:100%;height:100%;color:var(--muted)} .file-tile b{font-size:11px;letter-spacing:.06em}
+.cat-add{margin-top:8px}
+
+.co-name,.cat-inp{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23489F52' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20h9'/%3E%3Cpath d='M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z'/%3E%3C/svg%3E")!important;background-repeat:no-repeat!important;background-position:right 9px center!important;padding-right:30px!important}
+
 /* ============ chlorophyll brandbook studio — published brandbook ============ */
 .bs{container-type:inline-size;container-name:bb;background:var(--bb-bg);color:var(--bb-ink);font-family:var(--bb-fb);font-size:16px;line-height:1.6;min-height:100%;-webkit-font-smoothing:antialiased}
 .bs *{box-sizing:border-box} .bs a{color:inherit} .bs h1,.bs h2,.bs h3{font-family:var(--bb-fh);color:inherit;font-weight:500;letter-spacing:-.015em;line-height:1.1;margin:0}
@@ -490,6 +500,11 @@ input[type=range]{width:100%;accent-color:var(--leaf)}
 .bb-logo-min .bb-up-img{max-height:90px} .bb-dont .bb-up-img{max-height:110px}
 .bb-icon-g.up img,.bb-icon-g img{width:44px;height:44px;object-fit:contain}
 .mk-wrap{position:relative;border-radius:4px}
+
+/* hover toolbar: invisible bridge so the mouse can travel from the image to the toolbar */
+.ed-imgbar::after{content:"";position:absolute;left:-12px;right:-12px;top:100%;height:14px} .ed-imgbar:not(.below)::after{top:auto;bottom:100%}
+.bb-fs-add{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:150px;border:1.5px dashed rgba(72,159,82,.55);background:transparent;color:#376337;cursor:pointer;font:500 13px var(--ui,system-ui);border-radius:inherit}
+.bb-fs-add:hover{background:rgba(72,159,82,.07)} .bb-fs-add small{opacity:.7;font-size:11.5px}
 </style></head><body><a href="#main" class="skip" style="position:absolute;left:-999px">Skip to content</a><div id="app"></div>
 <script>window.APP_URL='' || ''; window.LEAF='data:image/png;base64,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';</script><script src="config.js"></script>
 <script>/* ============ chlorophyll brandbook studio — core utilities, storage, state ============ */
@@ -548,7 +563,7 @@ const dataURLToBlob = async (u) => (await fetch(u)).blob();
 function pickFiles(accept, multiple = false) {
   return new Promise((res) => { const i = document.createElement('input'); i.type = 'file'; i.accept = accept; i.multiple = multiple; i.style.display = 'none'; document.body.appendChild(i); i.onchange = () => { res(Array.from(i.files || [])); i.remove(); }; i.click(); setTimeout(() => { if (!i.files || !i.files.length) { /* user may cancel */ } }, 60000); });
 }
-const ACCEPT = { image: 'image/png,image/jpeg,image/svg+xml,image/webp', logo: 'image/png,image/jpeg,image/svg+xml,image/webp', font: '.ttf,.otf,.woff,.woff2', any: '*/*' };
+const ACCEPT = { image: 'image/png,image/jpeg,image/svg+xml,image/webp,.png,.jpg,.jpeg,.svg,.webp', logo: 'image/png,image/jpeg,image/svg+xml,image/webp,.png,.jpg,.jpeg,.svg,.webp', font: '.ttf,.otf,.woff,.woff2', any: '*/*' };
 function fileKind(name = '', type = '') { const e = name.split('.').pop().toLowerCase(); if (/^image\//.test(type) || ['png', 'jpg', 'jpeg', 'svg', 'webp', 'gif'].includes(e)) return 'image'; if (['ttf', 'otf', 'woff', 'woff2'].includes(e)) return 'font'; if (/^video\//.test(type) || ['mp4', 'webm', 'mov'].includes(e)) return 'video'; if (e === 'pdf') return 'pdf'; return 'file'; }
 const extOf = (n = '') => (n.includes('.') ? n.split('.').pop().toUpperCase() : 'FILE');
 
@@ -891,6 +906,8 @@ function placeholderSVG(b, seed = '', label = '') {
 function imgCats(b) { return Array.isArray(b?.imageCats) && b.imageCats.length ? b.imageCats.map((c) => [c.key, c.label]) : IMG_CATS; }
 function allImages(b) { return imgCats(b).flatMap(([k]) => b.images?.[k] || []); }
 const COLLATERAL_SLOTS = { businessCard: ['Front', 'Back'], letterhead: ['Letterhead'], stationery: ['Letterhead', 'Envelope', 'Business card'], social: ['Post 1', 'Post 2', 'Post 3'], packaging: ['Front', 'Side', 'Back'], merch: ['Tote bag', 'Cap', 'Mug'], digital: ['Website', 'Mobile app'], signage: ['Sign'] };
+function colKinds(b) { const L = b?.colLabels || {}; return [...MOCKUP_KINDS.map(([k, l]) => [k, L[k] || l]), ...(b?.colCustom || []).map((x) => [x.key, x.label || 'Collateral'])]; }
+const isBuiltinKind = (k) => MOCKUP_KINDS.some((m) => m[0] === k);
 function collateralOf(b, kind, create) { if (!b.collateral) { if (!create) return null; b.collateral = {}; } let c = b.collateral[kind]; if (!c && create) c = b.collateral[kind] = { slots: (COLLATERAL_SLOTS[kind] || ['Artwork']).map((label) => ({ label, file: null })), im: {}, st: {} }; return c || null; }
 const fileRef = (r) => r ? { k: 'file', id: r.id, url: r.url, name: r.name, type: r.type, size: r.size } : null;
 function resolveImg(b, ref, seed = 'x') {
@@ -964,10 +981,12 @@ const BLOCKS = {
     render: (c, b) => renderType(c, b) },
   logoShowcase: { label: 'Logo showcase', icon: 'logo', make: () => ({ variant: 'hero', caption: 'The primary logo is our most recognisable asset.' }), opts: [{ k: 'variant', l: 'Variant', t: 'select', o: LOGO_VARIANTS }, { k: 'useArt', l: 'Use my own artwork image (guideline variants)', t: 'toggle' }, { k: 'nodl', l: 'Hide download buttons', t: 'toggle' }],
     render: (c, b) => renderLogo(c, b) },
-  mockup: { label: 'Mockup gallery', icon: 'mockup', make: () => ({ kind: 'businessCard', name: 'Alex Morgan', role: 'Creative Director', headline: 'Crafted with intent.', caption: '' }), opts: [{ k: 'kind', l: 'Mockup', t: 'select', o: MOCKUP_KINDS }, { k: 'display', l: 'Show', t: 'select', o: [['auto', 'My artwork if uploaded, otherwise generated'], ['artwork', 'My uploaded artwork'], ['generated', 'Generated mockup']] }, { k: 'nodl', l: 'Hide download buttons', t: 'toggle' }],
-    render: (c, b) => { const co = c.brand.collateral?.[b.kind]; const filled = (co?.slots || []).filter((x) => x.file); const mode = b.display || 'auto'; const art = mode === 'artwork' || (mode === 'auto' && filled.length); return `<div class="bb-mock">${art ? renderArtwork(c, b) : c.mode === 'edit' ? `<div class="mk-wrap" data-mock="${b.kind}" tabindex="0" role="button" aria-label="Upload your own artwork">${renderMockup(c, b)}</div>` : renderMockup(c, b)}${tx(c, b, 'caption', 'figcaption', 'bb-cap', 'Caption (optional)')}</div>`; } },
+  mockup: { label: 'Mockup gallery', icon: 'mockup', make: () => ({ kind: 'businessCard', name: 'Alex Morgan', role: 'Creative Director', headline: 'Crafted with intent.', caption: '' }), opts: [{ k: 'kind', l: 'Collateral', t: 'select', o: (br) => colKinds(br) }, { k: 'display', l: 'Show', t: 'select', o: [['auto', 'My artwork if uploaded, otherwise generated'], ['artwork', 'My uploaded artwork'], ['generated', 'Generated mockup']] }, { k: 'nodl', l: 'Hide download buttons', t: 'toggle' }],
+    render: (c, b) => { const co = c.brand.collateral?.[b.kind]; const filled = (co?.slots || []).filter((x) => x.file); const mode = b.display || 'auto'; const art = !isBuiltinKind(b.kind) || mode === 'artwork' || (mode === 'auto' && filled.length); return `<div class="bb-mock">${art ? renderArtwork(c, b) : c.mode === 'edit' ? `<div class="mk-wrap" data-mock="${b.kind}" tabindex="0" role="button" aria-label="Upload your own artwork">${renderMockup(c, b)}</div>` : renderMockup(c, b)}${tx(c, b, 'caption', 'figcaption', 'bb-cap', 'Caption (optional)')}</div>`; } },
   download: { label: 'Downloadable file', icon: 'download', make: () => ({ title: 'Download file', desc: 'Attach a file from the asset library.', file: null, label: 'Download' }), opts: [{ k: 'file', l: 'File', t: 'asset' }],
     render: (c, b) => { const f = b.file; return `<div class="bb-dl"><div class="bb-dl-ic">${ic('file', 22)}</div><div class="bb-dl-t">${tx(c, b, 'title', 'h3', '', 'File title')}${tx(c, b, 'desc', 'p', 'bb-muted', 'Description')}<span class="bb-dl-meta">${f ? esc(extOf(f.name)) + ' · ' + fmtSize(f.size) : 'No file attached'}</span></div><button class="bb-btn" data-dl="${c.scope}" ${f ? '' : 'disabled'}>${ic('download', 16)} ${esc(b.label || 'Download')}</button></div>`; } },
+  fileSet: { label: 'File section', icon: 'folder', make: () => ({ set: '' }), opts: [{ k: 'set', l: 'Section', t: 'select', o: (br) => [['', 'Choose a section…'], ...(br.fileSets || []).map((x) => [x.id, x.label || 'Untitled'])] }, { k: 'nodl', l: 'Hide download buttons', t: 'toggle' }],
+    render: (c, b) => renderFileSet(c, b) },
   assetGrid: { label: 'Asset library grid', icon: 'folder', make: () => ({ category: 'logos' }), opts: [{ k: 'category', l: 'Category', t: 'select', o: [...ASSET_CATS, ['colours', 'Colour values']] }],
     render: (c, b) => renderAssetGrid(c, b) },
   quote: { label: 'Quote', icon: 'quote', make: () => ({ text: 'A brand is a promise, kept consistently.', cite: '' }), opts: [{ k: 'big', l: 'Large statement', t: 'toggle' }],
@@ -983,7 +1002,7 @@ const BLOCKS = {
   traits: { label: 'Personality sliders', icon: 'sparkle', make: () => ({ items: [['Classic', 'Modern', 70], ['Playful', 'Serious', 60], ['Loud', 'Quiet', 75], ['Mass', 'Exclusive', 65]].map(([l, r, v]) => ({ left: l, right: r, value: v })) }), opts: [{ k: 'items', l: 'Slider values', t: 'traits' }], items: { label: 'slider', make: () => ({ left: 'Left', right: 'Right', value: 50 }) },
     render: (c, b) => `<div class="bb-traits">${(b.items || []).map((it, i) => `<div class="bb-trait">${tx(c, b, `items.${i}.left`, 'span', 'l', 'Left')}<div class="bb-trait-bar"><i style="left:${it.value}%"></i></div>${tx(c, b, `items.${i}.right`, 'span', 'r', 'Right')}</div>`).join('')}</div>` },
 };
-const BLOCK_ORDER = ['heading', 'paragraph', 'image', 'gallery', 'cols2', 'cols3', 'palette', 'typeSpecimen', 'logoShowcase', 'mockup', 'download', 'quote', 'divider', 'video', 'split', 'iconset', 'pattern', 'traits', 'assetGrid'];
+const BLOCK_ORDER = ['heading', 'paragraph', 'image', 'gallery', 'cols2', 'cols3', 'palette', 'typeSpecimen', 'logoShowcase', 'mockup', 'download', 'quote', 'divider', 'video', 'split', 'iconset', 'pattern', 'traits', 'assetGrid', 'fileSet'];
 
 function renderCols(c, b, n) {
   return `<div class="bb-cols n${n} ${b.boxed ? 'boxed' : ''}">${(b.items || []).map((it, i) => `<div class="bb-col">${b.media ? im(c, b, `items.${i}.src`, '', '4/3') : ''}${b.numbered ? `<span class="bb-num">${String(i + 1).padStart(2, '0')}</span>` : ''}${tx(c, b, `items.${i}.title`, 'h3', '', 'Title')}${tx(c, b, `items.${i}.text`, 'p', 'bb-muted', 'Text')}</div>`).join('')}</div>`;
@@ -1137,6 +1156,15 @@ function renderArtwork(c, b) {
   const filled = co.slots.filter((x) => x.file).length;
   return `<div class="bb-art n${Math.min(slots.length, 4)}">${slots.map(({ x, i }) => `<figure class="bb-art-i dl-host">${x.file && !co.im?.[`slots.${i}.file`]?.hidden ? im(cc, co, `slots.${i}.file`, '', 'auto', 'art' + b.kind + i) : edit ? emptySlot(cc.scope, `slots.${i}.file`, 'Upload ' + (x.label || 'artwork')) : ''}${x.file && !b.nodl ? dlRef(x.file, '', 'download', 'bb-dl-mini', 'Download ' + (x.label || 'artwork')) : ''}${tx(cc, co, `slots.${i}.label`, 'figcaption', 'bb-cap', 'Label')}</figure>`).join('')}</div>${filled > 1 && !b.nodl ? `<div class="bb-dlrow">${dlGen('art:' + b.kind, 'Download all (.zip)', 'download')}</div>` : ''}`;
 }
+const isImgRef = (f) => /^image\//.test(f.type || '') || /\.(png|jpe?g|svg|webp|gif)$/i.test(f.name || '');
+function renderFileSet(c, b) {
+  const br = c.brand, edit = c.mode === 'edit'; const set = (br.fileSets || []).find((x) => x.id === b.set);
+  if (!set) return edit ? `<div class="bb-empty">Choose which file section to show in the properties panel, or create one there.</div>` : '';
+  const files = set.files || []; const cc = { ...c, scope: 'fs:' + set.id };
+  if (!files.length && !edit) return '';
+  const items = files.map((f, i) => `<div class="bb-asset dl-host"><div class="bb-asset-p"${edit ? ` data-upl="fs.${set.id}:${f.id}" tabindex="0" role="button" aria-label="Replace ${esc(f.label || f.name || 'file')}"` : ''}>${isImgRef(f) ? `<img src="${esc(f.url)}" alt="${esc(f.label || f.name || '')}">` : `<span>${ic('file', 26)}<b>${esc(extOf(f.name))}</b></span>`}</div><div class="bb-asset-m">${tx(cc, set, `files.${i}.label`, 'strong', '', 'File name')}<span>${esc(extOf(f.name))}${f.size ? ' · ' + fmtSize(f.size) : ''}</span></div>${b.nodl ? '' : `<button class="bb-icbtn" data-dlref='${esc(JSON.stringify({ url: f.url, name: f.name, type: f.type }))}' aria-label="Download ${esc(f.label || f.name || 'file')}">${ic('download', 16)}</button>`}</div>`).join('');
+  return `<div class="bb-assets">${items}${edit ? `<button class="bb-asset bb-fs-add" data-fsadd="${set.id}" contenteditable="false">${ic('plus', 20)}<span>Add files to ${esc(set.label || 'this section')}</span><small>JPG, PNG, SVG, PDF or any file</small></button>` : ''}</div>${b.nodl || files.length < 2 ? '' : `<div class="bb-dlrow">${dlGen('fs:' + set.id, 'Download all (.zip)', 'download')}</div>`}`;
+}
 function usesUploads(br, b, key) { const src = b.source || 'auto'; return src === 'uploaded' || (src === 'auto' && (br[key] || []).length > 0); }
 function renderUploadedSet(c, b, key) {
   const br = c.brand, list = br[key] || [], isIcons = key === 'icons', pre = isIcons ? 'ic:' : 'gr:';
@@ -1164,6 +1192,7 @@ async function genDownload(kind, br, pages) {
     if (k === 'pat') return Store.save(`${slug}-${arg}.svg`, new Blob([patternSVG(br, arg, 0).replace('<svg ', '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" ')], { type: 'image/svg+xml' }));
     if (k === 'gal') { const b = blk(arg); const fs = (b?.items || []).map((it) => refFile(br, it.src)).filter(Boolean); return zipOf(fs.map((f, i) => ({ name: f.name || `image-${i + 1}.jpg`, url: f.url })), `${slug}-images.zip`); }
     if (k === 'logos') return zipOf([...LOGO_KEYS.filter(([x]) => br.logos?.[x]).map(([x]) => ({ name: `${slug}-${x}.${(br.logos[x].name || 'x.png').split('.').pop()}`, url: br.logos[x].url })), ...(br.logoExtras || []).filter((x) => x.file).map((x) => ({ name: `${slug}-${slugify(x.label || 'variation')}.${(x.file.name || 'x.png').split('.').pop()}`, url: x.file.url }))], `${slug}-logos.zip`);
+    if (k === 'fs') { const s = (br.fileSets || []).find((x) => x.id === arg); return zipOf((s?.files || []).map((f, i) => ({ name: f.name || `file-${i + 1}`, url: f.url })), `${slug}-${slugify(s?.label || 'files')}.zip`); }
     if (k === 'upl') return zipOf((br[arg] || []).map((f, i) => ({ name: f.name || `${arg}-${i + 1}`, url: f.url })), `${slug}-${arg === 'icons' ? 'icons' : 'graphic-elements'}.zip`);
     if (k === 'art') { const co = br.collateral?.[arg]; return zipOf((co?.slots || []).filter((x) => x.file).map((x) => ({ name: `${slugify(x.label || 'artwork')}.${(x.file.name || 'x.png').split('.').pop()}`, url: x.file.url })), `${slug}-${arg}.zip`); }
     if (k === 'kit') return exportZip(br);
@@ -1247,13 +1276,15 @@ function templatePages(cp) {
       ['Packaging', 'Our brand, in the hand.', [B('mockup', { kind: 'packaging', headline: 'Signature collection' })]],
       ['Merchandise', 'Objects that carry the brand with care.', [B('mockup', { kind: 'merch' })]],
       ['Digital Applications', 'Website, app and email.', [B('mockup', { kind: 'digital', headline: '{{tagline}}' }), B('mockup', { kind: 'signage', headline: 'Reception · Level 2' })]],
+      ...(cp.__brand?.colCustom || []).map((x) => [x.label || 'Collateral', '', [B('mockup', { kind: x.key, display: 'artwork' })], x.key]),
+      ...(cp.__brand?.fileSets || []).map((x) => [x.label || 'Files', '', [B('fileSet', { set: x.id })], x.id]),
       ['Templates & Downloads', 'Ready-to-use templates, documents and files.', templatesBlocks()],
     ],
   };
 }
 function buildTemplate(brand, copy = {}) {
-  const defs = templatePages(copy); const pages = {};
-  const chapters = CHAPTER_DEFS.map((d) => ({ id: uid('ch'), key: d.key, num: d.num, title: d.title, desc: d.desc, icon: d.icon, image: d.img, st: {}, im: {}, pages: defs[d.key].map(([title, intro, blocks]) => { const id = uid('pg'); pages[id] = { id, intro, blocks }; return { id, title, slug: slugify(title), hidden: false }; }) }));
+  const defs = templatePages({ ...copy, __brand: brand }); const pages = {};
+  const chapters = CHAPTER_DEFS.map((d) => ({ id: uid('ch'), key: d.key, num: d.num, title: d.title, desc: d.desc, icon: d.icon, image: d.img, st: {}, im: {}, pages: defs[d.key].map(([title, intro, blocks, src]) => { const id = uid('pg'); pages[id] = { id, intro, blocks }; return { id, title, slug: slugify(title) + (src ? '-' + id.slice(-4) : ''), hidden: false, ...(src ? { src } : {}) }; }) }));
   const landing = { heroTitle: '{{brand}}', heroSub: 'Brand Guidelines', heroIntro: copy['landing.intro'] || '{{tagline}}', cta: 'Explore Brand Guidelines', kitLabel: 'Download brand kit', heroImg: img('campaign', 0), whyTitle: 'Why Brand Guidelines Matter', whyText: 'A brand is more than a logo. It is the collective experience created through every visual, verbal and digital interaction. These guidelines provide a consistent framework for expressing the brand across every touchpoint.', whyQuote: copy['landing.quote'] || 'Together, let us keep {{brand}} consistent, distinctive and true.', chaptersEyebrow: 'Explore the guidebook', chaptersTitle: 'One brand, every touchpoint.', st: {}, im: {} };
   return { chapters, pages, landing };
 }
@@ -1508,6 +1539,7 @@ function scopeObj(scope) {
   if (k === 'lx') { const c = (b.logoExtras || []).find((x) => x.id === id); return c ? { obj: c, brand: true } : null; }
   if (k === 'ic') { const c = (b.icons || []).find((x) => x.id === id); return c ? { obj: c, brand: true } : null; }
   if (k === 'gr') { const c = (b.graphics || []).find((x) => x.id === id); return c ? { obj: c, brand: true } : null; }
+  if (k === 'fs') { const c = (b.fileSets || []).find((x) => x.id === id); return c ? { obj: c, brand: true } : null; }
   return null;
 }
 
@@ -1833,7 +1865,7 @@ function imageProps(s) {
 function blockProps(s) {
   const f = findBlock(s.scope.slice(3)); if (!f) return ''; const bk = f.block; const def = BLOCKS[bk.type]; const sec = bk.sec || {};
   const opt = (o) => { const v = bk[o.k];
-    if (o.t === 'select') return `<label class="fld"><span>${o.l}</span><select class="inp" data-opt="${o.k}">${o.o.map(([val, l]) => `<option value="${val}" ${String(v ?? '') === String(val) ? 'selected' : ''}>${esc(l)}</option>`).join('')}</select></label>`;
+    if (o.t === 'select') return `<label class="fld"><span>${o.l}</span><select class="inp" data-opt="${o.k}">${(typeof o.o === 'function' ? o.o(S.brand) : o.o).map(([val, l]) => `<option value="${val}" ${String(v ?? '') === String(val) ? 'selected' : ''}>${esc(l)}</option>`).join('')}</select></label>`;
     if (o.t === 'toggle') return `<label class="tog"><input type="checkbox" data-opt="${o.k}" ${v ? 'checked' : ''}><span>${o.l}</span></label>`;
     if (o.t === 'text') return `<label class="fld"><span>${o.l}</span><input class="inp" data-opt="${o.k}" value="${esc(v || '')}"></label>`;
     if (o.t === 'asset') return `<div class="fld"><span>${o.l}</span><div class="pp-file">${v ? `${ic('file', 16)}<span>${esc(v.name)}</span><button class="icon-btn xs" data-assetclear="${o.k}" aria-label="Remove file">${ic('x', 13)}</button>` : '<span class="muted">No file</span>'}</div><div class="row2"><button class="btn sm" data-assetup="${o.k}" data-accept="${o.accept || '*/*'}">${ic('upload', 14)} Upload</button><button class="btn sm" data-assetpick="${o.k}">${ic('folder', 14)} Library</button></div></div>`;
@@ -1903,7 +1935,7 @@ function bindProps(el) {
     if (t.dataset.dsr) return commit(s.scope, () => { dsTarget(s)[t.dataset.dsr] = +t.value; });
     if (t.dataset.imgshow) return commit(s.scope, () => { const r = scopeObj(s.scope); r.obj.im = r.obj.im || {}; const o = (r.obj.im[t.dataset.imgshow] = r.obj.im[t.dataset.imgshow] || {}); o.hidden = !t.checked; });
     if (t.dataset.im && t.type !== 'range') return commit(s.scope, () => { const r = scopeObj(s.scope); r.obj.im = r.obj.im || {}; const o = (r.obj.im[s.field] = r.obj.im[s.field] || {}); o[t.dataset.im] = t.value; });
-    if (t.dataset.opt) return commit(s.scope, () => { const bk = scopeObj(s.scope).obj; const o = BLOCKS[bk.type].opts.find((x) => x.k === t.dataset.opt); bk[t.dataset.opt] = t.type === 'checkbox' ? t.checked : o.o && typeof o.o[0][0] === 'number' ? +t.value : t.value; if (t.dataset.opt === 'variant') delete bk.items; });
+    if (t.dataset.opt) return commit(s.scope, () => { const bk = scopeObj(s.scope).obj; const o = BLOCKS[bk.type].opts.find((x) => x.k === t.dataset.opt); bk[t.dataset.opt] = t.type === 'checkbox' ? t.checked : Array.isArray(o.o) && typeof o.o[0][0] === 'number' ? +t.value : t.value; if (t.dataset.opt === 'variant') delete bk.items; });
     if (t.dataset.secvis !== undefined) return commit(s.scope, () => { scopeObj(s.scope).obj.sec.visible = t.checked; });
     if (t.dataset.colorpick !== undefined) { const host = t.closest('[data-colorfor]').dataset.colorfor; return applyColor(host, t.value.toUpperCase()); }
     if (t.dataset.trait) return commit(s.scope, () => { scopeObj(s.scope).obj.items[+t.dataset.trait].value = +t.value; });
@@ -1922,7 +1954,7 @@ function bindProps(el) {
   el.oninput = (e) => { const t = e.target; if (t.dataset.dsr) { const lbl = t.previousElementSibling; if (lbl) lbl.textContent = lbl.textContent.replace(/-?[\d.]+(%|px)/, t.value + '$1'); return; } if (t.dataset.im === 'w') { const lbl = t.previousElementSibling; if (lbl) lbl.textContent = 'Image size ' + t.value + '%'; return; } if (t.dataset.im && t.type === 'range') { const r = scopeObj(s.scope); if (!Ed._imPush) { pushHist(); Ed._imPush = true; } r.obj.im = r.obj.im || {}; const o = (r.obj.im[s.field] = r.obj.im[s.field] || {}); o[t.dataset.im] = +t.value; markDirty({ brand: r.brand, page: r.page }); const lbl = t.previousElementSibling; if (lbl) lbl.textContent = lbl.textContent.replace(/[\d.]+(×|%)/, (t.dataset.im === 'zoom' ? (+t.value).toFixed(2) : t.value) + '$1'); const fig = $(`#ed-canvas [data-s="${s.scope}"][data-f="${s.field}"] img`); if (fig) { fig.style.objectPosition = `${o.px ?? 50}% ${o.py ?? 50}%`; fig.style.transform = o.zoom && o.zoom != 1 ? `scale(${o.zoom})` : ''; fig.style.transformOrigin = `${o.px ?? 50}% ${o.py ?? 50}%`; } } };
   el.onpointerup = () => { Ed._imPush = false; };
 }
-function defaultImgFor(s) { if (/^(co|lx|ic|gr):/.test(s.scope) || generatedField(s.scope, s.field)) return null; if (s.scope === 'landing') return img('campaign', s.field === 'heroImg2' ? 1 : 0); if (s.scope.startsWith('ch:')) return img('photography', 0); return img('photography', 0); }
+function defaultImgFor(s) { if (/^(co|lx|ic|gr|fs):/.test(s.scope) || generatedField(s.scope, s.field)) return null; if (s.scope === 'landing') return img('campaign', s.field === 'heroImg2' ? 1 : 0); if (s.scope.startsWith('ch:')) return img('photography', 0); return img('photography', 0); }
 function applyColor(host, v) {
   const s = Ed.sel;
   if (host === 'ts') return commit(s.scope, () => { const r = scopeObj(s.scope); r.obj.st = r.obj.st || {}; const st = (r.obj.st[s.field] = r.obj.st[s.field] || {}); st.color = v; });
@@ -2170,7 +2202,7 @@ async function exportPDF(b, pages) {
               { const cs = b.colours.filter((x) => bk.type === 'assetGrid' || !bk.group || bk.group === 'all' || x.role === bk.group); const sw = (CW - 3 * 10) / 4; for (let i = 0; i < cs.length; i += 4) { need(150); cs.slice(i, i + 4).forEach((x, j) => { const xx = M + j * (sw + 10); doc.setFillColor(...rgb(x.hex)); doc.rect(xx, y, sw, 80, 'F'); doc.setDrawColor(220); doc.rect(xx, y, sw, 80, 'S'); doc.setTextColor(...ink); doc.setFont('helvetica', 'bold'); doc.setFontSize(10); doc.text(doc.splitTextToSize(x.name, sw), xx, y + 96); doc.setFont('helvetica', 'normal'); doc.setFontSize(8); doc.setTextColor(...muted); doc.text(`HEX ${x.hex}`, xx, y + 110); doc.text(`RGB ${rgbStr(x.hex)}`, xx, y + 121); doc.text(`CMYK ${toCmyk(x.hex)}`, xx, y + 132); }); y += 148; } } break;
             case 'typeSpecimen': ['heading', 'body', 'accent'].filter((r) => bk.which === 'all' || bk.which === 'scale' || bk.which === r).forEach((r) => { text(`${r[0].toUpperCase() + r.slice(1)} typeface`, 8, 'bold', muted, 1.2, 2); text(b.typography[r]?.family || '—', 20, 'bold', ink, 1.2, 4); }); text(bk.sample, 12, 'normal', ink, 1.4, 12); break;
             case 'logoShowcase': { const keys = bk.variant === 'variations' ? ['primary', 'secondary', 'icon', 'black', 'white'] : ['primary']; for (const k of keys) { const r = b.logos[k] || (k === 'primary' ? null : null); if (!r) continue; const d = await imgToData(r.url, 900, 'image/png'); if (!d) continue; const h = 70, w = Math.min(CW * .6, (h * d.w) / d.h); need(h + 40); if (k === 'white') { doc.setFillColor(...rgb(t.dark)); doc.rect(M, y, CW, h + 30, 'F'); } doc.addImage(d.data, 'PNG', M + 15, y + 15, w, (w * d.h) / d.w); y += h + 40; } text(bk.caption, 9, 'normal', muted); if (bk.items) bk.items.forEach((it) => it.label && text('•  ' + interp(b, it.label), 9.5, 'normal', ink, 1.3, 2)); break; }
-            case 'mockup': text(`Mockup — ${(MOCKUP_KINDS.find((m) => m[0] === bk.kind) || ['', bk.kind])[1]}`, 11, 'bold', ink, 1.3, 2); text('See the online brandbook for the live, on-brand mockup.', 9, 'normal', muted, 1.3, 4); text(bk.caption, 9, 'normal', muted); break;
+            case 'mockup': text(`Mockup — ${(colKinds(b).find((m) => m[0] === bk.kind) || ['', bk.kind])[1]}`, 11, 'bold', ink, 1.3, 2); text('See the online brandbook for the live, on-brand mockup.', 9, 'normal', muted, 1.3, 4); text(bk.caption, 9, 'normal', muted); break;
             case 'traits': (bk.items || []).forEach((it) => { need(24); doc.setFontSize(9); doc.setTextColor(...ink); doc.text(interp(b, it.left), M, y + 9); doc.text(interp(b, it.right), M + CW, y + 9, { align: 'right' }); doc.setDrawColor(...muted); doc.line(M + 90, y + 6, M + CW - 90, y + 6); doc.setFillColor(...rgb(t.primary)); doc.circle(M + 90 + (CW - 180) * it.value / 100, y + 6, 4, 'F'); y += 22; }); y += 8; break;
             case 'iconset': case 'pattern': text((bk.items || []).map((it) => interp(b, it.label)).filter(Boolean).join('  ·  '), 10, 'normal', ink); break;
             case 'download': text(bk.title, 11, 'bold', ink, 1.3, 2); text(bk.desc, 9.5, 'normal', muted); break;
@@ -2195,7 +2227,8 @@ async function exportZip(b) {
     for (const x of b.logoExtras || []) if (x.file) await add('logos', x.file, `${slugify(b.name)}-${slugify(x.label || 'variation')}.${(x.file.name || 'x.png').split('.').pop()}`);
     for (const x of b.icons || []) await add('icons', x);
     for (const x of b.graphics || []) await add('graphic-elements', x);
-    for (const [k, co] of Object.entries(b.collateral || {})) for (const s of co.slots || []) if (s.file) await add('collateral/' + slugify((MOCKUP_KINDS.find((m) => m[0] === k) || [k, k])[1]), s.file, `${slugify(s.label || 'artwork')}.${(s.file.name || 'x.png').split('.').pop()}`);
+    for (const [k, co] of Object.entries(b.collateral || {})) for (const s of co.slots || []) if (s.file) await add('collateral/' + slugify((colKinds(b).find((m) => m[0] === k) || [k, k])[1]), s.file, `${slugify(s.label || 'artwork')}.${(s.file.name || 'x.png').split('.').pop()}`);
+    for (const st of b.fileSets || []) for (const f of st.files || []) await add('files/' + slugify(st.label || 'files'), f);
     for (const a of b.assets || []) await add(a.category || 'other', a);
     for (const r of ['heading', 'body', 'accent']) if (b.typography[r]?.file) await add('fonts', b.typography[r].file);
     root.file('colours.json', JSON.stringify(b.colours.map((c) => ({ name: c.name, role: c.role, hex: c.hex, rgb: rgbStr(c.hex), cmyk: toCmyk(c.hex) })), null, 2));
@@ -2408,7 +2441,7 @@ function validateInfo() {
 }
 async function wzUpload(target, files) {
   const b = Wz.b; const [kind, key] = target.split(':');
-  if (['lx', 'co', 'icons', 'graphics', 'docs'].includes(kind)) { const slot = $(`[data-drop="${target}"]`); slot && slot.classList.add('busy'); await wzExtraUpload(target, files); wzSave(); drawWizard(); if (S.brand?.id === b.id) S.brand = b; return; }
+  if (['lx', 'co', 'icons', 'graphics', 'docs', 'fs'].includes(kind)) { const slot = $(`[data-drop="${target}"]`); slot && slot.classList.add('busy'); await wzExtraUpload(target, files); wzSave(); drawWizard(); if (S.brand?.id === b.id) S.brand = b; return; }
   for (const f of files) {
     if (kind === 'logo' && !/^image\/(png|jpeg|svg\+xml|webp)$/.test(f.type)) { toast(`${f.name}: use PNG, JPG, SVG or WebP`, 'err'); continue; }
     if (kind === 'img' && !/^image\//.test(f.type)) { toast(`${f.name} is not an image`, 'err'); continue; }
@@ -2728,7 +2761,24 @@ async function uploadPicked(files, { images = false, max = 20, existing = null }
   return out;
 }
 async function uploadMany(accept, multiple = true, opts = {}) { const fs = await pickFiles(accept, multiple); if (!fs.length) return []; toast(`Uploading ${fs.length} file${fs.length > 1 ? 's' : ''}…`); return uploadPicked(fs, opts); }
-const kindLabel = (k) => (MOCKUP_KINDS.find((m) => m[0] === k) || [k, k])[1];
+const kindLabel = (k, b = S.brand) => (colKinds(b).find((m) => m[0] === k) || [k, k])[1];
+/* pages created for a custom collateral / file section carry src=<key> so renames and deletes stay in sync */
+function freeSlug(b, base, exceptId) { const used = new Set(b.chapters.flatMap((c) => c.pages).filter((p) => p.id !== exceptId).map((p) => p.slug)); let s = base || 'page', n = 2; while (used.has(s)) s = `${base}-${n++}`; return s; }
+async function addSrcPage(b, src, title, blocks) {
+  if (!b.generated || !b.chapters?.length) return;
+  const ch = b.chapters.find((c) => c.key === 'collaterals') || b.chapters[b.chapters.length - 1];
+  const id = uid('pg'); const meta = { id, title, slug: freeSlug(b, slugify(title)), hidden: false, src }; const page = { id, intro: '', blocks };
+  const at = ch.pages.findIndex((p) => /^templates/i.test(p.slug || '') || /templates/i.test(p.title || '')); at < 0 ? ch.pages.push(meta) : ch.pages.splice(at, 0, meta);
+  if (S.brand?.id === b.id && S.pages) S.pages[id] = page; await Store.savePage(b.id, page).catch((e) => toast('Could not add page: ' + (e.message || e.code), 'err'));
+}
+function syncSrcTitle(b, src, title) { (b.chapters || []).forEach((c) => c.pages.forEach((p) => { if (p.src === src) { p.title = title || 'Untitled'; p.slug = freeSlug(b, slugify(p.title), p.id); } })); }
+async function removeSrcPages(b, src) { for (const c of b.chapters || []) { const gone = c.pages.filter((p) => p.src === src); c.pages = c.pages.filter((p) => p.src !== src); for (const p of gone) { if (S.pages) delete S.pages[p.id]; await Store.deletePage(b.id, p.id).catch(() => { }); } } }
+function renameKind(b, k, v) { if (isBuiltinKind(k)) { b.colLabels = b.colLabels || {}; b.colLabels[k] = v; } else { const x = (b.colCustom || []).find((e) => e.key === k); if (x) { x.label = v; syncSrcTitle(b, k, v); } } }
+async function addCollateral(b) { const key = 'cx_' + uid().slice(-6); b.colCustom = b.colCustom || []; b.colCustom.push({ key, label: 'New collateral' }); collateralOf(b, key, true); await addSrcPage(b, key, 'New collateral', [B('mockup', { kind: key, display: 'artwork' })]); return key; }
+async function deleteCollateral(b, key) { const co = b.collateral?.[key]; const n = (co?.slots || []).filter((x) => x.file).length; if (!(await confirmDlg(`Delete “${kindLabel(key, b)}”?`, `Its page${n ? ` and ${n} uploaded file${n > 1 ? 's' : ''}` : ''} will be removed from the brandbook.`, 'Delete'))) return false; b.colCustom = (b.colCustom || []).filter((x) => x.key !== key); if (b.collateral) delete b.collateral[key]; await removeSrcPages(b, key); return true; }
+async function addFileSet(b) { const id = uid('fs'); b.fileSets = b.fileSets || []; b.fileSets.push({ id, label: 'New section', files: [] }); await addSrcPage(b, id, 'New section', [B('fileSet', { set: id })]); return id; }
+async function deleteFileSet(b, id) { const st = (b.fileSets || []).find((x) => x.id === id); if (!st) return false; const n = st.files.length; if (!(await confirmDlg(`Delete “${st.label}”?`, `Its page${n ? ` and ${n} file${n > 1 ? 's' : ''}` : ''} will be removed from the brandbook.`, 'Delete'))) return false; b.fileSets = b.fileSets.filter((x) => x !== st); await removeSrcPages(b, id); return true; }
+async function addToFileSet(b, id, files) { const st = (b.fileSets || []).find((x) => x.id === id); if (!st) return []; const rs = await uploadPicked(files, { max: 50, existing: st.files }); rs.forEach((r) => st.files.push({ ...r, id: r.id || uid('f'), label: labelFrom(r.name) })); return rs; }
 
 /* ---------- editor: logo properties ---------- */
 function logoProps(s) {
@@ -2753,15 +2803,22 @@ function extraBlockPanel(bk) {
   const b = S.brand;
   if (bk.type === 'mockup') {
     const co = collateralOf(b, bk.kind, true);
-    return `<div class="pp-sec"><h3>Your artwork · ${esc(kindLabel(bk.kind))}</h3><p class="muted sm">Upload your own designs. They replace the generated mockup on every page that shows ${esc(kindLabel(bk.kind).toLowerCase())}.</p>
+    return `<div class="pp-sec"><label class="fld"><span>Collateral name</span><input class="inp" data-coln="${bk.kind}" value="${esc(kindLabel(bk.kind))}" maxlength="40"></label><div class="row2"><button class="btn sm" data-pp="coladd">${ic('plus', 14)} New collateral</button>${isBuiltinKind(bk.kind) ? '<span></span>' : `<button class="btn sm danger-ghost" data-pp="coldel">${ic('trash', 14)} Delete</button>`}</div></div><div class="pp-sec"><h3>Your artwork · ${esc(kindLabel(bk.kind))}</h3><p class="muted sm">Upload your own designs. They replace the generated mockup on every page that shows ${esc(kindLabel(bk.kind).toLowerCase())}.</p>
       <div class="art-list">${co.slots.map((x, i) => `<div class="art-row"><span class="art-th">${x.file ? `<img src="${esc(x.file.url)}" alt="">` : ic('image', 16)}</span><input class="inp" data-artl="${i}" value="${esc(x.label || '')}" aria-label="Slot name" placeholder="Name, e.g. Front"><button class="icon-btn xs" data-artup="${i}" aria-label="${x.file ? 'Replace' : 'Upload'} ${esc(x.label || '')}" title="${x.file ? 'Replace' : 'Upload'}">${ic('upload', 13)}</button>${x.file ? `<button class="icon-btn xs" data-artrm="${i}" aria-label="Remove file" title="Remove file">${ic('x', 13)}</button>` : ''}<button class="icon-btn xs" data-artdel="${i}" aria-label="Delete slot" title="Delete slot">${ic('trash', 13)}</button></div>`).join('')}</div>
       <button class="btn sm full" data-pp="artadd">${ic('plus', 14)} Add slot</button></div>`;
   }
   if (bk.type === 'iconset' || bk.type === 'pattern') {
     const key = bk.type === 'iconset' ? 'icons' : 'graphics'; const list = b[key] || [];
-    return `<div class="pp-sec"><h3>Your ${key === 'icons' ? 'icons' : 'graphic elements'} (${list.length})</h3><p class="muted sm">${key === 'icons' ? 'SVG or PNG icons.' : 'Patterns, shapes and supporting graphics.'} Uploaded files replace the built-in set${bk.source === 'builtin' ? ' when “Icons/Graphics” above is set to uploaded or auto' : ''}.</p>
+    return `<div class="pp-sec"><h3>Your ${key === 'icons' ? 'icons' : 'graphic elements'} (${list.length})</h3><p class="muted sm">${key === 'icons' ? 'SVG, PNG or JPG icons.' : 'Patterns, shapes and supporting graphics (JPG, PNG, SVG).'} Uploaded files replace the built-in set${bk.source === 'builtin' ? ' when “Icons/Graphics” above is set to uploaded or auto' : ''}.</p>
       ${list.length ? `<div class="pp-lib">${list.map((f, i) => `<div class="pp-up"><img src="${esc(f.url)}" alt=""><button class="icon-btn xs" data-uprm="${key}:${i}" aria-label="Remove ${esc(f.label || f.name)}">${ic('x', 12)}</button></div>`).join('')}</div>` : ''}
       <button class="btn sm full" data-pp="up${key}" style="margin-top:8px">${ic('upload', 14)} Upload ${key === 'icons' ? 'icons' : 'graphics'}</button></div>`;
+  }
+  if (bk.type === 'fileSet') {
+    const st = (b.fileSets || []).find((x) => x.id === bk.set);
+    if (!st) return `<div class="pp-sec"><h3>File section</h3><p class="muted sm">A named group of any files — JPG, PNG, SVG, PDF and more — with downloads.</p><button class="btn sm full" data-pp="fsnew">${ic('plus', 14)} Create a new section</button></div>`;
+    return `<div class="pp-sec"><label class="fld"><span>Section name</span><input class="inp" data-fsl="${st.id}" value="${esc(st.label)}" maxlength="40"></label><h3>Files (${st.files.length})</h3>
+      <div class="art-list">${st.files.map((f, i) => `<div class="art-row"><span class="art-th">${isImgRef(f) ? `<img src="${esc(f.url)}" alt="">` : ic('file', 16)}</span><input class="inp" data-fsfl="${st.id}:${i}" value="${esc(f.label || '')}" aria-label="File name"><button class="icon-btn xs" data-fsrep="${st.id}:${i}" title="Replace" aria-label="Replace">${ic('upload', 13)}</button><button class="icon-btn xs" data-fsrmx="${st.id}:${i}" title="Remove" aria-label="Remove">${ic('x', 13)}</button></div>`).join('')}</div>
+      <button class="btn sm full" data-pp="fsup">${ic('upload', 14)} Add files</button><div class="row2" style="margin-top:8px"><button class="btn sm" data-pp="fsnew">${ic('plus', 14)} New section</button><button class="btn sm danger-ghost" data-pp="fsdel">${ic('trash', 14)} Delete</button></div></div>`;
   }
   if (bk.type === 'gallery') return `<div class="pp-sec"><h3>Images</h3><button class="btn sm full" data-pp="galup">${ic('upload', 14)} Upload images</button><p class="muted sm">Adds images to this gallery. Click any image on the page to replace, crop or remove it.</p></div>`;
   if (bk.type === 'logoShowcase') {
@@ -2788,8 +2845,16 @@ async function extraClick(t, s) {
   if (pp === 'artadd') { const bk = blk(); commit({ brand: true }, () => { const co = collateralOf(b, bk.kind, true); co.slots.push({ label: 'Artwork ' + (co.slots.length + 1), file: null }); }); return true; }
   if (pp === 'artimg') { const [r] = await uploadMany(ACCEPT.image, false, { images: true }); if (r) commit(s.scope, () => { const bk = blk(); bk.art = fileRef(r); if (bk.im?.art) delete bk.im.art; }); return true; }
   // icons / graphics
-  if (pp === 'upicons' || pp === 'upgraphics') { const key = pp.slice(2); const rs = await uploadMany(key === 'icons' ? 'image/svg+xml,image/png,image/webp,.svg' : ACCEPT.image, true, { images: true, existing: b[key] || [] }); if (rs.length) { commit({ brand: true }, () => { b[key] = b[key] || []; rs.forEach((r) => b[key].push({ ...r, label: labelFrom(r.name) })); }); toast(`${rs.length} file${rs.length > 1 ? 's' : ''} added`); } return true; }
+  if (pp === 'upicons' || pp === 'upgraphics') { const key = pp.slice(2); const rs = await uploadMany(ACCEPT.image, true, { images: true, existing: b[key] || [] }); if (rs.length) { commit({ brand: true }, () => { b[key] = b[key] || []; rs.forEach((r) => b[key].push({ ...r, label: labelFrom(r.name) })); }); toast(`${rs.length} file${rs.length > 1 ? 's' : ''} added`); } return true; }
   if (t.dataset.uprm) { const [key, i] = t.dataset.uprm.split(':'); commit({ brand: true }, () => b[key].splice(+i, 1)); return true; }
+  // custom collaterals & file sections
+  if (pp === 'coladd') { const k = await addCollateral(b); commit({ brand: true }, () => { }); const pg = b.chapters.flatMap((c) => c.pages).find((p) => p.src === k); if (pg) { Ed.view = pg.id; renderEditor?.(); } toast('Collateral added — rename it and upload artwork'); return true; }
+  if (pp === 'coldel') { const bk = blk(); if (await deleteCollateral(b, bk.kind)) { commit({ brand: true }, () => { }); Ed.view = 'landing'; renderEditor?.(); } return true; }
+  if (pp === 'fsnew') { const id = await addFileSet(b); const bk = blk(); const onPage = bk && bk.type === 'fileSet' && !bk.set; if (onPage) commit(s.scope, () => (blk().set = id)); else { commit({ brand: true }, () => { }); const pg = b.chapters.flatMap((c) => c.pages).find((p) => p.src === id); if (pg) { Ed.view = pg.id; renderEditor?.(); } } if (onPage) removeSrcPages(b, id); toast('Section created — name it and add files'); return true; }
+  if (pp === 'fsdel') { const bk = blk(); if (await deleteFileSet(b, bk.set)) { commit({ brand: true }, () => { }); Ed.view = 'landing'; renderEditor?.(); } return true; }
+  if (pp === 'fsup') { const bk = blk(); await fsAddFiles(bk.set); return true; }
+  if (t.dataset.fsrep) { const [id, i] = t.dataset.fsrep.split(':'); const st = b.fileSets.find((x) => x.id === id); const [r] = await uploadMany('*/*', false, { max: 50 }); if (r) commit({ brand: true }, () => (st.files[+i] = { ...r, id: st.files[+i].id, label: st.files[+i].label })); return true; }
+  if (t.dataset.fsrmx) { const [id, i] = t.dataset.fsrmx.split(':'); commit({ brand: true }, () => b.fileSets.find((x) => x.id === id).files.splice(+i, 1)); return true; }
   // gallery
   if (pp === 'galup') { const rs = await uploadMany(ACCEPT.image, true, { images: true }); if (rs.length) commit(s.scope, () => { const bk = blk(); bk.items = bk.items || []; rs.forEach((r) => { bk.items.push({ src: fileRef(r), caption: '' }); b.assets.push({ ...r, category: 'photography', kind: 'image' }); }); }); return true; }
   return false;
@@ -2797,6 +2862,9 @@ async function extraClick(t, s) {
 function extraChange(t, s) {
   const b = S.brand;
   if (t.dataset.artl !== undefined) { const bk = scopeObj(s.scope).obj; commit({ brand: true }, () => (collateralOf(b, bk.kind, true).slots[+t.dataset.artl].label = t.value)); return true; }
+  if (t.dataset.coln) { commit({ brand: true }, () => renameKind(b, t.dataset.coln, t.value || 'Untitled'), { render: false }); renderNav(); return true; }
+  if (t.dataset.fsl) { commit({ brand: true }, () => { const st = b.fileSets.find((x) => x.id === t.dataset.fsl); st.label = t.value || 'Untitled'; syncSrcTitle(b, st.id, st.label); }, { render: false }); renderNav(); renderCanvas(); return true; }
+  if (t.dataset.fsfl) { const [id, i] = t.dataset.fsfl.split(':'); commit({ brand: true }, () => (b.fileSets.find((x) => x.id === id).files[+i].label = t.value)); return true; }
   if (t.dataset.lxl) { commit({ brand: true }, () => (b.logoExtras.find((x) => x.id === t.dataset.lxl).label = t.value)); return true; }
   if (t.dataset.lxdark) { commit({ brand: true }, () => (b.logoExtras.find((x) => x.id === t.dataset.lxdark).dark = t.checked)); return true; }
   return false;
@@ -2821,18 +2889,22 @@ function wzExtrasStep(b) {
   const upGrid = (key, title, hint, accept) => { const list = b[key] || []; return `<section class="ex-sec"><div class="col-gh"><div><h2>${title} <span class="muted">${list.length}</span></h2><p class="muted sm">${hint}</p></div><button class="btn sm" data-wzup="${key}" data-accept="${accept}">${ic('upload', 14)} Upload</button></div>
     <div class="img-grid up-grid" data-drop="${key}">${list.map((f, i) => `<div class="up-card"><div class="img-th contain"><img src="${esc(f.url)}" alt=""><button class="icon-btn sm" data-wzrm="${key}:${i}" aria-label="Remove">${ic('x', 14)}</button></div><input class="inp" data-uplabel="${key}:${i}" value="${esc(f.label || labelFrom(f.name))}" aria-label="Name"></div>`).join('')}<button class="img-add" data-wzup="${key}" data-accept="${accept}">${ic('plus', 20)}<span>Add or drop</span></button></div></section>`; };
   return `<p class="lead muted">Everything on this step is optional. Add what you have now — you can add, rename or replace any of it later from the editor.</p>
-  ${upGrid('icons', 'Icons', 'SVG or PNG icons. Shown on the Iconography page instead of the built-in set.', 'image/svg+xml,image/png,image/webp,.svg')}
-  ${upGrid('graphics', 'Graphic elements', 'Patterns, shapes and supporting graphics. Shown on the Graphic Elements page.', ACCEPT.image)}
-  <section class="ex-sec"><div><h2>Collateral artwork</h2><p class="muted sm">Your real designs — they replace the generated mockups on the Collaterals pages. Rename slots (e.g. Front / Back) or add more.</p></div>
-    <div class="co-grid">${MOCKUP_KINDS.map(([k, l]) => { const co = collateralOf(b, k, false) || { slots: (COLLATERAL_SLOTS[k] || ['Artwork']).map((label) => ({ label, file: null })) }; return `<div class="co-card"><div class="co-h"><h3>${esc(l)}</h3><button class="icon-btn sm" data-wzartadd="${k}" aria-label="Add slot to ${esc(l)}" title="Add slot">${ic('plus', 15)}</button></div><div class="co-slots">${co.slots.map((x, i) => `<div class="co-slot"><div class="drop sm ${x.file ? 'has' : ''}" data-drop="co:${k}:${i}" tabindex="0" role="button" aria-label="${x.file ? 'Replace' : 'Upload'} ${esc(x.label)}">${x.file ? `<img src="${esc(x.file.url)}" alt="${esc(x.label)}">` : `${ic('upload', 18)}`}</div><input class="inp" data-artlabel="${k}:${i}" value="${esc(x.label)}" aria-label="Slot name"><div class="co-acts">${x.file ? `<button class="link sm" data-wzartrm="${k}:${i}">Remove file</button>` : ''}<button class="link sm" data-wzartdel="${k}:${i}">Delete slot</button></div></div>`).join('')}</div></div>`; }).join('')}</div></section>
+  ${upGrid('icons', 'Icons', 'SVG, PNG or JPG icons. Shown on the Iconography page instead of the built-in set.', ACCEPT.image)}
+  ${upGrid('graphics', 'Graphic elements', 'Patterns, shapes and supporting graphics (JPG, PNG, SVG). Shown on the Graphic Elements page.', ACCEPT.image)}
+  <section class="ex-sec"><div><h2>Collateral artwork</h2><p class="muted sm">Your real designs (JPG, PNG or SVG) — they replace the generated mockups on the Collaterals pages. Rename any collateral or slot (e.g. Front / Back), add slots, or add a new collateral of your own.</p></div>
+    <div class="co-grid">${colKinds(b).map(([k, l]) => { const co = collateralOf(b, k, false) || { slots: (COLLATERAL_SLOTS[k] || ['Artwork']).map((label) => ({ label, file: null })) }; const own = !isBuiltinKind(k); return `<div class="co-card"><div class="co-h"><input class="inp co-name" data-colname="${k}" value="${esc(l)}" aria-label="Collateral name" maxlength="40" title="Click to rename"><button class="icon-btn sm" data-wzartadd="${k}" aria-label="Add slot to ${esc(l)}" title="Add slot">${ic('plus', 15)}</button>${own ? `<button class="icon-btn sm" data-coldel="${k}" aria-label="Delete ${esc(l)}" title="Delete collateral">${ic('trash', 15)}</button>` : ''}</div><div class="co-slots">${co.slots.map((x, i) => `<div class="co-slot"><div class="drop sm ${x.file ? 'has' : ''}" data-drop="co:${k}:${i}" tabindex="0" role="button" aria-label="${x.file ? 'Replace' : 'Upload'} ${esc(x.label)}">${x.file ? `<img src="${esc(x.file.url)}" alt="${esc(x.label)}">` : `${ic('upload', 18)}`}</div><input class="inp" data-artlabel="${k}:${i}" value="${esc(x.label)}" aria-label="Slot name"><div class="co-acts">${x.file ? `<button class="link sm" data-wzartrm="${k}:${i}">Remove file</button>` : ''}<button class="link sm" data-wzartdel="${k}:${i}">Delete slot</button></div></div>`).join('')}</div></div>`; }).join('')}<button class="co-card co-new" data-coladd>${ic('plus', 22)}<strong>Add collateral</strong><small>e.g. Brochure, Uniform, Vehicle, Event booth</small></button></div></section>
   <section class="ex-sec"><div class="col-gh"><div><h2>Templates & documents <span class="muted">${docs.length}</span></h2><p class="muted sm">Presentations, guidelines PDFs, email signatures… Shown on Collaterals → Templates & Downloads.</p></div><button class="btn sm" data-wzup="docs" data-accept="*/*">${ic('upload', 14)} Upload</button></div>
-    <div class="doc-list" data-drop="docs">${docs.map(({ a, i }) => `<div class="doc-row">${ic('file', 16)}<input class="inp" data-docname="${i}" value="${esc(a.name)}" aria-label="File name"><span class="muted sm">${extOf(a.name)} · ${fmtSize(a.size)}</span><button class="icon-btn sm" data-wzdocrm="${i}" aria-label="Remove">${ic('x', 14)}</button></div>`).join('') || '<p class="muted sm">No documents yet. Drop files here.</p>'}</div></section>`;
+    <div class="doc-list" data-drop="docs">${docs.map(({ a, i }) => `<div class="doc-row">${ic('file', 16)}<input class="inp" data-docname="${i}" value="${esc(a.name)}" aria-label="File name"><span class="muted sm">${extOf(a.name)} · ${fmtSize(a.size)}</span><button class="icon-btn sm" data-wzdocrm="${i}" aria-label="Remove">${ic('x', 14)}</button></div>`).join('') || '<p class="muted sm">No documents yet. Drop files here.</p>'}</div></section>
+  ${(b.fileSets || []).map((st) => `<section class="ex-sec"><div class="col-gh cat-h"><div class="cat-name"><input class="inp cat-inp" data-fsname="${st.id}" value="${esc(st.label)}" aria-label="Section name" maxlength="40"><span class="muted">${st.files.length}</span></div><div class="row-l"><button class="btn sm" data-wzup="fs:${st.id}" data-accept="*/*">${ic('upload', 14)} Upload</button><button class="icon-btn sm" data-fsdel="${st.id}" aria-label="Delete section ${esc(st.label)}" title="Delete section">${ic('trash', 15)}</button></div></div><p class="muted sm" style="margin:-6px 0 14px">JPG, PNG, SVG, PDF or any other file. Shown on its own page in Collaterals, with downloads.</p>
+    <div class="img-grid up-grid" data-drop="fs:${st.id}">${st.files.map((f, i) => `<div class="up-card"><div class="img-th contain">${isImgRef(f) ? `<img src="${esc(f.url)}" alt="">` : `<span class="file-tile">${ic('file', 26)}<b>${esc(extOf(f.name))}</b></span>`}<button class="icon-btn sm" data-fsrm="${st.id}:${i}" aria-label="Remove">${ic('x', 14)}</button></div><input class="inp" data-fslabel="${st.id}:${i}" value="${esc(f.label || labelFrom(f.name))}" aria-label="Name"></div>`).join('')}<button class="img-add" data-wzup="fs:${st.id}" data-accept="*/*">${ic('plus', 20)}<span>Add or drop</span></button></div></section>`).join('')}
+  <button class="cat-add" data-fsadd>${ic('plus', 18)}<span><strong>Add a new section</strong><small>Name it and drop any files — e.g. Brochures, Presentations, Brand videos, Print-ready files</small></span></button>`;
 }
 async function wzExtraUpload(target, files) {
   const b = Wz.b; const [kind, key, idx] = target.split(':');
   if (kind === 'lx') { const [r] = await uploadPicked(files.slice(0, 1), { images: true }); if (r) b.logoExtras.find((x) => x.id === key).file = r; return true; }
   if (kind === 'co') { const [r] = await uploadPicked(files.slice(0, 1), { images: true }); if (r) collateralOf(b, key, true).slots[+idx].file = fileRef(r); return true; }
   if (kind === 'icons' || kind === 'graphics') { const rs = await uploadPicked(files, { images: true, existing: b[kind] || [] }); b[kind] = b[kind] || []; rs.forEach((r) => b[kind].push({ ...r, label: labelFrom(r.name) })); return true; }
+  if (kind === 'fs') { await addToFileSet(b, key, files); return true; }
   if (kind === 'docs') { const rs = await uploadPicked(files, { max: 50 }); rs.forEach((r) => b.assets.push({ ...r, category: 'documents', kind: fileKind(r.name, r.type) })); return true; }
   return false;
 }
@@ -2846,6 +2918,11 @@ async function wzExtraClick(t) {
   if (d.wzup) { const fs = await pickFiles(d.accept || '*/*', true); if (fs.length) { toast(`Uploading ${fs.length} file${fs.length > 1 ? 's' : ''}…`); await wzExtraUpload(d.wzup, fs); redraw(); } return true; }
   if (d.wzrm) { const [k, i] = d.wzrm.split(':'); b[k].splice(+i, 1); redraw(); return true; }
   if (d.wzdocrm !== undefined) { b.assets.splice(+d.wzdocrm, 1); redraw(); return true; }
+  if (d.coladd !== undefined) { const k = await addCollateral(b); redraw(); setTimeout(() => { const i = $(`[data-colname="${k}"]`); i?.scrollIntoView({ block: 'center' }); i?.select(); }, 30); return true; }
+  if (d.coldel) { if (await deleteCollateral(b, d.coldel)) redraw(); return true; }
+  if (d.fsadd !== undefined) { const id = await addFileSet(b); redraw(); setTimeout(() => { const i = $(`[data-fsname="${id}"]`); i?.scrollIntoView({ block: 'center' }); i?.select(); }, 30); return true; }
+  if (d.fsdel) { if (await deleteFileSet(b, d.fsdel)) redraw(); return true; }
+  if (d.fsrm) { const [id, i] = d.fsrm.split(':'); b.fileSets.find((x) => x.id === id).files.splice(+i, 1); redraw(); return true; }
   if (d.wzartadd) { const co = collateralOf(b, d.wzartadd, true); co.slots.push({ label: 'Artwork ' + (co.slots.length + 1), file: null }); redraw(); return true; }
   if (d.wzartrm) { const [k, i] = d.wzartrm.split(':'); collateralOf(b, k, true).slots[+i].file = null; redraw(); return true; }
   if (d.wzartdel) { const [k, i] = d.wzartdel.split(':'); collateralOf(b, k, true).slots.splice(+i, 1); redraw(); return true; }
@@ -2853,6 +2930,9 @@ async function wzExtraClick(t) {
 }
 function wzExtraInput(t) {
   const b = Wz.b; const d = t.dataset;
+  if (d.colname) { renameKind(b, d.colname, t.value || 'Untitled'); wzSave(); return true; }
+  if (d.fsname) { const st = b.fileSets.find((x) => x.id === d.fsname); st.label = t.value || 'Untitled'; syncSrcTitle(b, st.id, st.label); wzSave(); return true; }
+  if (d.fslabel) { const [id, i] = d.fslabel.split(':'); b.fileSets.find((x) => x.id === id).files[+i].label = t.value; wzSave(); return true; }
   if (d.catlabel) { const c = ensureCats(b).find((x) => x.key === d.catlabel); if (c) c.label = t.value || 'Untitled'; wzSave(); return true; }
   if (d.lxlabel) { b.logoExtras.find((x) => x.id === d.lxlabel).label = t.value; wzSave(); return true; }
   if (d.uplabel) { const [k, i] = d.uplabel.split(':'); b[k][+i].label = t.value; wzSave(); return true; }
@@ -2865,24 +2945,54 @@ function wzExtraInput(t) {
 /* ---------- in-place image toolbar: Replace / Edit / Remove on hover, everywhere in the editor ---------- */
 const IMGBAR_SEL = '[data-img],[data-logo],[data-logox],[data-upl],[data-mock]';
 function setupImgBar(host) {
-  let cur = null, bar = null;
-  const make = () => { bar = document.createElement('div'); bar.className = 'ed-imgbar'; bar.setAttribute('contenteditable', 'false'); bar.addEventListener('mousedown', (e) => e.preventDefault()); bar.addEventListener('click', async (e) => { e.stopPropagation(); e.preventDefault(); const bt = e.target.closest('[data-ib]'); if (bt && cur) { const el = cur; hide(); await imgBarAction(bt.dataset.ib, el); } }); return bar; };
+  let cur = null, bar = null, pinned = null, tmr = 0;
+  const make = () => {
+    bar = document.createElement('div'); bar.className = 'ed-imgbar'; bar.setAttribute('contenteditable', 'false');
+    bar.addEventListener('mousedown', (e) => e.preventDefault());
+    bar.addEventListener('mouseenter', () => clearTimeout(tmr));
+    bar.addEventListener('mouseleave', (e) => { if (!e.relatedTarget?.closest?.(IMGBAR_SEL)) later(); });
+    bar.addEventListener('click', async (e) => { e.stopPropagation(); e.preventDefault(); const bt = e.target.closest('[data-ib]'); if (bt && cur) { const el = cur; hide(true); await imgBarAction(bt.dataset.ib, el); } });
+    return bar;
+  };
+  const place = (el) => {
+    const r = el.getBoundingClientRect(), h = host.getBoundingClientRect(); const tiny = r.width < 170 || r.height < 110;
+    bar.classList.toggle('below', tiny);
+    bar.style.top = Math.max(4, tiny ? r.top - h.top - bar.offsetHeight - 6 : r.top - h.top + 8) + 'px';
+    bar.style.left = Math.max(4, Math.min(h.width - bar.offsetWidth - 4, tiny ? r.left - h.left + r.width / 2 - bar.offsetWidth / 2 : r.right - h.left - bar.offsetWidth - 8)) + 'px';
+  };
   const show = (el) => {
-    if (!bar || !bar.isConnected) host.appendChild(bar || make());
+    clearTimeout(tmr); if (!bar || !bar.isConnected) host.appendChild(bar || make());
+    if (el === cur && bar.classList.contains('on')) return place(el);
     cur = el; const mock = el.dataset.mock, upl = el.dataset.upl; const small = el.getBoundingClientRect().width < 170;
     const btn = (k, icn, label) => `<button data-ib="${k}" title="${label}" aria-label="${label}">${ic(icn, 13)}${small ? '' : `<span>${label}</span>`}</button>`;
     bar.innerHTML = mock ? btn('replace', 'upload', 'Upload your artwork') + btn('edit', 'settings', 'Options') : btn('replace', 'upload', 'Replace') + (upl ? '' : btn('edit', el.dataset.img !== undefined ? 'image' : 'settings', el.dataset.img !== undefined ? 'Crop & position' : 'Options')) + btn('remove', 'trash', 'Remove');
-    const r = el.getBoundingClientRect(), h = host.getBoundingClientRect();
-    const tiny = r.width < 170 || r.height < 110;
-    bar.style.top = Math.max(4, tiny ? r.top - h.top - bar.offsetHeight - 6 : r.top - h.top + 8) + 'px';
-    bar.style.left = Math.max(4, tiny ? r.left - h.left + r.width / 2 - bar.offsetWidth / 2 : r.right - h.left - bar.offsetWidth - 8) + 'px'; bar.classList.add('on');
+    place(el); bar.classList.add('on');
   };
-  const hide = () => { cur = null; if (bar) bar.classList.remove('on'); };
-  host.addEventListener('mouseover', (e) => { if (e.target.closest('.ed-imgbar')) return; if (bar && !bar.isConnected) cur = null; const t = e.target.closest(IMGBAR_SEL); if (t && host.contains(t)) { if (t !== cur) show(t); } else hide(); });
-  host.addEventListener('mouseleave', (e) => { if (!e.relatedTarget || !e.relatedTarget.closest?.('.ed-imgbar')) hide(); });
+  const hide = (force) => { clearTimeout(tmr); if (!force && pinned && pinned === cur && pinned.isConnected) return; if (force) pinned = null; cur = null; if (bar) bar.classList.remove('on'); };
+  const later = () => { clearTimeout(tmr); tmr = setTimeout(() => hide(), 700); };   // grace period: time to move the mouse onto the toolbar
+  host.addEventListener('mouseover', (e) => {
+    if (e.target.closest('.ed-imgbar')) return clearTimeout(tmr);
+    if (bar && !bar.isConnected) { cur = null; pinned = null; }
+    const t = e.target.closest(IMGBAR_SEL);
+    if (t && host.contains(t)) { if (pinned && pinned !== t) pinned = null; show(t); } else if (cur) later();
+  });
+  host.addEventListener('mouseleave', (e) => { if (!e.relatedTarget?.closest?.('.ed-imgbar')) later(); });
   host.addEventListener('focusin', (e) => { const t = e.target.closest(IMGBAR_SEL); if (t) show(t); });
-  $('#ed-scroll')?.addEventListener('scroll', hide, { passive: true });
+  // click an image to pin its toolbar until you click elsewhere
+  host.addEventListener('click', (e) => {
+    const add = e.target.closest('[data-fsadd]'); if (add) { e.preventDefault(); e.stopPropagation(); fsAddFiles(add.dataset.fsadd); return; }
+    if (e.target.closest('.ed-imgbar')) return;
+    const t = e.target.closest(IMGBAR_SEL);
+    if (t) { pinned = t; setTimeout(() => { const same = t.isConnected ? t : null; if (same) show(same); }, 0); } else if (pinned) hide(true);
+  }, true);
+  $('#ed-scroll')?.addEventListener('scroll', () => { if (cur && bar?.classList.contains('on') && cur.isConnected) place(cur); else hide(true); }, { passive: true });
 }
+async function fsAddFiles(id) {
+  const b = S.brand; const fs = await pickFiles('*/*', true); if (!fs.length) return;
+  toast(`Uploading ${fs.length} file${fs.length > 1 ? 's' : ''}…`); pushHist(); const rs = await addToFileSet(b, id, fs);
+  if (rs.length) { markDirty({ brand: true }); renderCanvas(); renderProps(); toast(`${rs.length} file${rs.length > 1 ? 's' : ''} added`); }
+}
+const uplList = (b, key) => key.startsWith('fs.') ? (b.fileSets || []).find((x) => x.id === key.slice(3))?.files : b[key];
 const generatedField = (scope, field) => { if (field === 'art') return true; if (!/^items\.\d+\.src$/.test(field) || !scope.startsWith('bk:')) return false; const f = findBlock(scope.slice(3)); return f && ['iconset', 'pattern', 'logoShowcase'].includes(f.block.type); };
 async function imgBarAction(act, el) {
   const b = S.brand; const d = el.dataset;
@@ -2904,9 +3014,9 @@ async function imgBarAction(act, el) {
     if (act === 'remove') { if (await confirmDlg('Delete logo variation?', 'It will be removed from every Logo Variations block.', 'Delete')) commit({ brand: true }, () => (b.logoExtras = b.logoExtras.filter((e) => e !== x))); return; }
   }
   if (d.upl) {
-    const [key, id] = d.upl.split(':'); const i = (b[key] || []).findIndex((f) => f.id === id); if (i < 0) return;
-    if (act === 'replace') { const [r] = await uploadMany(key === 'icons' ? 'image/svg+xml,image/png,image/webp,.svg' : ACCEPT.image, false, { images: true }); if (r) commit({ brand: true }, () => (b[key][i] = { ...r, label: b[key][i].label })); return; }
-    if (act === 'remove') return commit({ brand: true }, () => b[key].splice(i, 1));
+    const [key, id] = d.upl.split(':'); const list = uplList(b, key) || []; const i = list.findIndex((f) => f.id === id); if (i < 0) return; const isFs = key.startsWith('fs.');
+    if (act === 'replace') { const [r] = await uploadMany(isFs ? '*/*' : ACCEPT.image, false, isFs ? { max: 50 } : { images: true }); if (r) commit({ brand: true }, () => (list[i] = { ...r, id: list[i].id, label: list[i].label })); return; }
+    if (act === 'remove') return commit({ brand: true }, () => list.splice(i, 1));
   }
   if (d.mock) {
     const blk = el.closest('[data-block]');
