@@ -251,6 +251,34 @@ input[type=range]{width:100%;accent-color:var(--leaf)}
 .doc-add:hover{border-color:var(--leaf);color:var(--green);background:var(--leaf-tint)}
 .ex-restore{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:14px} .ex-restore .ex-chip{display:inline-flex;align-items:center;gap:4px;border:1px solid var(--line-2);background:#fff;border-radius:999px;padding:5px 11px;font:inherit;font-size:12.5px;color:var(--forest);cursor:pointer} .ex-restore .ex-chip:hover{border-color:var(--leaf)}
 .ex-chip{white-space:nowrap;width:auto;height:auto}
+/* ---- import from PDF ---- */
+.pi-banner{display:flex;align-items:center;gap:16px;padding:18px 20px;margin:0 0 26px;border:1px solid var(--line-2);border-left:3px solid var(--leaf);border-radius:var(--r-lg);background:#fff}
+.pi-banner>div{flex:1;min-width:0} .pi-banner strong{color:var(--forest);font-size:15px} .pi-banner p{margin:3px 0 0} .pi-banner .btn{flex:none}
+.pi-banner-i{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:var(--leaf-tint);color:var(--green);flex:none}
+@media (max-width:720px){.pi-banner{flex-wrap:wrap}.pi-banner .btn{width:100%}}
+.pi-prog{display:grid;gap:12px;min-width:min(440px,80vw)} .pi-bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden} .pi-bar i{display:block;height:100%;width:2%;background:var(--leaf);border-radius:inherit;transition:width .25s}
+.modal.pi-modal{width:min(1060px,94vw);max-width:none} .modal.pi-modal .modal-b{max-height:72vh;overflow:auto}
+.pi{display:grid;gap:18px} .pi-sum{display:flex;gap:8px;align-items:flex-start;margin:0;padding:12px 14px;border-radius:10px;background:var(--leaf-tint);color:var(--forest);font-size:14px;line-height:1.5} .pi-sum svg{flex:none;margin-top:3px;color:var(--green)}
+.pi-sec{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:#fff} .pi-sec>p.muted{margin:4px 0 12px}
+.pi-hd{display:flex;align-items:center;gap:10px;cursor:pointer;margin:0} .pi-hd h3{margin:0;font-size:15px;color:var(--forest)} .pi-hd input{width:17px;height:17px;accent-color:var(--leaf)}
+.pi-form{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px;margin-top:12px} .pi-form.three{grid-template-columns:repeat(3,1fr)} .pi-form .full{grid-column:1/-1} .pi-copy{grid-column:1/-1}
+.pi-logos{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.pi-logo{display:grid;gap:6px} .pi-logo-i{height:110px;border:1px solid var(--line);border-radius:10px;display:grid;place-items:center;padding:12px;background:repeating-conic-gradient(#f3f1ec 0 25%,#fff 0 50%) 0 0/14px 14px;overflow:hidden} .pi-logo.dark .pi-logo-i{background:#1E3510}
+.pi-logo-i{display:flex!important;align-items:center;justify-content:center} .pi-logo-i img{max-width:100%;max-height:84px;width:auto;height:auto;object-fit:contain;display:block} .pi-logo .inp{height:34px;font-size:13px;padding:0 8px}
+.pi-crop{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;height:110px;border:1.5px dashed var(--line-2);border-radius:10px;background:transparent;color:var(--green);cursor:pointer;font:inherit;font-size:13px} .pi-crop:hover{border-color:var(--leaf);background:var(--leaf-tint)}
+.pi-cols{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:8px} .pi-col{display:flex;align-items:center;gap:10px;padding:8px;border:1px solid var(--line);border-radius:10px} .pi-col>input{accent-color:var(--leaf)}
+.pi-col i{width:34px;height:34px;border-radius:8px;flex:none;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)} .pi-col span{flex:1;min-width:0;display:grid} .pi-col span .inp{height:30px;font-size:13px;padding:0 8px} .pi-col small{font:11.5px var(--mono,monospace);color:var(--muted);margin-top:2px} .pi-col select{width:104px;height:30px;font-size:12.5px;padding:0 6px}
+.pi-imgs{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px} .pi-imgs.wide{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.pi-img{position:relative;display:block;border-radius:8px;overflow:hidden;border:1px solid var(--line);cursor:pointer} .pi-img img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;background:#f4f2ed} .pi-imgs.wide .pi-img img{aspect-ratio:auto;max-height:150px;object-fit:contain}
+.pi-img input{position:absolute;top:6px;left:6px;width:17px;height:17px;accent-color:var(--leaf)} .pi-img small{display:block;padding:4px 7px;font-size:11.5px;color:var(--muted);background:#fff} .pi-img:has(input:not(:checked)) img{opacity:.35}
+.pi-secs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px} .pi-secs h4{margin:0 0 8px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)} .pi-secs .tog{display:flex;margin:0 0 6px}
+.pi-keep{margin:0} @media (max-width:760px){.pi-form,.pi-form.three,.pi-secs{grid-template-columns:1fr}}
+.pc{display:grid;grid-template-columns:120px 1fr;gap:16px;min-height:60vh} .pc-pages{display:grid;gap:8px;align-content:start;max-height:66vh;overflow:auto;padding-right:4px}
+.pc-th{border:2px solid transparent;border-radius:6px;padding:0;background:none;cursor:pointer;position:relative} .pc-th.on{border-color:var(--leaf)} .pc-th img{display:block;width:100%;border-radius:4px} .pc-th small{position:absolute;bottom:4px;right:6px;font-size:10.5px;background:#fff;border-radius:4px;padding:0 4px}
+.pc-main{display:grid;gap:10px;align-content:start} .pc-stage{position:relative;cursor:crosshair;user-select:none;touch-action:none;border:1px solid var(--line);border-radius:8px;overflow:hidden;max-height:60vh;width:fit-content;max-width:100%}
+.pc-stage canvas{display:block;max-width:100%;max-height:60vh;width:auto;height:auto} #pc-rect{position:absolute;display:none;border:2px solid #489F52;background:rgba(72,159,82,.12);pointer-events:none}
+/* logo step: add or drop more */
+.drop.add-logo{border-style:dashed;background:transparent;color:var(--green)} .drop.add-logo strong{color:var(--forest)} .drop.add-logo:hover,.drop.add-logo.over{border-color:var(--leaf);background:var(--leaf-tint)}
 
 /* ============ chlorophyll brandbook studio — published brandbook ============ */
 .bs{container-type:inline-size;container-name:bb;background:var(--bb-bg);color:var(--bb-ink);font-family:var(--bb-fb);font-size:16px;line-height:1.6;min-height:100%;-webkit-font-smoothing:antialiased}
@@ -519,7 +547,7 @@ const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 const uid = (p = '') => p + Math.random().toString(36).slice(2, 8) + Date.now().toString(36).slice(-4);
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const clone = (o) => JSON.parse(JSON.stringify(o));
-const slugify = (s) => String(s || '').toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 48) || 'brand';
+const slugify = (s) => String(s || '').toLowerCase().replace(/[™®©]/g, '').normalize('NFKD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 48) || 'brand';
 const debounce = (fn, ms) => { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; };
 const fmtDate = (t) => { if (!t) return '—'; const d = new Date(t); const diff = (Date.now() - d) / 1000; if (diff < 60) return 'Just now'; if (diff < 3600) return Math.floor(diff / 60) + ' min ago'; if (diff < 86400) return Math.floor(diff / 3600) + ' h ago'; return d.toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' }); };
 const fmtSize = (b) => !b ? '—' : b < 1024 ? b + ' B' : b < 1048576 ? (b / 1024).toFixed(0) + ' KB' : (b / 1048576).toFixed(1) + ' MB';
@@ -912,7 +940,7 @@ function placeholderSVG(b, seed = '', label = '') {
 function imgCats(b) { return Array.isArray(b?.imageCats) && b.imageCats.length ? b.imageCats.map((c) => [c.key, c.label]) : IMG_CATS; }
 function allImages(b) { return imgCats(b).flatMap(([k]) => b.images?.[k] || []); }
 const COLLATERAL_SLOTS = { businessCard: ['Front', 'Back'], letterhead: ['Letterhead'], stationery: ['Letterhead', 'Envelope', 'Business card'], social: ['Post 1', 'Post 2', 'Post 3'], packaging: ['Front', 'Side', 'Back'], merch: ['Tote bag', 'Cap', 'Mug'], digital: ['Website', 'Mobile app'], signage: ['Sign'] };
-function colKinds(b) { const L = b?.colLabels || {}; return [...MOCKUP_KINDS.map(([k, l]) => [k, L[k] || l]), ...(b?.colCustom || []).map((x) => [x.key, x.label || 'Collateral'])]; }
+function colKinds(b, all) { const L = b?.colLabels || {}; const hid = all ? [] : b?.colHidden || []; return [...MOCKUP_KINDS.filter(([k]) => !hid.includes(k)).map(([k, l]) => [k, L[k] || l]), ...(b?.colCustom || []).map((x) => [x.key, x.label || 'Collaterals'])]; }
 const isBuiltinKind = (k) => MOCKUP_KINDS.some((m) => m[0] === k);
 function collateralOf(b, kind, create) { if (!b.collateral) { if (!create) return null; b.collateral = {}; } let c = b.collateral[kind]; if (!c && create) c = b.collateral[kind] = { slots: (COLLATERAL_SLOTS[kind] || ['Artwork']).map((label) => ({ label, file: null })), im: {}, st: {} }; return c || null; }
 const fileRef = (r) => r ? { k: 'file', id: r.id, url: r.url, name: r.name, type: r.type, size: r.size } : null;
@@ -987,7 +1015,7 @@ const BLOCKS = {
     render: (c, b) => renderType(c, b) },
   logoShowcase: { label: 'Logo showcase', icon: 'logo', make: () => ({ variant: 'hero', caption: 'The primary logo is our most recognisable asset.' }), opts: [{ k: 'variant', l: 'Variant', t: 'select', o: LOGO_VARIANTS }, { k: 'useArt', l: 'Use my own artwork image (guideline variants)', t: 'toggle' }, { k: 'nodl', l: 'Hide download buttons', t: 'toggle' }],
     render: (c, b) => renderLogo(c, b) },
-  mockup: { label: 'Mockup gallery', icon: 'mockup', make: () => ({ kind: 'businessCard', name: 'Alex Morgan', role: 'Creative Director', headline: 'Crafted with intent.', caption: '' }), opts: [{ k: 'kind', l: 'Collateral', t: 'select', o: (br) => colKinds(br) }, { k: 'display', l: 'Show', t: 'select', o: [['auto', 'My artwork if uploaded, otherwise generated'], ['artwork', 'My uploaded artwork'], ['generated', 'Generated mockup']] }, { k: 'nodl', l: 'Hide download buttons', t: 'toggle' }],
+  mockup: { label: 'Mockup gallery', icon: 'mockup', make: () => ({ kind: 'businessCard', name: 'Alex Morgan', role: 'Creative Director', headline: 'Crafted with intent.', caption: '' }), opts: [{ k: 'kind', l: 'Collaterals', t: 'select', o: (br) => colKinds(br) }, { k: 'display', l: 'Show', t: 'select', o: [['auto', 'My artwork if uploaded, otherwise generated'], ['artwork', 'My uploaded artwork'], ['generated', 'Generated mockup']] }, { k: 'nodl', l: 'Hide download buttons', t: 'toggle' }],
     render: (c, b) => { const co = c.brand.collateral?.[b.kind]; const filled = (co?.slots || []).filter((x) => x.file); const mode = b.display || 'auto'; const art = !isBuiltinKind(b.kind) || mode === 'artwork' || (mode === 'auto' && filled.length); return `<div class="bb-mock">${art ? renderArtwork(c, b) : c.mode === 'edit' ? `<div class="mk-wrap" data-mock="${b.kind}" tabindex="0" role="button" aria-label="Upload your own artwork">${renderMockup(c, b)}</div>` : renderMockup(c, b)}${tx(c, b, 'caption', 'figcaption', 'bb-cap', 'Caption (optional)')}</div>`; } },
   download: { label: 'Downloadable file', icon: 'download', make: () => ({ title: 'Download file', desc: 'Attach a file from the asset library.', file: null, label: 'Download' }), opts: [{ k: 'file', l: 'File', t: 'asset' }],
     render: (c, b) => { const f = b.file; return `<div class="bb-dl"><div class="bb-dl-ic">${ic('file', 22)}</div><div class="bb-dl-t">${tx(c, b, 'title', 'h3', '', 'File title')}${tx(c, b, 'desc', 'p', 'bb-muted', 'Description')}<span class="bb-dl-meta">${f ? esc(extOf(f.name)) + ' · ' + fmtSize(f.size) : 'No file attached'}</span></div><button class="bb-btn" data-dl="${c.scope}" ${f ? '' : 'disabled'}>${ic('download', 16)} ${esc(b.label || 'Download')}</button></div>`; } },
@@ -1223,7 +1251,7 @@ function migrateAssetsChapter(b, pages) {
 /* ---------- default template (one reusable definition for every brand) ---------- */
 const CHAPTER_DEFS = [
   { key: 'strategy', num: '01', title: 'Brand Strategy', desc: 'Understand the purpose, vision, personality and positioning behind the brand.', icon: 'compass', img: img('lifestyle', 0) },
-  { key: 'identity', num: '02', title: 'Brand Identity', desc: 'Explore the visual language, logo, colours, typography and design principles.', icon: 'target', img: img('photography', 1) },
+  { key: 'identity', num: '02', title: 'Brand Identity™', desc: 'Explore the visual language, logo, colours, typography and design principles.', icon: 'target', img: img('photography', 1) },
   { key: 'collaterals', num: '03', title: 'Collaterals', desc: 'Discover how the brand comes to life across physical and digital applications.', icon: 'layers', img: img('campaign', 0) },
 ];
 function templatePages(cp) {
@@ -1232,7 +1260,7 @@ function templatePages(cp) {
     strategy: [
       ['Introduction', T('intro.intro', 'Why {{brand}} exists and how to use these guidelines.'), [
         B('split', { eyebrow: 'Welcome', title: T('intro.title', 'This is {{brand}}.'), text: T('intro.text', '{{brand}} is built on a simple idea: every interaction should feel considered. These guidelines describe who we are, how we look and how we speak, so that everyone who works with the brand can express it with confidence.'), src: img('lifestyle', 0) }),
-        B('cols3', { numbered: true, items: [{ title: 'Strategy', text: 'The thinking behind the brand: purpose, values, audience and voice.' }, { title: 'Identity', text: 'The visual system: logo, colour, typography, imagery and graphic elements.' }, { title: 'Application', text: 'How the system comes to life across print, digital and physical touchpoints.' }] }),
+        B('cols3', { numbered: true, items: [{ title: 'Strategy', text: 'The thinking behind the brand: purpose, values, audience and voice.' }, { title: 'Identity™', text: 'The visual system: logo, colour, typography, imagery and graphic elements.' }, { title: 'Application', text: 'How the system comes to life across print, digital and physical touchpoints.' }] }),
       ]],
       ['Brand Story', T('story.intro', 'Where we came from and what drives us.'), [
         B('heading', { eyebrow: 'Our story', text: T('story.h', 'From a single idea to a recognised name.') }),
@@ -1281,8 +1309,8 @@ function templatePages(cp) {
       ['Social Media', 'A recognisable presence in every feed.', [B('mockup', { kind: 'social', headline: '{{tagline}}' }), B('cols3', { items: [{ title: 'Imagery first', text: 'Lead with photography.' }, { title: 'One message', text: 'One idea per post.' }, { title: 'Consistent marks', text: 'Use the symbol as an avatar.' }] })]],
       ['Packaging', 'Our brand, in the hand.', [B('mockup', { kind: 'packaging', headline: 'Signature collection' })]],
       ['Merchandise', 'Objects that carry the brand with care.', [B('mockup', { kind: 'merch' })]],
-      ['Digital Applications', 'Website, app and email.', [B('mockup', { kind: 'digital', headline: '{{tagline}}' }), B('mockup', { kind: 'signage', headline: 'Reception · Level 2' })]],
-      ...(cp.__brand?.colCustom || []).map((x) => [x.label || 'Collateral', '', [B('mockup', { kind: x.key, display: 'artwork' })], x.key]),
+      ['Digital Applications', 'Website, app and email.', [B('mockup', { kind: 'digital', headline: '{{tagline}}' }), B('mockup', { kind: 'signage', headline: 'Reception · Level 2' })].filter((x) => !cp.__brand?.pdfSections || cp.__brand.pdfSections.kinds.includes(x.kind) || !cp.__brand.pdfSections.kinds.some((k) => k === 'digital' || k === 'signage'))],
+      ...(cp.__brand?.colCustom || []).map((x) => [x.label || 'Collaterals', '', [B('mockup', { kind: x.key, display: 'artwork' })], x.key]),
       ...(cp.__brand?.fileSets || []).map((x) => [x.label || 'Files', '', [B('fileSet', { set: x.id })], x.id]),
       ['Templates & Downloads', 'Ready-to-use templates, documents and files.', templatesBlocks()],
     ],
@@ -1290,7 +1318,9 @@ function templatePages(cp) {
 }
 function buildTemplate(brand, copy = {}) {
   const defs = templatePages({ ...copy, __brand: brand }); const pages = {};
-  const chapters = CHAPTER_DEFS.map((d) => ({ id: uid('ch'), key: d.key, num: d.num, title: d.title, desc: d.desc, icon: d.icon, image: d.img, st: {}, im: {}, pages: defs[d.key].map(([title, intro, blocks, src]) => { const id = uid('pg'); pages[id] = { id, intro, blocks }; return { id, title, slug: slugify(title) + (src ? '-' + id.slice(-4) : ''), hidden: false, ...(src ? { src } : {}) }; }) }));
+  const keep = brand.pdfSections?.pages ? new Set(brand.pdfSections.pages) : null;
+  if (keep) for (const k of Object.keys(defs)) defs[k] = defs[k].filter(([title, , , src]) => src || keep.has(title) || (title === 'Templates & Downloads' && (brand.assets || []).some((a) => a.category === 'documents')));
+  const chapters = CHAPTER_DEFS.filter((d) => defs[d.key].length).map((d, i) => ({ id: uid('ch'), key: d.key, num: String(i + 1).padStart(2, '0'), title: d.title, desc: d.desc, icon: d.icon, image: d.img, st: {}, im: {}, pages: defs[d.key].map(([title, intro, blocks, src]) => { const id = uid('pg'); pages[id] = { id, intro, blocks }; return { id, title, slug: slugify(title) + (src ? '-' + id.slice(-4) : ''), hidden: false, ...(src ? { src } : {}) }; }) }));
   const landing = { heroTitle: '{{brand}}', heroSub: 'Brand Guidelines', heroIntro: copy['landing.intro'] || '{{tagline}}', cta: 'Explore Brand Guidelines', kitLabel: 'Download brand kit', heroImg: img('campaign', 0), whyTitle: 'Why Brand Guidelines Matter', whyText: 'A brand is more than a logo. It is the collective experience created through every visual, verbal and digital interaction. These guidelines provide a consistent framework for expressing the brand across every touchpoint.', whyQuote: copy['landing.quote'] || 'Together, let us keep {{brand}} consistent, distinctive and true.', chaptersEyebrow: 'Explore the guidebook', chaptersTitle: 'One brand, every touchpoint.', st: {}, im: {} };
   return { chapters, pages, landing };
 }
@@ -2208,7 +2238,7 @@ async function exportPDF(b, pages) {
               { const cs = b.colours.filter((x) => bk.type === 'assetGrid' || !bk.group || bk.group === 'all' || x.role === bk.group); const sw = (CW - 3 * 10) / 4; for (let i = 0; i < cs.length; i += 4) { need(150); cs.slice(i, i + 4).forEach((x, j) => { const xx = M + j * (sw + 10); doc.setFillColor(...rgb(x.hex)); doc.rect(xx, y, sw, 80, 'F'); doc.setDrawColor(220); doc.rect(xx, y, sw, 80, 'S'); doc.setTextColor(...ink); doc.setFont('helvetica', 'bold'); doc.setFontSize(10); doc.text(doc.splitTextToSize(x.name, sw), xx, y + 96); doc.setFont('helvetica', 'normal'); doc.setFontSize(8); doc.setTextColor(...muted); doc.text(`HEX ${x.hex}`, xx, y + 110); doc.text(`RGB ${rgbStr(x.hex)}`, xx, y + 121); doc.text(`CMYK ${toCmyk(x.hex)}`, xx, y + 132); }); y += 148; } } break;
             case 'typeSpecimen': ['heading', 'body', 'accent'].filter((r) => bk.which === 'all' || bk.which === 'scale' || bk.which === r).forEach((r) => { text(`${r[0].toUpperCase() + r.slice(1)} typeface`, 8, 'bold', muted, 1.2, 2); text(b.typography[r]?.family || '—', 20, 'bold', ink, 1.2, 4); }); text(bk.sample, 12, 'normal', ink, 1.4, 12); break;
             case 'logoShowcase': { const keys = bk.variant === 'variations' ? ['primary', 'secondary', 'icon', 'black', 'white'] : ['primary']; for (const k of keys) { const r = b.logos[k] || (k === 'primary' ? null : null); if (!r) continue; const d = await imgToData(r.url, 900, 'image/png'); if (!d) continue; const h = 70, w = Math.min(CW * .6, (h * d.w) / d.h); need(h + 40); if (k === 'white') { doc.setFillColor(...rgb(t.dark)); doc.rect(M, y, CW, h + 30, 'F'); } doc.addImage(d.data, 'PNG', M + 15, y + 15, w, (w * d.h) / d.w); y += h + 40; } text(bk.caption, 9, 'normal', muted); if (bk.items) bk.items.forEach((it) => it.label && text('•  ' + interp(b, it.label), 9.5, 'normal', ink, 1.3, 2)); break; }
-            case 'mockup': text(`Mockup — ${(colKinds(b).find((m) => m[0] === bk.kind) || ['', bk.kind])[1]}`, 11, 'bold', ink, 1.3, 2); text('See the online brandbook for the live, on-brand mockup.', 9, 'normal', muted, 1.3, 4); text(bk.caption, 9, 'normal', muted); break;
+            case 'mockup': text(`Mockup — ${(colKinds(b, true).find((m) => m[0] === bk.kind) || ['', bk.kind])[1]}`, 11, 'bold', ink, 1.3, 2); text('See the online brandbook for the live, on-brand mockup.', 9, 'normal', muted, 1.3, 4); text(bk.caption, 9, 'normal', muted); break;
             case 'traits': (bk.items || []).forEach((it) => { need(24); doc.setFontSize(9); doc.setTextColor(...ink); doc.text(interp(b, it.left), M, y + 9); doc.text(interp(b, it.right), M + CW, y + 9, { align: 'right' }); doc.setDrawColor(...muted); doc.line(M + 90, y + 6, M + CW - 90, y + 6); doc.setFillColor(...rgb(t.primary)); doc.circle(M + 90 + (CW - 180) * it.value / 100, y + 6, 4, 'F'); y += 22; }); y += 8; break;
             case 'iconset': case 'pattern': text((bk.items || []).map((it) => interp(b, it.label)).filter(Boolean).join('  ·  '), 10, 'normal', ink); break;
             case 'download': text(bk.title, 11, 'bold', ink, 1.3, 2); text(bk.desc, 9.5, 'normal', muted); break;
@@ -2233,7 +2263,7 @@ async function exportZip(b) {
     for (const x of b.logoExtras || []) if (x.file) await add('logos', x.file, `${slugify(b.name)}-${slugify(x.label || 'variation')}.${(x.file.name || 'x.png').split('.').pop()}`);
     for (const x of b.icons || []) await add('icons', x);
     for (const x of b.graphics || []) await add('graphic-elements', x);
-    for (const [k, co] of Object.entries(b.collateral || {})) for (const s of co.slots || []) if (s.file) await add('collateral/' + slugify((colKinds(b).find((m) => m[0] === k) || [k, k])[1]), s.file, `${slugify(s.label || 'artwork')}.${(s.file.name || 'x.png').split('.').pop()}`);
+    for (const [k, co] of Object.entries(b.collateral || {})) for (const s of co.slots || []) if (s.file) await add('collateral/' + slugify((colKinds(b, true).find((m) => m[0] === k) || [k, k])[1]), s.file, `${slugify(s.label || 'artwork')}.${(s.file.name || 'x.png').split('.').pop()}`);
     for (const st of b.fileSets || []) for (const f of st.files || []) await add('files/' + slugify(st.label || 'files'), f);
     for (const a of b.assets || []) await add(a.category || 'other', a);
     for (const r of ['heading', 'body', 'accent']) if (b.typography[r]?.file) await add('fonts', b.typography[r].file);
@@ -2284,6 +2314,7 @@ async function loadBrand(id) {
   if (S.brand && GC.brandId === S.brand.id) gcRun(S.brand, S.pages);
   const b = await Store.getBrand(id); if (!b) return null;
   S.brand = b; S.pages = await Store.getPages(id, allPageIds(b)); gcTrack(b, S.pages);
+  (b.chapters || []).forEach((c) => { if (c.key === 'identity' && c.title === 'Brand Identity') c.title = 'Brand Identity™'; });
   if (b.generated && (typeof canManage !== 'function' || canManage(b))) { const m = migrateAssetsChapter(b, S.pages); if (m) { m.removed.forEach((pid) => { Save.deleted.add(pid); delete S.pages[pid]; }); if (m.added) Save.pages.add(m.added); Save.brand = true; b.updatedAt = Date.now(); await flushSave(); toast('Downloads now sit inside each section — the separate Brand Assets chapter was merged into Collaterals → Templates & Downloads'); } }
   Ed.hist = []; Ed.fut = []; return b;
 }
@@ -2414,7 +2445,8 @@ function drawWizard() {
 function fieldErr(k) { return Wz.errors[k] ? `<small class="err-t" id="err-${k}">${esc(Wz.errors[k])}</small>` : ''; }
 function wzStep(k) {
   const b = Wz.b, i = b.info;
-  if (k === 'info') return `<p class="lead muted">Start with the essentials. Everything here appears across the brandbook and can be changed later.</p><div class="form">
+  if (k === 'info') return `<p class="lead muted">Start with the essentials. Everything here appears across the brandbook and can be changed later.</p>
+    <div class="pi-banner"><span class="pi-banner-i">${ic('file', 22)}</span><div><strong>Already have brand guidelines as a PDF?</strong><p class="muted sm">${b.pdfSections ? `Imported from ${esc(b.pdfSections.from)} — your brandbook will only include the ${b.pdfSections.pages.length} sections it covers. Import again to replace.` : 'Upload it and we’ll fill in every step — logo, colours, typography, imagery and collaterals — and build only the sections your PDF covers. You review everything before it’s applied.'}</p></div><button class="btn primary" data-wz="pdfimport">${ic('upload', 16)} ${b.pdfSections ? 'Import another PDF' : 'Import from PDF'}</button></div><div class="form">
     <label class="fld ${Wz.errors.name ? 'has-err' : ''}"><span>Brand name <em>*</em></span><input class="inp" data-f="name" value="${esc(b.name === 'Untitled brand' ? '' : b.name)}" maxlength="60" required aria-describedby="err-name" placeholder="e.g. Aurel Studio">${fieldErr('name')}</label>
     <label class="fld"><span>Brand tagline</span><input class="inp" data-f="info.tagline" value="${esc(i.tagline)}" maxlength="90" placeholder="A short line that captures the brand"></label>
     <label class="fld full"><span>Short brand description</span><textarea class="inp" data-f="info.description" rows="3" maxlength="400" placeholder="What the brand does and who it’s for">${esc(i.description)}</textarea><small class="muted">${(i.description || '').length}/400</small></label>
@@ -2423,10 +2455,10 @@ function wzStep(k) {
     <label class="fld"><span>Brand location</span><input class="inp" data-f="info.location" value="${esc(i.location)}" placeholder="City, Country"></label>
     <label class="fld ${Wz.errors.email ? 'has-err' : ''}"><span>Contact email</span><input class="inp" data-f="info.email" value="${esc(i.email)}" placeholder="hello@example.com" inputmode="email">${fieldErr('email')}</label>
     <label class="fld"><span>Phone</span><input class="inp" data-f="info.phone" value="${esc(i.phone)}" placeholder="+00 000 000 000"></label></div>`;
-  if (k === 'logos') return `<p class="lead muted">Upload PNG, JPG, SVG or WebP files. Transparent PNG or SVG works best. Missing variations fall back to the primary logo automatically.</p><div class="logo-grid">${LOGO_KEYS.map(([key, l]) => { const r = b.logos[key]; return `<div class="drop ${r ? 'has' : ''} ${key === 'white' ? 'dark' : ''}" data-drop="logo:${key}" tabindex="0" role="button" aria-label="${r ? 'Replace' : 'Upload'} ${l}">${r ? `<img src="${esc(r.url)}" alt="${esc(l)}"><div class="drop-acts"><button class="btn sm" data-replace="logo:${key}">${ic('upload', 14)} Replace</button><button class="icon-btn sm" data-remove="logo:${key}" aria-label="Remove ${l}">${ic('trash', 15)}</button></div>` : `${ic('upload', 22)}<strong>${l}</strong><span>Drop a file or click to browse</span>`}<span class="drop-l">${l}${key === 'primary' ? ' <em>recommended</em>' : ''}</span></div>`; }).join('')}</div>${wzLogoExtras(b)}`;
+  if (k === 'logos') return `<p class="lead muted">Upload PNG, JPG, SVG or WebP files. Transparent PNG or SVG works best. Missing variations fall back to the primary logo automatically.</p><div class="logo-grid">${LOGO_KEYS.map(([key, l]) => { const r = b.logos[key]; return `<div class="drop ${r ? 'has' : ''} ${key === 'white' ? 'dark' : ''}" data-drop="logo:${key}" tabindex="0" role="button" aria-label="${r ? 'Replace' : 'Upload'} ${l}">${r ? `<img src="${esc(r.url)}" alt="${esc(l)}"><div class="drop-acts"><button class="btn sm" data-replace="logo:${key}">${ic('upload', 14)} Replace</button><button class="icon-btn sm" data-remove="logo:${key}" aria-label="Remove ${l}">${ic('trash', 15)}</button></div>` : `${ic('upload', 22)}<strong>${l}</strong><span>Drop a file or click to browse</span>`}<span class="drop-l">${l}${key === 'primary' ? ' <em>recommended</em>' : ''}</span></div>`; }).join('')}<div class="drop add-logo" data-drop="lxn:0" tabindex="0" role="button" aria-label="Add or drop more logos">${ic('plus', 22)}<strong>Add or drop</strong><span>More logos — lockups, monograms, co-branded. Drop several at once.</span></div></div>${wzLogoExtras(b)}`;
   if (k === 'colours') return `<p class="lead muted">Add the colours that define the brand. Each colour becomes a global token used throughout the brandbook.</p>${COLOUR_ROLES.map(([role, l]) => { const cs = b.colours.filter((c) => c.role === role); return `<div class="col-group"><div class="col-gh"><h2>${l} colours</h2><button class="btn sm" data-addcol="${role}">${ic('plus', 14)} Add ${l.toLowerCase()}</button></div>${cs.length ? `<div class="col-list">${cs.map((c) => `<div class="col-row" data-cid="${c.id}"><label class="col-sw" style="background:${c.hex}"><input type="color" value="${c.hex}" data-colpick="${c.id}" aria-label="Pick colour for ${esc(c.name)}"></label><input class="inp" value="${esc(c.name)}" data-colname="${c.id}" aria-label="Colour name" maxlength="40"><input class="inp mono" value="${c.hex}" data-colhex="${c.id}" aria-label="HEX value" maxlength="7"><span class="col-rgb">RGB ${rgbStr(c.hex)}</span><button class="icon-btn sm" data-copy="${c.hex}" aria-label="Copy HEX">${ic('copy', 15)}</button><button class="icon-btn sm" data-delcol="${c.id}" aria-label="Remove colour">${ic('trash', 15)}</button></div>`).join('')}</div>` : `<p class="muted sm">No ${l.toLowerCase()} colours yet.</p>`}</div>`; }).join('')}
     ${b.colours.length ? `<div class="suggest"><div><strong>${ic('sparkle', 15)} Suggested neutral palette</strong><p class="muted sm">Generated from your primary colour. Optional — nothing is replaced.</p></div><div class="suggest-sw">${complementaryNeutrals(b.colours).map((c) => `<span title="${c.name} ${c.hex}"><i style="background:${c.hex}"></i>${c.hex}</span>`).join('')}</div><button class="btn sm" data-wz="addneutrals">Add these neutrals</button></div>` : ''}`;
-  if (k === 'type') return `<p class="lead muted">Choose Google Fonts or upload your own font files (TTF, OTF, WOFF, WOFF2).</p><div class="type-grid">${[['heading', 'Heading typography', 'Headlines and display text'], ['body', 'Body typography', 'Paragraphs and interface text'], ['accent', 'Accent typography', 'Labels, captions and details']].map(([r, l, d]) => { const t = b.typography[r] || {}; return `<div class="type-card"><div class="type-h"><div><h2>${l}</h2><p class="muted sm">${d}</p></div>${t.file ? `<span class="badge b-live">Uploaded</span>` : ''}</div><div class="type-prev" style="font-family:${fontStack(t.family)}"><span class="type-aa">Aa</span><span class="${r === 'heading' ? 'tp-h' : r === 'body' ? 'tp-b' : 'tp-a'}">${r === 'heading' ? esc(b.name || 'Brand headline') : r === 'body' ? 'Good design is as little design as possible. It concentrates on the essential aspects.' : 'CAPTION · 2026 · 01'}</span></div><div class="row2"><label class="fld"><span>Google Font</span><select class="inp" data-font="${r}">${t.file ? `<option selected>${esc(t.family)} (uploaded)</option>` : ''}${['sans', 'serif', 'mono', 'hand'].map((g) => `<optgroup label="${g === 'sans' ? 'Sans serif' : g === 'serif' ? 'Serif' : g === 'mono' ? 'Monospace' : 'Handwriting'}">${GOOGLE_FONTS.filter((f) => f[1] === g).map(([f]) => `<option ${!t.file && t.family === f ? 'selected' : ''}>${f}</option>`).join('')}</optgroup>`).join('')}</select></label><div class="fld"><span>Or upload</span><button class="btn" data-fontup="${r}">${ic('upload', 15)} Font file</button></div></div></div>`; }).join('')}</div>`;
+  if (k === 'type') return `<p class="lead muted">Choose Google Fonts or upload your own font files (TTF, OTF, WOFF, WOFF2).</p><div class="type-grid">${[['heading', 'Heading typography', 'Headlines and display text'], ['body', 'Body typography', 'Paragraphs and interface text'], ['accent', 'Accent typography', 'Labels, captions and details']].map(([r, l, d]) => { const t = b.typography[r] || {}; return `<div class="type-card"><div class="type-h"><div><h2>${l}</h2><p class="muted sm">${d}</p></div>${t.file ? `<span class="badge b-live">Uploaded</span>` : ''}</div><div class="type-prev" style="font-family:${fontStack(t.family)}"><span class="type-aa">Aa</span><span class="${r === 'heading' ? 'tp-h' : r === 'body' ? 'tp-b' : 'tp-a'}">${r === 'heading' ? esc(b.name || 'Brand headline') : r === 'body' ? 'Good design is as little design as possible. It concentrates on the essential aspects.' : 'CAPTION · 2026 · 01'}</span></div><div class="row2"><label class="fld"><span>Google Font</span><select class="inp" data-font="${r}">${t.file ? `<option selected>${esc(t.family)} (uploaded)</option>` : !GOOGLE_FONTS.some(([f]) => f === t.family) && t.family ? `<option value="${esc(t.family)}" selected>${esc(t.family)} (from your guidelines)</option>` : ''}${['sans', 'serif', 'mono', 'hand'].map((g) => `<optgroup label="${g === 'sans' ? 'Sans serif' : g === 'serif' ? 'Serif' : g === 'mono' ? 'Monospace' : 'Handwriting'}">${GOOGLE_FONTS.filter((f) => f[1] === g).map(([f]) => `<option ${!t.file && t.family === f ? 'selected' : ''}>${f}</option>`).join('')}</optgroup>`).join('')}</select></label><div class="fld"><span>Or upload</span><button class="btn" data-fontup="${r}">${ic('upload', 15)} Font file</button></div></div></div>`; }).join('')}</div>`;
   if (k === 'images') return wzImagesStep(b);
   if (k === 'extras') return wzExtrasStep(b);
   if (k === 'review') { const n = (b.colours || []).length, imgs = allImages(b).length, logos = LOGO_KEYS.filter(([x]) => b.logos[x]).length; const warn = [!logos && 'No logo uploaded — a typographic wordmark will be used.', !n && 'No colours added — a neutral default palette will be used.', !imgs && 'No imagery uploaded — tasteful placeholders will be generated from your colours.'].filter(Boolean);
@@ -2434,7 +2466,7 @@ function wzStep(k) {
     <div class="rv-card"><h3>Logos · ${logos}/5</h3><div class="rv-logos">${LOGO_KEYS.map(([x, l]) => b.logos[x] ? `<span class="${x === 'white' ? 'dark' : ''}"><img src="${esc(b.logos[x].url)}" alt="${l}"></span>` : '').join('') || '<p class="muted sm">None</p>'}</div><button class="link" data-step="1">Edit</button></div>
     <div class="rv-card"><h3>Colours · ${n}</h3><div class="rv-sw">${b.colours.map((c) => `<i style="background:${c.hex}" title="${esc(c.name)}"></i>`).join('') || '<p class="muted sm">None</p>'}</div><button class="link" data-step="2">Edit</button></div>
     <div class="rv-card"><h3>Typography</h3>${['heading', 'body', 'accent'].map((r) => `<p style="font-family:${fontStack(b.typography[r]?.family)}"><span class="muted sm">${r}</span> ${esc(b.typography[r]?.family)}</p>`).join('')}<button class="link" data-step="3">Edit</button></div>
-    <div class="rv-card"><h3>Extra assets</h3><p class="muted sm">${(b.icons || []).length} icons · ${(b.graphics || []).length} graphic elements · ${Object.values(b.collateral || {}).flatMap((c) => c.slots || []).filter((x) => x.file).length} collateral designs · ${(b.assets || []).filter((a) => a.category === 'documents').length} documents · ${(b.logoExtras || []).length} extra logo variations</p><button class="link" data-step="5">Edit</button></div>
+    <div class="rv-card"><h3>Extra assets</h3><p class="muted sm">${(b.icons || []).length} icons · ${(b.graphics || []).length} graphic elements · ${Object.values(b.collateral || {}).flatMap((c) => c.slots || []).filter((x) => x.file).length} collaterals designs · ${(b.assets || []).filter((a) => a.category === 'documents').length} documents · ${(b.logoExtras || []).length} extra logo variations</p><button class="link" data-step="5">Edit</button></div>
     <div class="rv-card wide"><h3>Imagery · ${imgs}</h3><div class="rv-imgs">${allImages(b).slice(0, 10).map((x) => `<img src="${esc(x.url)}" alt="">`).join('') || '<p class="muted sm">None</p>'}</div><button class="link" data-step="4">Edit</button></div></div>${warn.length ? `<ul class="warn">${warn.map((w) => `<li>${ic('sparkle', 14)} ${w}</li>`).join('')}</ul>` : ''}`; }
   return '';
 }
@@ -2447,7 +2479,7 @@ function validateInfo() {
 }
 async function wzUpload(target, files) {
   const b = Wz.b; const [kind, key] = target.split(':');
-  if (['lx', 'co', 'icons', 'graphics', 'docs', 'fs'].includes(kind)) { const slot = $(`[data-drop="${target}"]`); slot && slot.classList.add('busy'); await wzExtraUpload(target, files); wzSave(); drawWizard(); if (S.brand?.id === b.id) S.brand = b; return; }
+  if (['lx', 'lxn', 'co', 'icons', 'graphics', 'docs', 'fs'].includes(kind)) { const slot = $(`[data-drop="${target}"]`); slot && slot.classList.add('busy'); await wzExtraUpload(target, files); wzSave(); drawWizard(); if (S.brand?.id === b.id) S.brand = b; return; }
   for (const f of files) {
     if (kind === 'logo' && !/^image\/(png|jpeg|svg\+xml|webp)$/.test(f.type)) { toast(`${f.name}: use PNG, JPG, SVG or WebP`, 'err'); continue; }
     if (kind === 'img' && !/^image\//.test(f.type)) { toast(`${f.name} is not an image`, 'err'); continue; }
@@ -2473,11 +2505,12 @@ function bindWizard(el) {
   };
   el.onclick = async (e) => { const t = e.target.closest('button,[data-drop]'); if (!t) return;
     if (t.tagName === 'BUTTON' && (await wzExtraClick(t))) return;
-    if (t.dataset.drop && /^(lx|co):/.test(t.dataset.drop) && !e.target.closest('button')) { const fs = await pickFiles(ACCEPT.image); if (fs.length) wzUpload(t.dataset.drop, fs); return; }
+    if (t.dataset.drop && /^(lx|lxn|co):/.test(t.dataset.drop) && !e.target.closest('button')) { const fs = await pickFiles(ACCEPT.image, t.dataset.drop.startsWith('lxn')); if (fs.length) wzUpload(t.dataset.drop, fs); return; }
     if (t.dataset.step) { const n = +t.dataset.step; if (Wz.step === 0 && !validateInfo()) return drawWizard(); Wz.step = n; wzSave(); return drawWizard(); }
     const w = t.dataset.wz;
     if (w === 'back') { Wz.step--; wzSave(); return drawWizard(); }
     if (w === 'next') { if (Wz.step === 0 && !validateInfo()) { drawWizard(); $('.has-err input')?.focus(); return; } Wz.step++; wzSave(); drawWizard(); $('#wz-h').focus?.(); return; }
+    if (w === 'pdfimport') return pdfImportFlow();
     if (w === 'addneutrals') { complementaryNeutrals(b.colours).forEach((c) => b.colours.push({ id: uid('c'), ...c })); wzSave(); toast('Neutrals added'); return drawWizard(); }
     if (w === 'generate') return generateBrandbook();
     if (t.dataset.addcol) { const role = t.dataset.addcol; const base = { primary: '#2E3A2A', secondary: '#B8A98A', accent: '#6B7550', neutral: '#EFEAE0' }[role]; b.colours.push({ id: uid('c'), name: (COLOUR_ROLES.find((r) => r[0] === role)[1]) + ' ' + (b.colours.filter((c) => c.role === role).length + 1), hex: base, role }); wzSave(); drawWizard(); setTimeout(() => $$(`.col-row input[data-colname]`).pop()?.select(), 10); return; }
@@ -2767,7 +2800,7 @@ async function uploadPicked(files, { images = false, max = 20, existing = null }
   return out;
 }
 async function uploadMany(accept, multiple = true, opts = {}) { const fs = await pickFiles(accept, multiple); if (!fs.length) return []; toast(`Uploading ${fs.length} file${fs.length > 1 ? 's' : ''}…`); return uploadPicked(fs, opts); }
-const kindLabel = (k, b = S.brand) => (colKinds(b).find((m) => m[0] === k) || [k, k])[1];
+const kindLabel = (k, b = S.brand) => (colKinds(b, true).find((m) => m[0] === k) || [k, k])[1];
 /* pages created for a custom collateral / file section carry src=<key> so renames and deletes stay in sync */
 function freeSlug(b, base, exceptId) { const used = new Set(b.chapters.flatMap((c) => c.pages).filter((p) => p.id !== exceptId).map((p) => p.slug)); let s = base || 'page', n = 2; while (used.has(s)) s = `${base}-${n++}`; return s; }
 async function addSrcPage(b, src, title, blocks) {
@@ -2780,7 +2813,7 @@ async function addSrcPage(b, src, title, blocks) {
 function syncSrcTitle(b, src, title) { (b.chapters || []).forEach((c) => c.pages.forEach((p) => { if (p.src === src) { p.title = title || 'Untitled'; p.slug = freeSlug(b, slugify(p.title), p.id); } })); }
 async function removeSrcPages(b, src) { for (const c of b.chapters || []) { const gone = c.pages.filter((p) => p.src === src); c.pages = c.pages.filter((p) => p.src !== src); for (const p of gone) { if (S.pages) delete S.pages[p.id]; await Store.deletePage(b.id, p.id).catch(() => { }); } } }
 function renameKind(b, k, v) { if (isBuiltinKind(k)) { b.colLabels = b.colLabels || {}; b.colLabels[k] = v; } else { const x = (b.colCustom || []).find((e) => e.key === k); if (x) { x.label = v; syncSrcTitle(b, k, v); } } }
-async function addCollateral(b) { const key = 'cx_' + uid().slice(-6); b.colCustom = b.colCustom || []; b.colCustom.push({ key, label: 'New collateral' }); collateralOf(b, key, true); await addSrcPage(b, key, 'New collateral', [B('mockup', { kind: key, display: 'artwork' })]); return key; }
+async function addCollateral(b) { const key = 'cx_' + uid().slice(-6); b.colCustom = b.colCustom || []; b.colCustom.push({ key, label: 'New collaterals' }); collateralOf(b, key, true); await addSrcPage(b, key, 'New collaterals', [B('mockup', { kind: key, display: 'artwork' })]); return key; }
 async function deleteCollateral(b, key) { const co = b.collateral?.[key]; const n = (co?.slots || []).filter((x) => x.file).length; if (!(await confirmDlg(`Delete “${kindLabel(key, b)}”?`, `Its page${n ? ` and ${n} uploaded file${n > 1 ? 's' : ''}` : ''} will be removed from the brandbook.`, 'Delete'))) return false; b.colCustom = (b.colCustom || []).filter((x) => x.key !== key); if (b.collateral) delete b.collateral[key]; await removeSrcPages(b, key); return true; }
 async function addFileSet(b) { const id = uid('fs'); b.fileSets = b.fileSets || []; b.fileSets.push({ id, label: 'New section', files: [] }); await addSrcPage(b, id, 'New section', [B('fileSet', { set: id })]); return id; }
 async function deleteFileSet(b, id) { const st = (b.fileSets || []).find((x) => x.id === id); if (!st) return false; const n = st.files.length; if (!(await confirmDlg(`Delete “${st.label}”?`, `Its page${n ? ` and ${n} file${n > 1 ? 's' : ''}` : ''} will be removed from the brandbook.`, 'Delete'))) return false; b.fileSets = b.fileSets.filter((x) => x !== st); await removeSrcPages(b, id); return true; }
@@ -2809,7 +2842,7 @@ function extraBlockPanel(bk) {
   const b = S.brand;
   if (bk.type === 'mockup') {
     const co = collateralOf(b, bk.kind, true);
-    return `<div class="pp-sec"><label class="fld"><span>Collateral name</span><input class="inp" data-coln="${bk.kind}" value="${esc(kindLabel(bk.kind))}" maxlength="40"></label><div class="row2"><button class="btn sm" data-pp="coladd">${ic('plus', 14)} New collateral</button>${isBuiltinKind(bk.kind) ? '<span></span>' : `<button class="btn sm danger-ghost" data-pp="coldel">${ic('trash', 14)} Delete</button>`}</div></div><div class="pp-sec"><h3>Your artwork · ${esc(kindLabel(bk.kind))}</h3><p class="muted sm">Upload your own designs. They replace the generated mockup on every page that shows ${esc(kindLabel(bk.kind).toLowerCase())}.</p>
+    return `<div class="pp-sec"><label class="fld"><span>Collaterals name</span><input class="inp" data-coln="${bk.kind}" value="${esc(kindLabel(bk.kind))}" maxlength="40"></label><div class="row2"><button class="btn sm" data-pp="coladd">${ic('plus', 14)} New collaterals</button>${isBuiltinKind(bk.kind) ? '<span></span>' : `<button class="btn sm danger-ghost" data-pp="coldel">${ic('trash', 14)} Delete</button>`}</div></div><div class="pp-sec"><h3>Your artwork · ${esc(kindLabel(bk.kind))}</h3><p class="muted sm">Upload your own designs. They replace the generated mockup on every page that shows ${esc(kindLabel(bk.kind).toLowerCase())}.</p>
       <div class="art-list">${co.slots.map((x, i) => `<div class="art-row"><span class="art-th">${x.file ? `<img src="${esc(x.file.url)}" alt="">` : ic('image', 16)}</span><input class="inp" data-artl="${i}" value="${esc(x.label || '')}" aria-label="Slot name" placeholder="Name, e.g. Front"><button class="icon-btn xs" data-artup="${i}" aria-label="${x.file ? 'Replace' : 'Upload'} ${esc(x.label || '')}" title="${x.file ? 'Replace' : 'Upload'}">${ic('upload', 13)}</button>${x.file ? `<button class="icon-btn xs" data-artrm="${i}" aria-label="Remove file" title="Remove file">${ic('x', 13)}</button>` : ''}<button class="icon-btn xs" data-artdel="${i}" aria-label="Delete slot" title="Delete slot">${ic('trash', 13)}</button></div>`).join('')}</div>
       <button class="btn sm full" data-pp="artadd">${ic('plus', 14)} Add slot</button></div>`;
   }
@@ -2854,7 +2887,7 @@ async function extraClick(t, s) {
   if (pp === 'upicons' || pp === 'upgraphics') { const key = pp.slice(2); const rs = await uploadMany(ACCEPT.image, true, { images: true, existing: b[key] || [] }); if (rs.length) { commit({ brand: true }, () => { b[key] = b[key] || []; rs.forEach((r) => b[key].push({ ...r, label: labelFrom(r.name) })); }); toast(`${rs.length} file${rs.length > 1 ? 's' : ''} added`); } return true; }
   if (t.dataset.uprm) { const [key, i] = t.dataset.uprm.split(':'); commit({ brand: true }, () => b[key].splice(+i, 1)); return true; }
   // custom collaterals & file sections
-  if (pp === 'coladd') { const k = await addCollateral(b); commit({ brand: true }, () => { }); const pg = b.chapters.flatMap((c) => c.pages).find((p) => p.src === k); if (pg) { Ed.view = pg.id; renderEditor?.(); } toast('Collateral added — rename it and upload artwork'); return true; }
+  if (pp === 'coladd') { const k = await addCollateral(b); commit({ brand: true }, () => { }); const pg = b.chapters.flatMap((c) => c.pages).find((p) => p.src === k); if (pg) { Ed.view = pg.id; renderEditor?.(); } toast('Collaterals added — rename it and upload artwork'); return true; }
   if (pp === 'coldel') { const bk = blk(); if (await deleteCollateral(b, bk.kind)) { commit({ brand: true }, () => { }); Ed.view = 'landing'; renderEditor?.(); } return true; }
   if (pp === 'fsnew') { const id = await addFileSet(b); const bk = blk(); const onPage = bk && bk.type === 'fileSet' && !bk.set; if (onPage) commit(s.scope, () => (blk().set = id)); else { commit({ brand: true }, () => { }); const pg = b.chapters.flatMap((c) => c.pages).find((p) => p.src === id); if (pg) { Ed.view = pg.id; renderEditor?.(); } } if (onPage) removeSrcPages(b, id); toast('Section created — name it and add files'); return true; }
   if (pp === 'fsdel') { const bk = blk(); if (await deleteFileSet(b, bk.set)) { commit({ brand: true }, () => { }); Ed.view = 'landing'; renderEditor?.(); } return true; }
@@ -2890,7 +2923,7 @@ function wzImagesStep(b) {
     <div class="img-grid" data-drop="img:${c.key}">${(b.images[c.key] || []).map((x, i) => `<div class="img-th"><img src="${esc(x.url)}" alt="${esc(x.name || c.label)}"><div class="th-acts"><button class="icon-btn sm" data-repimg="${c.key}:${i}" aria-label="Replace image" title="Replace">${ic('upload', 14)}</button><button class="icon-btn sm" data-delimg="${c.key}:${i}" aria-label="Remove image" title="Remove">${ic('x', 14)}</button></div></div>`).join('')}<button class="img-add" data-imgup="${c.key}" aria-label="Add to ${esc(c.label)}">${ic('plus', 20)}<span>Add or drop</span></button></div></div>`).join('')}
   <button class="cat-add" data-catadd>${ic('plus', 18)}<span><strong>Add a new section</strong><small>e.g. Social media, Events, Team portraits</small></span></button>`;
 }
-const EX_SECS = { icons: 'Icons', graphics: 'Graphic elements', collateral: 'Collateral artwork', docs: 'Templates & documents' };
+const EX_SECS = { icons: 'Icons', graphics: 'Graphic elements', collateral: 'Collaterals', docs: 'Templates & documents' };
 const EX_DEL_NOTE = { icons: 'The Iconography page goes back to the built-in icon set.', graphics: 'The Graphic Elements page goes back to the built-in patterns.', collateral: 'Collateral pages go back to the generated mockups, and collaterals you added (and their pages) are removed.', docs: 'They are removed from Templates & Downloads.' };
 async function deleteExSection(b, k) {
   const docs = (b.assets || []).filter((a) => a.category === 'documents');
@@ -2912,16 +2945,17 @@ function wzExtrasStep(b) {
   ${upGrid('icons', 'Icons', 'SVG, PNG or JPG icons. Shown on the Iconography page instead of the built-in set.', ACCEPT.image)}
   ${upGrid('graphics', 'Graphic elements', 'Patterns, shapes and supporting graphics (JPG, PNG, SVG). Shown on the Graphic Elements page.', ACCEPT.image)}
   ${hidden.has('collateral') ? '' : `<section class="ex-sec">${head('collateral', colKinds(b).reduce((n, [k]) => n + ((collateralOf(b, k, false)?.slots || []).filter((x) => x.file).length), 0), 'Your real designs (JPG, PNG or SVG) — they replace the generated mockups on the Collaterals pages. Rename any collateral or slot (e.g. Front / Back), add slots, or add a new collateral of your own.')}
-    <div class="co-grid">${colKinds(b).map(([k, l]) => { const co = collateralOf(b, k, false) || { slots: (COLLATERAL_SLOTS[k] || ['Artwork']).map((label) => ({ label, file: null })) }; const own = !isBuiltinKind(k); return `<div class="co-card"><div class="co-h"><input class="inp co-name" data-colname="${k}" value="${esc(l)}" aria-label="Collateral name" maxlength="40" title="Click to rename"><button class="icon-btn sm" data-wzartadd="${k}" aria-label="Add slot to ${esc(l)}" title="Add slot">${ic('plus', 15)}</button>${own ? `<button class="icon-btn sm" data-coldel="${k}" aria-label="Delete ${esc(l)}" title="Delete collateral">${ic('trash', 15)}</button>` : ''}</div><div class="co-slots">${co.slots.map((x, i) => `<div class="co-slot"><div class="drop sm ${x.file ? 'has' : ''}" data-drop="co:${k}:${i}" tabindex="0" role="button" aria-label="${x.file ? 'Replace' : 'Upload'} ${esc(x.label)}">${x.file ? `<img src="${esc(x.file.url)}" alt="${esc(x.label)}">` : `${ic('upload', 18)}`}</div><input class="inp" data-artlabel="${k}:${i}" value="${esc(x.label)}" aria-label="Slot name"><div class="co-acts">${x.file ? `<button class="link sm" data-wzartrm="${k}:${i}">Remove file</button>` : ''}<button class="link sm" data-wzartdel="${k}:${i}">Delete slot</button></div></div>`).join('')}</div></div>`; }).join('')}<button class="co-card co-new" data-coladd>${ic('plus', 22)}<strong>Add collateral</strong><small>e.g. Brochure, Uniform, Vehicle, Event booth</small></button></div></section>`}
+    <div class="co-grid">${colKinds(b).map(([k, l]) => { const co = collateralOf(b, k, false) || { slots: (COLLATERAL_SLOTS[k] || ['Artwork']).map((label) => ({ label, file: null })) }; const own = !isBuiltinKind(k); return `<div class="co-card"><div class="co-h"><input class="inp co-name" data-colname="${k}" value="${esc(l)}" aria-label="Collaterals name" maxlength="40" title="Click to rename"><button class="icon-btn sm" data-wzartadd="${k}" aria-label="Add slot to ${esc(l)}" title="Add slot">${ic('plus', 15)}</button>${own ? `<button class="icon-btn sm" data-coldel="${k}" aria-label="Delete ${esc(l)}" title="Delete collaterals">${ic('trash', 15)}</button>` : ''}</div><div class="co-slots">${co.slots.map((x, i) => `<div class="co-slot"><div class="drop sm ${x.file ? 'has' : ''}" data-drop="co:${k}:${i}" tabindex="0" role="button" aria-label="${x.file ? 'Replace' : 'Upload'} ${esc(x.label)}">${x.file ? `<img src="${esc(x.file.url)}" alt="${esc(x.label)}">` : `${ic('upload', 18)}`}</div><input class="inp" data-artlabel="${k}:${i}" value="${esc(x.label)}" aria-label="Slot name"><div class="co-acts">${x.file ? `<button class="link sm" data-wzartrm="${k}:${i}">Remove file</button>` : ''}<button class="link sm" data-wzartdel="${k}:${i}">Delete slot</button></div></div>`).join('')}</div></div>`; }).join('')}<button class="co-card co-new" data-coladd>${ic('plus', 22)}<strong>Add collaterals</strong><small>e.g. Brochure, Uniform, Vehicle, Event booth</small></button></div></section>`}
   ${hidden.has('docs') ? '' : `<section class="ex-sec">${head('docs', docs.length, 'Presentations, guidelines PDFs, email signatures… Shown on Collaterals → Templates & Downloads.')}
     <div class="doc-list" data-drop="docs">${docs.map(({ a, i }) => `<div class="doc-row">${ic('file', 16)}<input class="inp" data-docname="${i}" value="${esc(a.name)}" aria-label="File name"><span class="muted sm">${extOf(a.name)} · ${fmtSize(a.size)}</span><button class="icon-btn sm" data-wzdocrm="${i}" aria-label="Remove">${ic('x', 14)}</button></div>`).join('')}<button class="doc-add" data-wzup="docs" data-accept="*/*">${ic('plus', 18)}<span>Add or drop files</span></button></div></section>`}
   ${(b.fileSets || []).map((st) => `<section class="ex-sec"><div class="col-gh cat-h"><div class="cat-name"><input class="inp cat-inp" data-fsname="${st.id}" value="${esc(st.label)}" aria-label="Section name" maxlength="40"><span class="muted">${st.files.length}</span></div><div class="row-l"><button class="icon-btn sm" data-fsdel="${st.id}" aria-label="Delete section ${esc(st.label)}" title="Delete section">${ic('trash', 15)}</button></div></div><p class="muted sm" style="margin:-6px 0 14px">JPG, PNG, SVG, PDF or any other file. Shown on its own page in Collaterals, with downloads.</p>
     <div class="img-grid up-grid" data-drop="fs:${st.id}">${st.files.map((f, i) => `<div class="up-card"><div class="img-th contain">${isImgRef(f) ? `<img src="${esc(f.url)}" alt="">` : `<span class="file-tile">${ic('file', 26)}<b>${esc(extOf(f.name))}</b></span>`}<button class="icon-btn sm" data-fsrm="${st.id}:${i}" aria-label="Remove">${ic('x', 14)}</button></div><input class="inp" data-fslabel="${st.id}:${i}" value="${esc(f.label || labelFrom(f.name))}" aria-label="Name"></div>`).join('')}<button class="img-add" data-wzup="fs:${st.id}" data-accept="*/*">${ic('plus', 20)}<span>Add or drop</span></button></div></section>`).join('')}
   <button class="cat-add" data-fsadd>${ic('plus', 18)}<span><strong>Add a new section</strong><small>Name it and drop any files — e.g. Brochures, Presentations, Brand videos, Print-ready files</small></span></button>
-  ${hidden.size ? `<p class="ex-restore muted sm">Bring back a deleted section: ${[...hidden].map((k) => `<button class="ex-chip" data-exrestore="${k}">${ic('plus', 12)} ${esc(exL(k))}</button>`).join(' ')}</p>` : ''}`;
+  ${hidden.size || (b.colHidden || []).length ? `<p class="ex-restore muted sm">Add back a section: ${[...hidden].map((k) => `<button class="ex-chip" data-exrestore="${k}">${ic('plus', 12)} ${esc(exL(k))}</button>`).join(' ')}${hidden.has('collateral') ? '' : (b.colHidden || []).map((k) => `<button class="ex-chip" data-colrestore="${k}">${ic('plus', 12)} ${esc(kindLabel(k, b))}</button>`).join(' ')}</p>` : ''}`;
 }
 async function wzExtraUpload(target, files) {
   const b = Wz.b; const [kind, key, idx] = target.split(':');
+  if (kind === 'lxn') { const rs = await uploadPicked(files, { images: true }); b.logoExtras = b.logoExtras || []; rs.forEach((r) => b.logoExtras.push({ id: uid('lx'), label: labelFrom(r.name), file: r, dark: false })); if (rs.length) toast(`${rs.length} logo${rs.length > 1 ? 's' : ''} added — rename them under Additional logo variations`); return true; }
   if (kind === 'lx') { const [r] = await uploadPicked(files.slice(0, 1), { images: true }); if (r) b.logoExtras.find((x) => x.id === key).file = r; return true; }
   if (kind === 'co') { const [r] = await uploadPicked(files.slice(0, 1), { images: true }); if (r) collateralOf(b, key, true).slots[+idx].file = fileRef(r); return true; }
   if (kind === 'icons' || kind === 'graphics') { const rs = await uploadPicked(files, { images: true, existing: b[kind] || [] }); b[kind] = b[kind] || []; rs.forEach((r) => b[kind].push({ ...r, label: labelFrom(r.name) })); return true; }
@@ -2938,6 +2972,7 @@ async function wzExtraClick(t) {
   if (d.catdel) { const cats = ensureCats(b); const c = cats.find((x) => x.key === d.catdel); const n = (b.images[d.catdel] || []).length; if (n && !(await confirmDlg(`Remove “${c.label}”?`, `Its ${n} image${n > 1 ? 's' : ''} will be removed from the brandbook.`, 'Remove'))) return true; b.imageCats = cats.filter((x) => x.key !== d.catdel); delete b.images[d.catdel]; redraw(); return true; }
   if (d.wzup) { const fs = await pickFiles(d.accept || '*/*', true); if (fs.length) { toast(`Uploading ${fs.length} file${fs.length > 1 ? 's' : ''}…`); await wzExtraUpload(d.wzup, fs); redraw(); } return true; }
   if (d.exdel) { if (await deleteExSection(b, d.exdel)) redraw(); return true; }
+  if (d.colrestore) { b.colHidden = (b.colHidden || []).filter((k) => k !== d.colrestore); if (b.pdfSections) { const t = PDF_SEC[d.colrestore]?.title; if (t && !b.pdfSections.pages.includes(t)) b.pdfSections.pages.push(t); if (!b.pdfSections.kinds.includes(d.colrestore)) b.pdfSections.kinds.push(d.colrestore); } redraw(); return true; }
   if (d.exrestore) { b.exHidden = (b.exHidden || []).filter((k) => k !== d.exrestore); redraw(); return true; }
   if (d.wzrm) { const [k, i] = d.wzrm.split(':'); b[k].splice(+i, 1); redraw(); return true; }
   if (d.wzdocrm !== undefined) { b.assets.splice(+d.wzdocrm, 1); redraw(); return true; }
@@ -3047,5 +3082,479 @@ async function imgBarAction(act, el) {
     if (act === 'edit') return blk && select({ kind: 'block', scope: 'bk:' + blk.dataset.block });
     if (act === 'replace') { const [r] = await uploadMany(ACCEPT.image, false, { images: true }); if (!r) return; commit({ brand: true }, () => { const co = collateralOf(b, d.mock, true); const slot = co.slots.find((x) => !x.file) || co.slots[0] || (co.slots[0] = { label: 'Artwork', file: null }); slot.file = fileRef(r); }); toast('Artwork added — it now replaces the generated mockup. Add more in the properties panel.'); if (blk) select({ kind: 'block', scope: 'bk:' + blk.dataset.block }); }
   }
+}
+
+/* =====================================================================
+   Import from a brand guidelines PDF
+   Reads text, fonts, colour codes, embedded images and vector logos with
+   pdf.js (loaded on demand), then shows a review screen. Nothing is
+   applied until the user confirms.
+   ===================================================================== */
+const PDFJS_VER = '3.11.174';
+async function loadPdfJs() {
+  if (window.pdfjsLib) return window.pdfjsLib;
+  const bases = [new URL('vendor/', location.href.split('#')[0]).href, `https://cdn.jsdelivr.net/npm/pdfjs-dist@${PDFJS_VER}/build/`, `https://unpkg.com/pdfjs-dist@${PDFJS_VER}/build/`];
+  for (const base of bases) {
+    try { await loadScript(base + 'pdf.min.js'); const lib = window.pdfjsLib || window['pdfjs-dist/build/pdf']; if (lib) { window.pdfjsLib = lib; lib.GlobalWorkerOptions.workerSrc = base + 'pdf.worker.min.js'; return lib; } } catch (e) { /* try next */ }
+  }
+  throw new Error('The PDF reader could not be loaded. Check your connection and try again.');
+}
+
+/* ---------- section vocabulary: what a guideline document can contain ---------- */
+// [key, chapter, template page title, heading regex, strong body regex]
+const PDF_SECS = [
+  ['businessCard', 'collaterals', 'Business Cards', /\b(business|visiting|name)[\s-]?cards?\b/i, /\b(business|visiting)[\s-]?cards?\b/i],
+  ['letterhead', 'collaterals', 'Letterheads', /\bletter[\s-]?heads?\b/i, /\bletter[\s-]?heads?\b/i],
+  ['stationery', 'collaterals', 'Stationery', /\b(stationery|envelopes?|compliment slips?|notebooks?)\b/i, /\b(stationery|envelopes?|compliment slips?)\b/i],
+  ['social', 'collaterals', 'Social Media', /\b(social media|social posts?|instagram|facebook|linkedin|tiktok)\b/i, /\b(social media|instagram (posts?|stor(y|ies)))\b/i],
+  ['packaging', 'collaterals', 'Packaging', /\b(packaging|labels?|pack design)\b/i, /\bpackaging\b/i],
+  ['merch', 'collaterals', 'Merchandise', /\b(merchandise|merch|apparel|uniforms?|t-?shirts?|tote bags?)\b/i, /\b(merchandise|apparel|uniforms?)\b/i],
+  ['signage', 'collaterals', 'Digital Applications', /\b(signage|wayfinding|vehicles?|fleet|shop[\s-]?fronts?|store[\s-]?fronts?)\b/i, /\b(signage|wayfinding)\b/i],
+  ['digital', 'collaterals', 'Digital Applications', /\b(website|web ?pages?|digital applications?|mobile app|email signatures?|newsletters?|web banners?|digital)\b/i, /\b(website|email signatures?|newsletters?|mobile app)\b/i],
+  ['templates', 'collaterals', 'Templates & Downloads', /\b(templates?|presentations?|powerpoint|keynote|downloads?)\b/i, /\b(presentation templates?|powerpoint|keynote)\b/i],
+  ['logoguide', 'identity', 'Logo Guidelines', /\b(clear[\s-]?space|exclusion zone|minimum size|misuse|incorrect use|don'?ts?|logo placement|safe area|protection area)\b/i, /\b(clear[\s-]?space|exclusion zone|minimum size|misuse)\b/i],
+  ['logovar', 'identity', 'Logo Variations', /\b(logo (variations?|versions?|colou?rs?|lock-?ups?)|variations?|lock-?ups?|secondary logo|alternat\w* logo|stacked|horizontal version)\b/i, /\b(logo variations?|secondary logo|lock-?ups?)\b/i],
+  ['logo', 'identity', 'Logo System', /\b(logo|logotype|wordmark|brand ?mark|emblem|monogram|symbol)\b/i, /\b(primary logo|logotype|wordmark)\b/i],
+  ['colour', 'identity', 'Colour Palette', /\b(colou?rs?|palette)\b/i, /\b(pantone|cmyk|colou?r palette)\b/i],
+  ['type', 'identity', 'Typography', /\b(typography|typefaces?|fonts?|type hierarchy|type system)\b/i, /\b(typeface|typography)\b/i],
+  ['icons', 'identity', 'Iconography', /\b(icons?|iconography|pictograms?)\b/i, /\biconography\b/i],
+  ['photo', 'identity', 'Photography', /\b(photography|imagery|photos?|image style|art direction)\b/i, /\b(photography|image style|art direction)\b/i],
+  ['graphic', 'identity', 'Graphic Elements', /\b(patterns?|graphic elements?|graphic devices?|illustrations?|shapes?|textures?|motifs?|supergraphics?)\b/i, /\b(graphic elements?|illustration style|patterns?)\b/i],
+  ['intro', 'strategy', 'Introduction', /\b(introduction|welcome|how to use|about (this|these) guide)/i, /\b(these guidelines|this guide(book)?)\b/i],
+  ['story', 'strategy', 'Brand Story', /\b(our story|brand story|history|heritage|who we are|about us)\b/i, /\b(our story|our history)\b/i],
+  ['vision', 'strategy', 'Vision and Mission', /\b(vision|mission|purpose)\b/i, /\b(our (vision|mission|purpose))\b/i],
+  ['values', 'strategy', 'Brand Values', /\b(values|principles|beliefs)\b/i, /\b(our values|core values|brand values)\b/i],
+  ['pos', 'strategy', 'Brand Positioning', /\b(positioning|proposition|brand promise|what we do)\b/i, /\b(positioning statement|value proposition|brand promise)\b/i],
+  ['aud', 'strategy', 'Target Audience', /\b(audience|customers?|personas?|who we serve)\b/i, /\b(target audience|personas?)\b/i],
+  ['pers', 'strategy', 'Brand Personality', /\b(personality|character|archetypes?|brand attributes)\b/i, /\b(brand personality|archetype)\b/i],
+  ['tone', 'strategy', 'Tone of Voice', /\b(tone of voice|voice|tone|messaging|copywriting|writing style)\b/i, /\b(tone of voice|our voice)\b/i],
+];
+const PDF_SEC = Object.fromEntries(PDF_SECS.map((x) => [x[0], { key: x[0], ch: x[1], title: x[2], h: x[3], b: x[4] }]));
+const PDF_KIND_OF = { businessCard: 'businessCard', letterhead: 'letterhead', stationery: 'stationery', social: 'social', packaging: 'packaging', merch: 'merch', signage: 'signage', digital: 'digital' };
+
+/* ---------- small helpers ---------- */
+const PX = { busy: Promise.resolve(), noText: false };
+(function patchCanvasText() { // lets us render a page with text hidden, so vector logos and shapes stand alone
+  const P = window.CanvasRenderingContext2D && CanvasRenderingContext2D.prototype; if (!P || P.__bbPatched) return;
+  const ft = P.fillText, st = P.strokeText; P.fillText = function (...a) { if (PX.noText) return; return ft.apply(this, a); }; P.strokeText = function (...a) { if (PX.noText) return; return st.apply(this, a); }; P.__bbPatched = true;
+})();
+function serial(fn) { const run = PX.busy.then(fn, fn); PX.busy = run.catch(() => { }); return run; }
+function newCanvas(w, h) { const c = document.createElement('canvas'); c.width = Math.max(1, Math.round(w)); c.height = Math.max(1, Math.round(h)); return c; }
+const canvasBlob = (c, type = 'image/png', q = 0.9) => new Promise((res) => c.toBlob((b) => res(b), type, q));
+const rgbHex = (r, g, b) => '#' + [r, g, b].map((v) => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, '0')).join('').toUpperCase();
+const cmykHex = (c, m, y, k) => rgbHex(255 * (1 - c / 100) * (1 - k / 100), 255 * (1 - m / 100) * (1 - k / 100), 255 * (1 - y / 100) * (1 - k / 100));
+const hexDist = (a, b) => { const p = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16)); const x = p(a), y = p(b); return Math.abs(x[0] - y[0]) + Math.abs(x[1] - y[1]) + Math.abs(x[2] - y[2]); };
+const satOf = (h) => { const [r, g, b] = [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16) / 255); const mx = Math.max(r, g, b), mn = Math.min(r, g, b); return mx === 0 ? 0 : (mx - mn) / mx; };
+const GENERIC_RE = () => new RegExp(GENERIC_TITLE.source, 'i');
+const GENERIC_TITLE = /\b(brand|guide(line)?s?|guide ?book|book|manual|identity|style ?guide|standards|visual|version|v\d|edition|draft|final|untitled|document|copy|20\d\d)\b/gi;
+function cleanFamily(raw) {
+  let n = String(raw || '').replace(/^[A-Z]{6}\+/, '').split(/[,-]/)[0].trim(); if (!n || /symbol|dingbat|wingding|webdings|marlett|^g_d\d|^f\d+$|^t\d+$/i.test(n)) return '';
+  n = n.replace(/(MT|PS|Std|Pro|LT|BT|OT|Com|Variable|VF)$/,'').replace(/(Bold|Regular|Light|Medium|Italic|Black|Heavy|Semi|Demi|Extra|Ultra|Thin|Book|Roman|Condensed|Oblique|Hairline)+$/g, '');
+  n = n.replace(/([a-z])([A-Z])/g, '$1 $2').replace(/_/g, ' ').replace(/\s+/g, ' ').trim();
+  return n.length > 1 ? n : '';
+}
+
+/* ---------- text: items → lines → paragraphs ---------- */
+function toLines(items, pageH) {
+  const its = items.map((it) => ({ s: it.str, x: it.transform[4], top: pageH - it.transform[5], h: Math.abs(it.transform[3]) || Math.hypot(it.transform[2], it.transform[3]) || it.height || 10, w: it.width || 0, f: it.fam })).filter((x) => x.s && x.s.trim());
+  its.sort((a, b) => a.top - b.top || a.x - b.x);
+  const lines = [];
+  for (const it of its) {
+    const L = lines.find((l) => Math.abs(l.top - it.top) < Math.max(2, Math.min(l.h, it.h) * 0.45) && it.x >= l.x - 2 && it.x - (l.x + l.w) < it.h * 2.2);
+    if (L) { const gap = it.x - (L.x + L.w); L.s += (gap > it.h * 0.15 && !/\s$/.test(L.s) && !/^\s/.test(it.s) ? ' ' : '') + it.s; L.w = Math.max(L.w, it.x + it.w - L.x); L.h = Math.max(L.h, it.h); L.fams[it.f] = (L.fams[it.f] || 0) + it.s.length; }
+    else lines.push({ s: it.s, x: it.x, top: it.top, h: it.h, w: it.w, fams: { [it.f]: it.s.length } });
+  }
+  lines.forEach((l) => { l.s = l.s.replace(/\s+/g, ' ').trim(); l.f = Object.entries(l.fams).sort((a, b) => b[1] - a[1])[0]?.[0] || ''; });
+  return lines.filter((l) => l.s);
+}
+function toParas(lines) {
+  const ps = []; let cur = null;
+  for (const l of [...lines].sort((a, b) => a.top - b.top || a.x - b.x)) {
+    if (cur && Math.abs(l.h - cur.h) < cur.h * 0.2 && l.top - cur.bottom < l.h * 1.9 && l.top >= cur.bottom - 2 && Math.abs(l.x - cur.x) < 40) { cur.s += (cur.s.endsWith('-') ? '' : ' ') + l.s; cur.bottom = l.top + l.h; cur.n++; }
+    else { cur = { s: l.s, x: l.x, top: l.top, bottom: l.top + l.h, h: l.h, n: 1 }; ps.push(cur); }
+  }
+  return ps;
+}
+
+/* ---------- read the document ---------- */
+async function pdfRead(file, onProgress) {
+  const lib = await loadPdfJs();
+  const doc = await lib.getDocument({ data: new Uint8Array(await file.arrayBuffer()), isEvalSupported: false, fontExtraProperties: true }).promise;
+  const meta = await doc.getMetadata().catch(() => ({}));
+  const N = Math.min(doc.numPages, 150); const pages = [];
+  for (let n = 1; n <= N; n++) {
+    const page = await doc.getPage(n); const vp = page.getViewport({ scale: 1 });
+    const ops = await page.getOperatorList();
+    const tc = await page.getTextContent();
+    const famOf = {}; tc.items.forEach((it) => { if (it.fontName && !(it.fontName in famOf)) { let nm = ''; try { const fo = page.commonObjs.get(it.fontName); nm = cleanFamily(fo?.name || fo?.loadedName || ''); } catch (e) { } famOf[it.fontName] = nm; } it.fam = famOf[it.fontName] || ''; });
+    const lines = toLines(tc.items, vp.height);
+    const imgIds = []; for (let i = 0; i < ops.fnArray.length; i++) if (ops.fnArray[i] === lib.OPS.paintImageXObject) imgIds.push(ops.argsArray[i][0]);
+    const thumb = await serial(() => renderPage(page, 260 / vp.width));
+    pages.push({ n, page, w: vp.width, h: vp.height, lines, text: lines.map((l) => l.s).join('\n'), imgIds: [...new Set(imgIds)], thumb: thumb.toDataURL('image/jpeg', 0.7) });
+    onProgress && onProgress(n, N);
+  }
+  return { doc, meta, pages, total: doc.numPages, name: file.name, file };
+}
+async function renderPage(page, scale, noText = false) {
+  const vp = page.getViewport({ scale }); const c = newCanvas(vp.width, vp.height); const ctx = c.getContext('2d', { willReadFrequently: true });
+  ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, c.width, c.height);
+  PX.noText = noText; try { await page.render({ canvasContext: ctx, viewport: vp, background: 'rgba(255,255,255,1)' }).promise; } finally { PX.noText = false; }
+  return c;
+}
+async function pageImage(page, id) {
+  const store = id.startsWith('g_') ? page.commonObjs : page.objs;
+  const o = await Promise.race([new Promise((res) => { try { store.get(id, res); } catch (e) { res(null); } }), new Promise((res) => setTimeout(() => res(null), 4000))]);
+  if (!o || !o.width || !o.height) return null;
+  const c = newCanvas(o.width, o.height); const ctx = c.getContext('2d');
+  if (o.bitmap) ctx.drawImage(o.bitmap, 0, 0);
+  else if (o.data && (o.kind === 2 || o.kind === 3)) { const id2 = ctx.createImageData(o.width, o.height); const d = o.data, out = id2.data; if (o.kind === 3) out.set(d.subarray(0, out.length)); else for (let i = 0, j = 0; j < d.length && i < out.length; i += 4, j += 3) { out[i] = d[j]; out[i + 1] = d[j + 1]; out[i + 2] = d[j + 2]; out[i + 3] = 255; } ctx.putImageData(id2, 0, 0); }
+  else return null;
+  return c;
+}
+
+/* ---------- analysis ---------- */
+function pdfAnalyse(R) {
+  const allLines = R.pages.flatMap((p) => p.lines.map((l) => ({ ...l, p })));
+  const hs = allLines.map((l) => l.h).sort((a, b) => a - b); const med = hs[Math.floor(hs.length / 2)] || 10; R.med = med;
+  const isHead = (l) => l.h >= med * 1.3 || (l.h >= med * 1.12 && l.s.split(' ').length <= 6);
+  // classify pages by their headings
+  for (const p of R.pages) {
+    const heads = p.lines.filter((l) => isHead(l) && l.s.length < 70 && /[a-z]/i.test(l.s)).sort((a, b) => b.h - a.h).slice(0, 4);
+    p.heads = heads.map((l) => l.s); p.secs = new Set();
+    for (const hd of heads) for (const s of PDF_SECS) if (s[3].test(hd.s)) { p.secs.add(s[0]); break; }
+    p.sec = [...p.secs][0] || null;
+    if (!p.sec) { let best = null, bc = 0; for (const s of PDF_SECS) { const m = (p.text.match(new RegExp(s[4].source, 'gi')) || []).length; if (m > bc) { bc = m; best = s[0]; } } if (bc >= 2) { p.sec = best; p.secs.add(best); } }
+  }
+  // which sections the document has
+  const found = {}; const bodyCount = {};
+  for (const p of R.pages) { p.secs.forEach((k) => (found[k] = (found[k] || 0) + 1)); for (const s of PDF_SECS) bodyCount[s[0]] = (bodyCount[s[0]] || 0) + (p.text.match(new RegExp(s[4].source, 'gi')) || []).length; }
+  // a contents page lists sections in short lines — count those too
+  for (const p of R.pages) if (/\b(contents|index|overview)\b/i.test(p.heads.join(' ') + ' ' + p.text.slice(0, 120))) for (const l of p.lines) if (l.s.split(' ').length <= 6) for (const s of PDF_SECS) if (s[3].test(l.s)) { found[s[0]] = found[s[0]] || 1; break; }
+  for (const s of PDF_SECS) if (!found[s[0]] && bodyCount[s[0]] >= 2) found[s[0]] = 1;
+  R.found = found;
+  R.copy = pdfCopy(R, isHead);
+  R.info = pdfInfo(R, isHead);
+  R.colours = pdfColourCodes(R);
+  R.fonts = pdfFonts(R, isHead);
+  return R;
+}
+function textOf(R, keys) { return R.pages.filter((p) => keys.includes(p.sec)).map((p) => p.text).join('\n'); }
+function paraAfter(R, re, minLen = 25) {
+  for (const p of R.pages) {
+    const ps = toParas(p.lines);
+    for (let i = 0; i < ps.length; i++) if (re.test(ps[i].s) && ps[i].s.length < 60) { const nx = ps.slice(i + 1).find((x) => x.s.length >= minLen && !re.test(x.s)); if (nx) return nx.s.replace(/\s+/g, ' ').trim(); }
+    const inl = p.lines.find((l) => new RegExp(re.source + '\\s*[:—–-]\\s*\\S', 'i').test(l.s)); if (inl) { const v = inl.s.replace(new RegExp('^.*?' + re.source + '\\s*[:—–-]\\s*', 'i'), ''); if (v.length >= minLen) return v; }
+  }
+  return '';
+}
+function firstLongPara(R, keys, min = 110) { for (const p of R.pages) if (keys.includes(p.sec)) { const x = toParas(p.lines).find((q) => q.s.length >= min); if (x) return x.s; } return ''; }
+function titledItems(R, key, isHead) { // e.g. values: short bold titles each followed by a sentence
+  const p = R.pages.find((x) => x.sec === key); if (!p) return null;
+  const ls = [...p.lines].sort((a, b) => a.top - b.top || a.x - b.x); const out = [];
+  for (let i = 0; i < ls.length; i++) { const l = ls[i]; if (l.s.split(' ').length <= 4 && l.s.length <= 32 && !PDF_SEC[key].h.test(l.s) && /^[A-Z]/.test(l.s)) { const body = ls.slice(i + 1).filter((m) => m.top > l.top && m.top - l.top < l.h * 6 && Math.abs(m.x - l.x) < 30 && m.h < l.h).map((m) => m.s).join(' '); if (body.length > 12) out.push({ title: l.s.replace(/[.:]$/, ''), text: body.slice(0, 220) }); } }
+  return out.length >= 2 ? out.slice(0, 6) : null;
+}
+function pdfCopy(R, isHead) {
+  const c = {}; const cut = (s, n) => (s.length > n ? s.slice(0, n).replace(/\s+\S*$/, '') + '…' : s);
+  const v = paraAfter(R, /\b(our )?vision\b/i); if (v) c['vision.v'] = cut(v, 260);
+  const m = paraAfter(R, /\b(our )?mission\b/i); if (m) c['vision.m'] = cut(m, 260);
+  const st = firstLongPara(R, ['story']); if (st) c['story.lead'] = cut(st, 320);
+  const it = firstLongPara(R, ['intro']); if (it) c['intro.text'] = cut(it, 420);
+  const tn = firstLongPara(R, ['tone'], 60); if (tn) c['tone.lead'] = cut(tn, 300);
+  const ps = paraAfter(R, /\b(positioning( statement)?|brand promise|value proposition)\b/i); if (ps) c['pos.h'] = cut(ps, 200);
+  const vals = titledItems(R, 'values', isHead); if (vals) c['values.items'] = vals;
+  const pers = titledItems(R, 'pers', isHead); if (pers) c['pers.items'] = pers.slice(0, 3);
+  return c;
+}
+function pdfInfo(R, isHead) {
+  const all = R.pages.map((p) => p.text).join('\n');
+  const email = (all.match(/[\w.+-]+@[\w-]+\.[\w.-]{2,}/) || [''])[0];
+  const site = (all.match(/\b(?:https?:\/\/)?(?:www\.)[\w-]+(?:\.[\w-]+)+(?:\/[\w\-./]*)?/i) || all.match(/\bhttps?:\/\/[\w-]+(?:\.[\w-]+)+/i) || [''])[0].replace(/[.,)]+$/, '');
+  const phone = ((all.match(/(?:\+|\b00)\d[\d\s().-]{7,16}\d/) || [''])[0] || '').trim();
+  // name: metadata title → biggest non-generic line on the cover → file name
+  const t = String(R.meta?.info?.Title || '').replace(GENERIC_TITLE, '').replace(/[-–—|_:]+/g, ' ').replace(/\s+/g, ' ').trim();
+  const cover = R.pages[0]; const coverLines = cover ? [...cover.lines].sort((a, b) => b.h - a.h) : [];
+  const coverName = coverLines.map((l) => l.s.replace(GENERIC_TITLE, '').replace(/[-–—|_:]+/g, ' ').replace(/\s+/g, ' ').trim()).find((s) => s.length >= 2 && s.length <= 40 && /[a-z]/i.test(s));
+  const fileName = R.name.replace(/\.pdf$/i, '').replace(/[_-]+/g, ' ').replace(GENERIC_TITLE, '').replace(/\s+/g, ' ').trim();
+  const name = (t.length >= 2 && t.length <= 40 ? t : '') || coverName || fileName || '';
+  const tag = paraAfter(R, /\b(tagline|slogan|strap ?line|brand line)\b/i, 4) || (coverLines.find((l) => l.s !== coverLines[0]?.s && l.s.split(' ').length >= 3 && l.s.split(' ').length <= 12 && !GENERIC_RE().test(l.s))?.s || '');
+  const desc = paraAfter(R, /\b(about( us)?|who we are|introduction|overview|our story)\b/i, 90) || firstLongPara(R, ['intro', 'story', 'vision', 'pos']) || firstLongPara(R, R.pages.map((p) => p.sec), 120);
+  const IND = [['Architecture & Interiors', /architect|interior|spatial/gi], ['Fashion & Apparel', /fashion|apparel|clothing|couture/gi], ['Food & Beverage', /\bfood|beverage|restaurant|coffee|caf[eé]|bakery|drinks?\b/gi], ['Hospitality', /hotel|hospitality|resort|travel/gi], ['Technology', /software|technology|\btech\b|saas|platform|digital product/gi], ['Manufacturing', /manufactur|industrial|engineering/gi], ['B2B Services', /consult|agency|b2b|professional services/gi], ['Finance', /bank|financ|invest|insurance|fintech/gi], ['Healthcare', /health|medical|clinic|pharma|wellness/gi], ['Education', /school|education|university|learning|academy/gi], ['Retail', /retail|store|shop|e-?commerce/gi], ['Real Estate', /real estate|property|developer|homes/gi], ['Media & Entertainment', /media|entertainment|film|music|studio/gi], ['Non-profit', /non-?profit|charity|foundation|ngo/gi], ['Energy', /energy|solar|renewable|power|oil/gi]];
+  const sample = [desc, textOf(R, ['intro', 'story', 'vision', 'pos'])].join(' ');
+  const ind = IND.map(([n, re]) => [n, (sample.match(re) || []).length]).sort((a, b) => b[1] - a[1])[0];
+  const loc = paraAfter(R, /\b(address|location|headquarters|based in)\b/i, 4).slice(0, 60);
+  return { name: name.slice(0, 60), tagline: tag.slice(0, 90), description: (desc || '').slice(0, 400), website: site, email, phone, location: loc, industry: ind && ind[1] >= 2 ? ind[0] : '' };
+}
+function pdfColourCodes(R) {
+  const out = [];
+  for (const p of R.pages) {
+    const codes = [];
+    for (const l of p.lines) {
+      const s = l.s; let m;
+      const reHex = /(?:#|\bhex(?:adecimal)?\s*[:#]?\s*#?|\bweb\s*[:#]?\s*#?)([0-9a-f]{6})\b/gi; while ((m = reHex.exec(s))) codes.push({ t: 'hex', hex: '#' + m[1].toUpperCase(), l, idx: m.index });
+      const reRgb = /\bR\s*:?\s*(\d{1,3})\s*[,/]?\s*G\s*:?\s*(\d{1,3})\s*[,/]?\s*B\s*:?\s*(\d{1,3})\b|\bRGB\s*[:\-]?\s*(\d{1,3})\s*[,/\s]\s*(\d{1,3})\s*[,/\s]\s*(\d{1,3})\b/gi; while ((m = reRgb.exec(s))) { const v = (m[1] ? [m[1], m[2], m[3]] : [m[4], m[5], m[6]]).map(Number); if (v.every((x) => x <= 255)) codes.push({ t: 'rgb', hex: rgbHex(...v), l, idx: m.index }); }
+      const reCmyk = /\bC\s*:?\s*(\d{1,3})\s*%?\s*[,/]?\s*M\s*:?\s*(\d{1,3})\s*%?\s*[,/]?\s*Y\s*:?\s*(\d{1,3})\s*%?\s*[,/]?\s*K\s*:?\s*(\d{1,3})|\bCMYK\s*[:\-]?\s*(\d{1,3})\s*[,/\s]\s*(\d{1,3})\s*[,/\s]\s*(\d{1,3})\s*[,/\s]\s*(\d{1,3})/gi; while ((m = reCmyk.exec(s))) { const v = (m[1] ? [m[1], m[2], m[3], m[4]] : [m[5], m[6], m[7], m[8]]).map(Number); if (v.every((x) => x <= 100)) codes.push({ t: 'cmyk', hex: cmykHex(...v), cmyk: v.join(' / '), l, idx: m.index }); }
+      const rePms = /\b(?:pantone|pms)\s*[:\-]?\s*([\w][\w\- ]{0,18}?\s?(?:C|U|CP|UP|TCX|TPX)?)\b(?=\s|$|,|\/)/gi; while ((m = rePms.exec(s))) codes.push({ t: 'pms', pms: 'Pantone ' + m[1].trim(), l, idx: m.index });
+    }
+    if (!codes.length) continue;
+    codes.sort((a, b) => a.l.top - b.l.top || a.l.x - b.l.x || a.idx - b.idx);
+    // group codes that describe the same swatch (stacked HEX / RGB / CMYK / Pantone)
+    const groups = [];
+    for (const c of codes) {
+      let g = groups.find((g) => !g.types.has(c.t) && Math.abs(g.x - c.l.x) < 70 && c.l.top - g.bottom < Math.max(40, c.l.h * 4) && c.l.top >= g.top - 2);
+      if (!g) { g = { types: new Set(), x: c.l.x, top: c.l.top, bottom: c.l.top, codes: [] }; groups.push(g); }
+      g.types.add(c.t); g.codes.push(c); g.bottom = Math.max(g.bottom, c.l.top);
+    }
+    for (const g of groups) {
+      const pick = (t) => g.codes.find((c) => c.t === t);
+      const hex = (pick('hex') || pick('rgb') || pick('cmyk'))?.hex; if (!hex) continue;
+      // the colour's name: same line before the code, or the closest short label above
+      const first = g.codes[0]; let name = first.l.s.slice(0, first.idx).replace(/\b(hex|rgb|cmyk|pantone|pms|web)\b.*$/i, '').replace(/[:#|•·–—-]+\s*$/, '').trim();
+      if (!/[a-z]{2}/i.test(name) || name.length > 32) name = '';
+      if (!name) { const lab = p.lines.filter((l) => l.top < g.top - 1 && g.top - l.top < 110 && Math.abs(l.x - g.x) < 120 && l.s.length <= 32 && l.s.split(' ').length <= 4 && /[a-z]{2}/i.test(l.s) && !/\d{2}|hex|rgb|cmyk|pantone|pms|\b(primary|secondary|tertiary|accent|neutral|supporting)\b.*colou?rs?|palette/i.test(l.s)).sort((a, b) => b.top - a.top)[0]; name = lab ? lab.s : ''; }
+      const roleLine = p.lines.filter((l) => l.top <= g.top && l.s.split(' ').length <= 4 && (l.s.match(/\b(primary|secondary|tertiary|accent|neutral|supporting|core|highlight)\b/gi) || []).length === 1).sort((a, b) => b.top - a.top)[0];
+      const rw = roleLine ? roleLine.s.toLowerCase() : ''; const role = /primary|core/.test(rw) ? 'primary' : /secondary/.test(rw) ? 'secondary' : /tertiary|accent|highlight|supporting/.test(rw) ? 'accent' : /neutral/.test(rw) ? 'neutral' : '';
+      out.push({ hex, name: name.replace(/\s+/g, ' ').slice(0, 30), role, pms: pick('pms')?.pms || '', cmyk: pick('cmyk')?.cmyk || '', page: p.n });
+    }
+  }
+  // de-duplicate and fill in roles
+  const uniq = []; for (const c of out) if (!uniq.some((u) => hexDist(u.hex, c.hex) < 6)) uniq.push(c); else { const u = uniq.find((x) => hexDist(x.hex, c.hex) < 6); if (!u.name && c.name) u.name = c.name; if (!u.role && c.role) u.role = c.role; }
+  return pdfRoles(uniq.slice(0, 16));
+}
+function pdfRoles(cs) {
+  let i = 0; cs.forEach((c, k) => { c.id = 'pc' + k; if (!c.name) c.name = 'Colour ' + (k + 1); });
+  if (!cs.some((c) => c.role === 'primary') && cs.length) { const f = cs.find((c) => !c.role) || cs[0]; f.role = 'primary'; }
+  for (const c of cs) if (!c.role) { const s = satOf(c.hex); c.role = s < 0.12 ? 'neutral' : !cs.some((x) => x.role === 'secondary') ? 'secondary' : 'accent'; i++; }
+  return cs;
+}
+function pdfFonts(R, isHead) {
+  const st = {};
+  for (const p of R.pages) for (const l of p.lines) for (const [f, n] of Object.entries(l.fams)) { if (!f) continue; const s = (st[f] = st[f] || { fam: f, chars: 0, headChars: 0, bodyChars: 0, size: 0 }); s.chars += n; s.size += n * l.h; if (isHead(l)) s.headChars += n; else s.bodyChars += n; }
+  // families written out in the typography section ("Primary typeface: …") or shown as specimens
+  const typeText = textOf(R, ['type']); const named = [];
+  const reNamed = /\b(primary|secondary|heading|headline|display|body|supporting|accent|brand)\s+(?:typeface|font|type)\s*(?:is|:|—|–|-)?\s*([A-Z][A-Za-z0-9]+(?: [A-Z][A-Za-z0-9]+){0,2})/g; let m;
+  while ((m = reNamed.exec(typeText))) named.push({ role: /primary|heading|headline|display|brand/i.test(m[1]) ? 'heading' : /accent/i.test(m[1]) ? 'accent' : 'body', fam: cleanFamily(m[2]) || m[2] });
+  const known = new Set([...Object.keys(st), ...GOOGLE_FONTS.map((f) => f[0])]);
+  for (const p of R.pages.filter((x) => x.sec === 'type')) for (const l of p.lines) { const f = [...known].find((k) => k.length > 3 && new RegExp('^' + k.replace(/ /g, '\\s?') + '\\b', 'i').test(l.s)); if (f) { st[f] = st[f] || { fam: f, chars: 0, headChars: 0, bodyChars: 0, size: 0 }; st[f].mentioned = (st[f].mentioned || 0) + 1; } }
+  const list = Object.values(st).filter((s) => s.chars >= 15 || s.mentioned).map((s) => ({ ...s, avg: s.chars ? s.size / s.chars : 0 }));
+  const byHead = [...list].sort((a, b) => (b.mentioned || 0) * 50 + b.headChars * 2 + b.avg - ((a.mentioned || 0) * 50 + a.headChars * 2 + a.avg));
+  const byBody = [...list].sort((a, b) => b.bodyChars - a.bodyChars);
+  const pick = { heading: named.find((x) => x.role === 'heading')?.fam || byHead[0]?.fam || '', body: named.find((x) => x.role === 'body')?.fam || byBody[0]?.fam || '', accent: named.find((x) => x.role === 'accent')?.fam || '' };
+  if (!pick.accent) pick.accent = list.map((x) => x.fam).find((f) => f !== pick.heading && f !== pick.body) || '';
+  return { pick, all: [...new Set([...named.map((x) => x.fam), ...list.sort((a, b) => b.chars - a.chars).map((x) => x.fam)])].slice(0, 12) };
+}
+
+/* ---------- pixels: logos and colour swatches ---------- */
+function analyseCanvas(src, gridW = 360) {
+  const s = gridW / src.width; const W = gridW, H = Math.max(1, Math.round(src.height * s)); const c = newCanvas(W, H); const x = c.getContext('2d', { willReadFrequently: true }); x.drawImage(src, 0, 0, W, H);
+  return { W, H, s, d: x.getImageData(0, 0, W, H).data };
+}
+function dominant(d, W, x0, y0, x1, y1) { const h = new Map(); for (let y = y0; y < y1; y += 2) for (let x = x0; x < x1; x += 2) { const i = (y * W + x) * 4; const k = (d[i] >> 4) << 8 | (d[i + 1] >> 4) << 4 | (d[i + 2] >> 4); h.set(k, (h.get(k) || 0) + 1); } let best = 0, bk = 0; h.forEach((v, k) => { if (v > best) { best = v; bk = k; } }); return [((bk >> 8) & 15) * 16 + 8, ((bk >> 4) & 15) * 16 + 8, (bk & 15) * 16 + 8]; }
+function blobs(A, box, bg, depth = 0) {
+  const { W, H, d } = A; const [x0, y0, x1, y1] = box; const bw = x1 - x0, bh = y1 - y0; const T = 60;
+  const mask = new Uint8Array(bw * bh); for (let y = 0; y < bh; y++) for (let x = 0; x < bw; x++) { const i = ((y + y0) * W + x + x0) * 4; mask[y * bw + x] = Math.abs(d[i] - bg[0]) + Math.abs(d[i + 1] - bg[1]) + Math.abs(d[i + 2] - bg[2]) > T ? 1 : 0; }
+  const r = Math.max(2, Math.round(Math.min(W, H) * 0.014)); const dil = new Uint8Array(bw * bh); const tmp = new Uint8Array(bw * bh);
+  for (let y = 0; y < bh; y++) { let run = -1e9; for (let x = 0; x < bw; x++) { if (mask[y * bw + x]) run = x; if (x - run <= r) tmp[y * bw + x] = 1; } run = 1e9; for (let x = bw - 1; x >= 0; x--) { if (mask[y * bw + x]) run = x; if (run - x <= r) tmp[y * bw + x] = 1; } }
+  for (let x = 0; x < bw; x++) { let run = -1e9; for (let y = 0; y < bh; y++) { if (tmp[y * bw + x]) run = y; if (y - run <= r) dil[y * bw + x] = 1; } run = 1e9; for (let y = bh - 1; y >= 0; y--) { if (tmp[y * bw + x]) run = y; if (run - y <= r) dil[y * bw + x] = 1; } }
+  const lab = new Int32Array(bw * bh); let n = 0; const out = [];
+  for (let i = 0; i < bw * bh; i++) {
+    if (!dil[i] || lab[i]) continue; n++; const q = [i]; lab[i] = n; let mnx = 1e9, mny = 1e9, mxx = -1, mxy = -1, cnt = 0;
+    while (q.length) { const j = q.pop(); const x = j % bw, y = (j / bw) | 0; if (mask[j]) { cnt++; if (x < mnx) mnx = x; if (x > mxx) mxx = x; if (y < mny) mny = y; if (y > mxy) mxy = y; } for (const k of [j - 1, j + 1, j - bw, j + bw]) { if (k < 0 || k >= bw * bh || lab[k] || !dil[k]) continue; if ((k === j - 1 && x === 0) || (k === j + 1 && x === bw - 1)) continue; lab[k] = n; q.push(k); } }
+    if (cnt < 12 || mxx < 0) continue;
+    const bb = [mnx + x0, mny + y0, mxx + x0 + 1, mxy + y0 + 1]; const area = (bb[2] - bb[0]) * (bb[3] - bb[1]); const frac = area / (W * H);
+    if (depth === 0 && frac > 0.1) { // a solid panel (e.g. a dark block holding the white logo): look inside it
+      const inner = dominant(d, W, bb[0], bb[1], bb[2], bb[3]); let same = 0, tot = 0;
+      for (let y = bb[1]; y < bb[3]; y += 2) for (let x = bb[0]; x < bb[2]; x += 2) { const i = (y * W + x) * 4; tot++; if (Math.abs(d[i] - inner[0]) + Math.abs(d[i + 1] - inner[1]) + Math.abs(d[i + 2] - inner[2]) < 40) same++; }
+      const differs = Math.abs(inner[0] - bg[0]) + Math.abs(inner[1] - bg[1]) + Math.abs(inner[2] - bg[2]) > 60;
+      if ((same / tot > 0.5 && differs) || frac > 0.45) { out.push(...blobs(A, [bb[0] + 1, bb[1] + 1, bb[2] - 1, bb[3] - 1], inner, 1)); continue; }
+    }
+    if (frac < 0.0025 || frac > 0.6 || bb[2] - bb[0] < 6 || bb[3] - bb[1] < 6) continue;
+    out.push({ bb, bg, area, depth });
+  }
+  return out;
+}
+function cropFrom(hi, A, bb, bg, transparent) {
+  const k = hi.width / A.W; const pad = Math.round(Math.max(bb[2] - bb[0], bb[3] - bb[1]) * k * 0.05);
+  const x = Math.max(0, Math.round(bb[0] * k) - pad), y = Math.max(0, Math.round(bb[1] * k) - pad); const w = Math.min(hi.width - x, Math.round((bb[2] - bb[0]) * k) + pad * 2), h = Math.min(hi.height - y, Math.round((bb[3] - bb[1]) * k) + pad * 2);
+  const c = newCanvas(w, h); const ctx = c.getContext('2d', { willReadFrequently: true }); ctx.drawImage(hi, x, y, w, h, 0, 0, w, h);
+  const id = ctx.getImageData(0, 0, w, h); const dd = id.data; const cols = new Set();
+  for (let i = 0; i < dd.length; i += 4 * 7) cols.add((dd[i] >> 3) << 10 | (dd[i + 1] >> 3) << 5 | (dd[i + 2] >> 3));
+  const photo = cols.size > 900;
+  if (transparent && !photo) { for (let i = 0; i < dd.length; i += 4) { const dist = Math.abs(dd[i] - bg[0]) + Math.abs(dd[i + 1] - bg[1]) + Math.abs(dd[i + 2] - bg[2]); dd[i + 3] = Math.max(0, Math.min(255, (dist - 24) * 4)); } ctx.putImageData(id, 0, 0); }
+  // small signature for de-duplication
+  const sg = newCanvas(12, 12); sg.getContext('2d').drawImage(c, 0, 0, 12, 12); const sd = sg.getContext('2d').getImageData(0, 0, 12, 12).data; const sig = []; for (let i = 0; i < sd.length; i += 4) sig.push(sd[i + 3] < 40 ? 255 : (sd[i] + sd[i + 1] + sd[i + 2]) / 3);
+  return { canvas: c, photo, sig, w, h };
+}
+const sigDist = (a, b) => a.reduce((s, v, i) => s + Math.abs(v - b[i]), 0) / a.length;
+async function pdfLogos(R, onProgress) {
+  const logoPages = [R.pages[0], ...R.pages.filter((p) => ['logo', 'logovar'].includes(p.sec))].filter(Boolean).filter((p, i, a) => a.indexOf(p) === i).slice(0, 6);
+  const cands = [];
+  for (const [i, p] of logoPages.entries()) {
+    onProgress && onProgress(i + 1, logoPages.length);
+    const hi = await serial(() => renderPage(p.page, Math.min(4, 2200 / p.w), true));
+    const A = analyseCanvas(hi); const bg = dominant(A.d, A.W, 0, 0, A.W, A.H);
+    const bs = blobs(A, [0, 0, A.W, A.H], bg).sort((a, b) => b.area - a.area).slice(0, 6);
+    for (const b of bs) {
+      const cr = cropFrom(hi, A, b.bb, b.bg, true); if (cr.photo) continue; const ar = cr.w / cr.h; if (ar > 12 || ar < 1 / 6) continue;
+      if (cands.some((c) => Math.abs(c.ar - ar) < 0.12 && sigDist(c.sig, cr.sig) < 22)) continue;
+      const bgL = (b.bg[0] * 299 + b.bg[1] * 587 + b.bg[2] * 114) / 255000;
+      cands.push({ id: 'lg' + cands.length, canvas: cr.canvas, url: cr.canvas.toDataURL('image/png'), ar, sig: cr.sig, page: p.n, dark: bgL < 0.35, area: b.area / (A.W * A.H), fromLogoPage: p.sec === 'logo' || p.sec === 'logovar' || p.n === 1, role: '' });
+    }
+  }
+  // automatic roles — the user can change every one of them
+  const light = cands.filter((c) => !c.dark).sort((a, b) => (b.fromLogoPage - a.fromLogoPage) || (b.area - a.area));
+  if (light[0]) light[0].role = 'primary';
+  const wh = cands.find((c) => c.dark && !c.role); if (wh) wh.role = 'white';
+  const icon = cands.find((c) => !c.role && !c.dark && c.ar > 0.7 && c.ar < 1.4 && light[0] && c.area < light[0].area); if (icon) icon.role = 'icon';
+  if (!light[0] && cands[0]) cands[0].role = 'primary';
+  return cands.slice(0, 14);
+}
+async function pdfSwatches(R) { // fallback when the PDF lists no colour codes: read solid swatches from the colour pages
+  const ps = R.pages.filter((p) => p.sec === 'colour').slice(0, 3); const counts = new Map(); let total = 0;
+  for (const p of ps) { const c = await serial(() => renderPage(p.page, 400 / p.w, true)); const A = analyseCanvas(c, 200); const bg = dominant(A.d, A.W, 0, 0, A.W, A.H); for (let i = 0; i < A.d.length; i += 4) { const r = A.d[i], g = A.d[i + 1], b = A.d[i + 2]; if (Math.abs(r - bg[0]) + Math.abs(g - bg[1]) + Math.abs(b - bg[2]) < 30) continue; const k = (r >> 3) << 10 | (g >> 3) << 5 | (b >> 3); counts.set(k, (counts.get(k) || 0) + 1); total++; } }
+  const out = []; [...counts.entries()].sort((a, b) => b[1] - a[1]).forEach(([k, v]) => { if (v < total * 0.03 || out.length >= 8) return; const hex = rgbHex(((k >> 10) & 31) * 8 + 4, ((k >> 5) & 31) * 8 + 4, (k & 31) * 8 + 4); if (!out.some((o) => hexDist(o.hex, hex) < 40)) out.push({ hex, name: '', role: '', page: ps[0]?.n }); });
+  return pdfRoles(out);
+}
+async function pdfImages(R) {
+  const out = []; const seen = new Set();
+  for (const p of R.pages) {
+    for (const id of p.imgIds) {
+      if (out.length >= 40) break;
+      const c = await pageImage(p.page, id).catch(() => null); if (!c || c.width < 280 || c.height < 200) continue;
+      const key = c.width + 'x' + c.height + ':' + id.replace(/^.*_/, ''); if (seen.has(key)) continue; seen.add(key);
+      const k = Math.min(1, 2000 / Math.max(c.width, c.height)); const sc = newCanvas(c.width * k, c.height * k); sc.getContext('2d').drawImage(c, 0, 0, sc.width, sc.height);
+      const cat = p.sec === 'graphic' && /illustr/i.test(p.heads.join(' ')) ? 'illustrations' : p.sec === 'graphic' ? 'supporting' : 'photography';
+      out.push({ id: 'im' + out.length, canvas: sc, url: sc.toDataURL('image/jpeg', 0.6), page: p.n, cat, on: ['photo', 'graphic', null, 'intro', 'story'].includes(p.sec) || p.sec === undefined });
+    }
+  }
+  return out;
+}
+async function pageArt(p, maxW = 1600) { const c = await serial(() => renderPage(p.page, Math.min(3, maxW / p.w))); return c; }
+
+/* ---------- the flow: pick PDF → read → review → apply ---------- */
+async function pdfImportFlow() {
+  const [file] = await pickFiles('application/pdf,.pdf'); if (!file) return;
+  if (!/\.pdf$/i.test(file.name) && file.type !== 'application/pdf') return toast('Please choose a PDF file', 'err');
+  if (file.size > 150 * 1048576) return toast('That PDF is larger than 150 MB', 'err');
+  let cancelled = false; let setP = () => { };
+  const prog = modal({ title: 'Reading your brand guidelines', body: `<div class="pi-prog"><p class="muted" id="pi-msg">Opening ${esc(file.name)}…</p><div class="pi-bar"><i id="pi-fill"></i></div><p class="muted sm">Everything is read here in your browser. Nothing changes until you review and apply.</p></div>`, actions: [{ label: 'Cancel', value: null }], onMount: (w) => { setP = (msg, f) => { const m = $('#pi-msg', w), b = $('#pi-fill', w); if (m) m.textContent = msg; if (b) b.style.width = Math.round(f * 100) + '%'; }; } });
+  prog.then(() => (cancelled = true));
+  let R;
+  try {
+    R = await pdfRead(file, (n, N) => setP(`Reading page ${n} of ${N}…`, (n / N) * 0.6));
+    if (cancelled) return R.doc.destroy();
+    pdfAnalyse(R);
+    setP('Finding logos…', 0.62); R.logos = await pdfLogos(R, (i, n) => setP(`Finding logos (${i}/${n})…`, 0.62 + (i / n) * 0.18));
+    if (!R.colours.length) { setP('Reading colour swatches…', 0.82); R.colours = await pdfSwatches(R); R.coloursFromPixels = true; }
+    setP('Collecting imagery…', 0.88); R.images = await pdfImages(R);
+    R.colPages = Object.keys(PDF_KIND_OF).flatMap((k) => R.pages.filter((p) => p.sec === k).slice(0, 3).map((p) => ({ kind: k, p, on: true })));
+    R.gfxPages = R.pages.filter((p) => p.sec === 'graphic' && !R.images.some((im) => im.page === p.n)).slice(0, 3).map((p) => ({ p, on: false }));
+    setP('Done', 1);
+  } catch (e) { console.error(e); document.querySelector('.modal-wrap [data-x]')?.click(); toast('Could not read this PDF: ' + (e.message || e), 'err'); return; }
+  if (cancelled) { R.doc.destroy(); return; }
+  document.querySelector('.modal-wrap [data-x]')?.click();
+  const ok = await pdfReview(R);
+  if (ok) await pdfApply(R, ok); else toast('Import cancelled — nothing was changed');
+  try { R.doc.destroy(); } catch (e) { }
+}
+
+const PI_ROLES = [['', 'Not used'], ['primary', 'Primary logo'], ['secondary', 'Secondary logo'], ['icon', 'Icon / symbol'], ['black', 'Black logo'], ['white', 'White logo'], ['extra', 'Extra variation']];
+function pdfReview(R) {
+  const I = R.info; const secRows = [['strategy', 'Brand Strategy'], ['identity', 'Brand Identity™'], ['collaterals', 'Collaterals']];
+  const titles = [...new Set(PDF_SECS.map((s) => s[2]))];
+  const present = new Set(PDF_SECS.filter((s) => R.found[s[0]]).map((s) => s[2])); present.add('Logo System');
+  const chOf = (t) => PDF_SECS.find((s) => s[2] === t)[1];
+  const nFound = PDF_SECS.filter((s) => R.found[s[0]]).length;
+  const fam = (r) => `<select class="inp" data-pifont="${r}"><option value="">Keep current</option>${R.fonts.all.map((f) => `<option ${R.fonts.pick[r] === f ? 'selected' : ''}>${esc(f)}</option>`).join('')}</select>`;
+  const body = `<div class="pi">
+    <p class="pi-sum">${ic('check', 15)}<span>Read <strong>${R.pages.length}${R.total > R.pages.length ? ' of ' + R.total : ''} pages</strong> from ${esc(R.name)} and found <strong>${nFound} guideline sections</strong>, ${R.logos.length} logo candidates, ${R.colours.length} colours, ${R.fonts.all.length} typefaces and ${R.images.length} images. Untick anything you don’t want, then apply.</span></p>
+    <section class="pi-sec"><label class="pi-hd"><input type="checkbox" data-pion="info" checked><h3>Brand information</h3></label><div class="pi-form">
+      ${[['name', 'Brand name'], ['tagline', 'Tagline'], ['website', 'Website'], ['email', 'Contact email'], ['phone', 'Phone'], ['location', 'Location']].map(([k, l]) => `<label class="fld"><span>${l}</span><input class="inp" data-pii="${k}" value="${esc(I[k] || '')}"></label>`).join('')}
+      <label class="fld full"><span>Description</span><textarea class="inp" rows="3" data-pii="description" maxlength="400">${esc(I.description || '')}</textarea></label>
+      <label class="fld"><span>Industry</span><select class="inp" data-pii="industry"><option value="">—</option>${INDUSTRIES.map((x) => `<option ${I.industry === x ? 'selected' : ''}>${x}</option>`).join('')}</select></label>
+      ${Object.keys(R.copy).length ? `<label class="tog pi-copy"><input type="checkbox" data-pion="copy" checked><span>Also use the ${Object.keys(R.copy).length} pieces of copy found (vision, mission, values…) in the pages</span></label>` : ''}</div></section>
+    <section class="pi-sec"><label class="pi-hd"><input type="checkbox" data-pion="logos" ${R.logos.length ? 'checked' : ''}><h3>Logos</h3></label><p class="muted sm">Choose what each candidate is. Not right? Crop one straight from a page.</p>
+      <div class="pi-logos" id="pi-logos">${R.logos.map((c) => piLogoCard(c)).join('')}<button class="pi-crop" data-picrop>${ic('plus', 18)}<span>Crop from a page</span></button></div></section>
+    <section class="pi-sec"><label class="pi-hd"><input type="checkbox" data-pion="colours" ${R.colours.length ? 'checked' : ''}><h3>Colours</h3></label><p class="muted sm">${R.coloursFromPixels ? 'No colour codes were written in the PDF, so these were sampled from the colour pages — check the values.' : 'Read from the HEX / RGB / CMYK codes in the PDF.'} Replaces the current palette.</p>
+      <div class="pi-cols">${R.colours.map((c) => `<label class="pi-col"><input type="checkbox" data-picol="${c.id}" checked><i style="background:${c.hex}"></i><span><input class="inp" data-picolname="${c.id}" value="${esc(c.name)}"><small>${c.hex}${c.pms ? ' · ' + esc(c.pms) : ''}</small></span><select class="inp" data-picolrole="${c.id}">${COLOUR_ROLES.map(([r, l]) => `<option value="${r}" ${c.role === r ? 'selected' : ''}>${l}</option>`).join('')}</select></label>`).join('') || '<p class="muted sm">No colours found.</p>'}</div></section>
+    <section class="pi-sec"><label class="pi-hd"><input type="checkbox" data-pion="type" ${R.fonts.all.length ? 'checked' : ''}><h3>Typography</h3></label><div class="pi-form three"><label class="fld"><span>Heading</span>${fam('heading')}</label><label class="fld"><span>Body</span>${fam('body')}</label><label class="fld"><span>Accent</span>${fam('accent')}</label></div><p class="muted sm">Typefaces that aren’t Google Fonts show with a fallback until you upload the font files in step 4.</p></section>
+    <section class="pi-sec"><label class="pi-hd"><input type="checkbox" data-pion="images" ${R.images.length ? 'checked' : ''}><h3>Imagery <span class="muted">${R.images.length}</span></h3></label><div class="pi-imgs">${R.images.map((im) => `<label class="pi-img"><input type="checkbox" data-piimg="${im.id}" ${im.on ? 'checked' : ''}><img src="${im.url}" alt="Image from page ${im.page}"><small>p.${im.page}</small></label>`).join('') || '<p class="muted sm">No photographs or raster images in this PDF.</p>'}</div></section>
+    ${R.colPages.length || R.gfxPages.length ? `<section class="pi-sec"><label class="pi-hd"><input type="checkbox" data-pion="art" checked><h3>Collaterals & graphics from the PDF pages</h3></label><p class="muted sm">These pages become the artwork on their Collaterals pages, instead of generated mockups.</p><div class="pi-imgs wide">${R.colPages.map((x, i) => `<label class="pi-img"><input type="checkbox" data-piart="${i}" checked><img src="${x.p.thumb}" alt=""><small>${esc(kindLabel(x.kind, Wz.b))} · p.${x.p.n}</small></label>`).join('')}${R.gfxPages.map((x, i) => `<label class="pi-img"><input type="checkbox" data-pigfx="${i}"><img src="${x.p.thumb}" alt=""><small>Graphic elements · p.${x.p.n}</small></label>`).join('')}</div></section>` : ''}
+    <section class="pi-sec"><label class="pi-hd"><input type="checkbox" data-pion="sections" checked><h3>Pages in your brandbook</h3></label><p class="muted sm">Only the sections your PDF covers are ticked, so the brandbook matches it. Tick any you want to add. You can always add pages later in the editor.</p>
+      <div class="pi-secs">${secRows.map(([ch, l]) => `<div><h4>${l}</h4>${titles.filter((t) => chOf(t) === ch).map((t) => `<label class="tog sm"><input type="checkbox" data-pipage="${esc(t)}" ${present.has(t) ? 'checked' : ''}><span>${esc(t)}</span></label>`).join('')}</div>`).join('')}</div></section>
+    <label class="tog pi-keep"><input type="checkbox" data-pion="keeppdf" checked><span>Keep the PDF itself in Templates & documents, so people can download it</span></label>
+  </div>`;
+  return modal({ title: 'Here’s what we found', wide: true, body, actions: [{ label: 'Cancel', value: null }, { label: 'Apply to my brand', kind: 'primary', value: (w) => piCollect(R, w) }],
+    onMount: (w) => {
+      w.querySelector('.modal').classList.add('pi-modal');
+      w.addEventListener('change', (e) => { const t = e.target; if (t.dataset.pirole !== undefined) { const c = R.logos.find((x) => x.id === t.dataset.pirole); if (t.value && t.value !== 'extra') R.logos.forEach((o) => { if (o !== c && o.role === t.value) { o.role = ''; const s = w.querySelector(`[data-pirole="${o.id}"]`); if (s) s.value = ''; } }); c.role = t.value; } });
+      w.addEventListener('click', async (e) => { if (e.target.closest('[data-picrop]')) { e.preventDefault(); const c = await pdfCropTool(R); if (c) { R.logos.push(c); w.querySelector('[data-picrop]').insertAdjacentHTML('beforebegin', piLogoCard(c)); } } });
+    } });
+}
+function piLogoCard(c) { return `<div class="pi-logo ${c.dark ? 'dark' : ''}"><div class="pi-logo-i"><img src="${c.url}" alt="Logo candidate from page ${c.page}"></div><select class="inp" data-pirole="${c.id}">${PI_ROLES.map(([r, l]) => `<option value="${r}" ${c.role === r ? 'selected' : ''}>${l}</option>`).join('')}</select><small class="muted">Page ${c.page}</small></div>`; }
+function piCollect(R, w) {
+  const on = (k) => !!w.querySelector(`[data-pion="${k}"]`)?.checked; const val = (sel) => w.querySelector(sel)?.value ?? '';
+  const info = {}; $$('[data-pii]', w).forEach((x) => (info[x.dataset.pii] = x.value.trim()));
+  if (on('info') && !info.name) { const n = w.querySelector('[data-pii="name"]'); n.classList.add('err'); n.focus(); toast('Add the brand name first', 'err'); return false; }
+  const colours = R.colours.filter((c) => w.querySelector(`[data-picol="${c.id}"]`)?.checked).map((c) => ({ ...c, name: val(`[data-picolname="${c.id}"]`) || c.name, role: val(`[data-picolrole="${c.id}"]`) || c.role }));
+  return { info: on('info') ? info : null, copy: on('copy'), logos: on('logos') ? R.logos.filter((c) => c.role) : [], colours: on('colours') ? colours : [], fonts: on('type') ? { heading: val('[data-pifont="heading"]'), body: val('[data-pifont="body"]'), accent: val('[data-pifont="accent"]') } : null,
+    images: on('images') ? R.images.filter((im) => w.querySelector(`[data-piimg="${im.id}"]`)?.checked) : [], art: on('art') ? R.colPages.filter((x, i) => w.querySelector(`[data-piart="${i}"]`)?.checked) : [], gfx: on('art') ? R.gfxPages.filter((x, i) => w.querySelector(`[data-pigfx="${i}"]`)?.checked) : [],
+    pages: on('sections') ? $$('[data-pipage]', w).filter((x) => x.checked).map((x) => x.dataset.pipage) : null, keepPdf: on('keeppdf') };
+}
+function pdfCropTool(R) {
+  let pi = Math.max(0, R.pages.findIndex((p) => p.sec === 'logo')); let hi = null, rect = null;
+  const body = `<div class="pc"><div class="pc-pages">${R.pages.map((p, i) => `<button class="pc-th ${i === pi ? 'on' : ''}" data-pcp="${i}" aria-label="Page ${p.n}"><img src="${p.thumb}" alt=""><small>${p.n}</small></button>`).join('')}</div><div class="pc-main"><p class="muted sm">Drag a box around the logo.</p><div class="pc-stage" id="pc-stage"><canvas id="pc-cv"></canvas><i id="pc-rect"></i></div><label class="tog sm"><input type="checkbox" id="pc-tr" checked><span>Make the background transparent</span></label></div></div>`;
+  return modal({ title: 'Crop a logo from a page', wide: true, body, actions: [{ label: 'Cancel', value: null }, { label: 'Add this logo', kind: 'primary', value: (w) => {
+    if (!rect || rect.w < 6 || rect.h < 6) { toast('Drag a box around the logo first', 'err'); return false; }
+    const cv = $('#pc-cv', w); const k = hi.width / cv.clientWidth; const A = analyseCanvas(hi, 300); const kk = A.W / hi.width;
+    const bb = [rect.x * k * kk, rect.y * k * kk, (rect.x + rect.w) * k * kk, (rect.y + rect.h) * k * kk].map(Math.round);
+    const bg = dominant(A.d, A.W, Math.max(0, bb[0]), Math.max(0, bb[1]), Math.min(A.W, bb[2]), Math.min(A.H, bb[3]));
+    const x = Math.round(rect.x * k), y = Math.round(rect.y * k), ww = Math.round(rect.w * k), hh = Math.round(rect.h * k);
+    const c = newCanvas(ww, hh); const ctx = c.getContext('2d', { willReadFrequently: true }); ctx.drawImage(hi, x, y, ww, hh, 0, 0, ww, hh);
+    if ($('#pc-tr', w).checked) { const id = ctx.getImageData(0, 0, ww, hh); const dd = id.data; for (let i = 0; i < dd.length; i += 4) { const dist = Math.abs(dd[i] - bg[0]) + Math.abs(dd[i + 1] - bg[1]) + Math.abs(dd[i + 2] - bg[2]); dd[i + 3] = Math.max(0, Math.min(255, (dist - 24) * 4)); } ctx.putImageData(id, 0, 0); }
+    const bgL = (bg[0] * 299 + bg[1] * 587 + bg[2] * 114) / 255000;
+    return { id: 'lg' + Date.now(), canvas: c, url: c.toDataURL('image/png'), ar: ww / hh, page: R.pages[pi].n, dark: bgL < 0.35, role: 'extra' };
+  } }],
+  onMount: async (w) => {
+    const show = async () => { $$('.pc-th', w).forEach((b, i) => b.classList.toggle('on', i === pi)); rect = null; $('#pc-rect', w).style.display = 'none'; const p = R.pages[pi]; hi = await serial(() => renderPage(p.page, Math.min(4, 2000 / p.w))); const cv = $('#pc-cv', w); cv.width = hi.width; cv.height = hi.height; cv.getContext('2d').drawImage(hi, 0, 0); };
+    w.addEventListener('click', (e) => { const b = e.target.closest('[data-pcp]'); if (b) { pi = +b.dataset.pcp; show(); } });
+    const st = $('#pc-stage', w); const rc = $('#pc-rect', w); let start = null;
+    st.addEventListener('pointerdown', (e) => { const r = $('#pc-cv', w).getBoundingClientRect(); start = { x: e.clientX - r.left, y: e.clientY - r.top }; st.setPointerCapture(e.pointerId); });
+    st.addEventListener('pointermove', (e) => { if (!start) return; const r = $('#pc-cv', w).getBoundingClientRect(); const x = Math.max(0, Math.min(r.width, e.clientX - r.left)), y = Math.max(0, Math.min(r.height, e.clientY - r.top)); rect = { x: Math.min(start.x, x), y: Math.min(start.y, y), w: Math.abs(x - start.x), h: Math.abs(y - start.y) }; Object.assign(rc.style, { display: 'block', left: rect.x + 'px', top: rect.y + 'px', width: rect.w + 'px', height: rect.h + 'px' }); });
+    st.addEventListener('pointerup', () => (start = null));
+    await show();
+  } });
+}
+
+async function pdfApply(R, sel) {
+  const b = Wz.b; let n = 0; const total = sel.logos.length + sel.images.length + sel.art.length + sel.gfx.length + (sel.keepPdf ? 1 : 0);
+  const up = async (canvas, name, type = 'image/png') => { const blob = await canvasBlob(canvas, type, 0.88); const f = new File([blob], name, { type }); n++; if (total > 2) toast(`Saving ${n} of ${total}…`); const [r] = await uploadPicked([f], { max: 60 }); return r; };
+  const slug = slugify(sel.info?.name || b.name || 'brand');
+  try {
+    if (sel.info) { const I = sel.info; b.name = I.name || b.name; ['tagline', 'description', 'website', 'email', 'phone', 'location', 'industry'].forEach((k) => { if (I[k]) b.info[k] = I[k]; }); }
+    if (sel.copy) b.copy = { ...(b.copy || {}), ...R.copy };
+    let extraN = (b.logoExtras || []).length;
+    for (const c of sel.logos) { const r = await up(c.canvas, `${slug}-logo-${c.role}-${c.page}.png`); if (!r) continue; if (c.role === 'extra') { b.logoExtras = b.logoExtras || []; b.logoExtras.push({ id: uid('lx'), label: 'Variation ' + (++extraN), file: r, dark: !!c.dark }); } else b.logos[c.role] = r; }
+    if (sel.colours.length) b.colours = sel.colours.map((c) => ({ id: uid('c'), name: c.name, hex: c.hex, role: c.role || 'accent', ...(c.pms ? { pantone: c.pms } : {}), ...(c.cmyk ? { cmykSpec: c.cmyk } : {}) }));
+    if (sel.fonts) ['heading', 'body', 'accent'].forEach((r) => { if (sel.fonts[r]) { b.typography[r] = { family: sel.fonts[r] }; ensureGoogleFont(sel.fonts[r]); } });
+    const cats = ensureCats(b);
+    for (const im of sel.images) { const r = await up(im.canvas, `${slug}-image-p${im.page}-${im.id}.jpg`, 'image/jpeg'); if (!r) continue; if (!cats.some((c) => c.key === im.cat)) { cats.push({ key: im.cat, label: IMG_CATS.find((x) => x[0] === im.cat)?.[1] || 'Imagery' }); } (b.images[im.cat] = b.images[im.cat] || []).push(r); }
+    for (const x of sel.art) { const c = await pageArt(x.p); const r = await up(c, `${slug}-${x.kind}-p${x.p.n}.jpg`, 'image/jpeg'); if (!r) continue; const co = collateralOf(b, x.kind, true); const slot = co.slots.find((s) => !s.file); if (slot) slot.file = fileRef(r); else co.slots.push({ label: 'Page ' + x.p.n, file: fileRef(r) }); }
+    for (const x of sel.gfx) { const c = await pageArt(x.p, 1400); const r = await up(c, `${slug}-graphics-p${x.p.n}.jpg`, 'image/jpeg'); if (r) (b.graphics = b.graphics || []).push({ ...r, label: 'Graphic elements · page ' + x.p.n }); }
+    if (sel.keepPdf) { n++; const [r] = await uploadPicked([R.file], { max: 150 }); if (r) b.assets.push({ ...r, category: 'documents', kind: 'pdf' }); }
+    if (sel.pages) {
+      const kinds = Object.keys(PDF_KIND_OF).filter((k) => sel.pages.includes(PDF_SEC[k].title) && (R.found[k] || sel.art.some((a) => a.kind === k)));
+      b.pdfSections = { pages: sel.pages, kinds, from: R.name, at: Date.now() };
+      b.colHidden = MOCKUP_KINDS.map((m) => m[0]).filter((k) => !kinds.includes(k) && !(b.collateral?.[k]?.slots || []).some((s) => s.file));
+      const hide = new Set(b.exHidden || []);
+      if (!sel.pages.includes('Iconography') && !(b.icons || []).length) hide.add('icons'); else hide.delete('icons');
+      if (!sel.pages.includes('Graphic Elements') && !(b.graphics || []).length) hide.add('graphics'); else hide.delete('graphics');
+      if (!kinds.length && !(b.colCustom || []).length) hide.add('collateral'); else hide.delete('collateral');
+      b.exHidden = [...hide];
+    }
+    if (b.generated && sel.pages) toast('This brandbook already has pages — the page list was saved but existing pages weren’t removed. Use the editor to hide or delete pages.');
+    loadBrandFonts(b); Wz.persisted = true; wzSave(); drawWizard();
+    toast(`Imported from ${R.name}. Check each step, then generate.`);
+  } catch (e) { console.error(e); toast('Import stopped: ' + (e.message || e), 'err'); wzSave(); drawWizard(); }
 }
 </script></body></html>
